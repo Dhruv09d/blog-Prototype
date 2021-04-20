@@ -23,5 +23,7 @@ Route::get('/', [PagesController::class, 'index'])->name('page');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //blog | posts
-//Route::resource('/blog', [PostsController::class]);
+Route::get('/blog', [PostsController::class, 'index']);
+Route::get('/blog/create', [PostsController::class, 'create']);
+Route::post('/blog/create', [PostsController::class, 'store']);
 

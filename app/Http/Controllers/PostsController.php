@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
 
 class PostsController extends Controller
 {
@@ -13,7 +14,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        //$post = Post::all();
+        //dd($post);
+        return view('blog.index')->with('posts', Post::orderBy('updated_at', 'DESC')->get());
     }
 
     /**
@@ -23,7 +26,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog.create');
     }
 
     /**
@@ -34,7 +37,8 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        return view("blog.create");
     }
 
     /**
