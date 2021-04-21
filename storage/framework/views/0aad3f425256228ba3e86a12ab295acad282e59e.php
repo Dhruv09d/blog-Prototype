@@ -10,6 +10,16 @@
         </h1>
     </div>
 </div>
+
+<?php if(session()->has('message')): ?>
+    <div class="w-4/5 m-auto mt-10 pl-2">
+        <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4 text-center">
+            <?php echo e(session()->get('message')); ?>
+
+        </p>
+    </div>
+<?php endif; ?>
+
 <?php if(Auth::check()): ?>
     <div class="pt-14 w-4/5 m-auto">
         <a href="/blog/create" class="bg-blue-500 uppercase bg-transparent text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">Create Post</a>
@@ -39,6 +49,18 @@
             <a href="/blog/<?php echo e($post->slug); ?>" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
                 Keep Reading
             </a>
+            <?php if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id ): ?>
+                <span class="float-right">
+                    <a href="/blog/<?php echo e($post->slug); ?>/edit" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2"> Edit</a>
+                </span>
+                <span class="float-right">
+                    <form action="/blog/<?php echo e($post->slug); ?>" method="POST">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('DELETE'); ?>
+                        <button type="submit" class="uppercase text-red-500 pr-3 hover:text-red-700">delete</button>
+                    </form>
+                </span>
+            <?php endif; ?>
         </div>
     </div>
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

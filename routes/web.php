@@ -23,7 +23,12 @@ Route::get('/', [PagesController::class, 'index'])->name('page');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //blog | posts
+/*
 Route::get('/blog', [PostsController::class, 'index']);
 Route::get('/blog/create', [PostsController::class, 'create']);
 Route::post('/blog/create', [PostsController::class, 'store']);
-
+Route::get('/blog/{slug}', [PostsController::class, 'show']);
+Route::get('/blog/{slug}/edit', [PostsController::class, 'edit']);
+Route::patch('/blog/{slug}/update', [PostsController::class, 'update']);
+*/
+Route::resource('/blog', [PostsController::class]);

@@ -11,8 +11,24 @@
     </div>
 </div>
 
+
+
+
+@if($errors->all())
+    <div class="w-4/5 m-auto">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li class="w-1/5 mb-4 text-gray-50 bg-red-700 rounded-2xl py-4">
+                    {{ $error }}
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
+@endif
+
 <div class="w-4/5 m-auto pt-20">
-    <form action="/blog" method="POST" enctype="multipart/form-data">
+    <form action="/blog/create" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="text" name="title" placeholder="Title..." 
         class="pb-10 bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
