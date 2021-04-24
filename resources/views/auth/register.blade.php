@@ -76,7 +76,7 @@
                             {{ __('Register') }}
                         </button>
 
-                        <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8">
+                        <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8 border-b-2 pb-4">
                             {{ __('Already have an account?') }}
                             <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('login') }}">
                                 {{ __('Login') }}
@@ -84,7 +84,11 @@
                         </p>
                     </div>
                 </form>
+                <div class="flex flex-wrap">
+                    <a class="w-4/5 select-none text-center  mx-auto font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-red-600 hover:bg-red-700 sm:py-4 mb-2" href="login/google"><button>Google</button></a>
 
+                    <a  class="w-4/5 select-none text-center mx-auto font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-gray-800 hover:bg-black sm:py-4 mb-4" href="login/github"><button>Github</button></a>
+                </div>
             </section>
         </div>
     </div>

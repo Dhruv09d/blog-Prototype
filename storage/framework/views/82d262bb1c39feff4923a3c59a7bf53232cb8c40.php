@@ -107,9 +107,15 @@ unset($__errorArgs, $__bag); ?>
                             </a>
                         </p>
                         <?php endif; ?>
+
+                        
                     </div>
                 </form>
+                <div class="flex flex-wrap">
+                    <a class="w-4/5 select-none text-center mx-auto font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-red-600 hover:bg-red-700 sm:py-4 mb-2" href="login/google"><button>Google</button></a>
 
+                    <a  class="w-4/5 select-none text-center mx-auto font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-gray-800 hover:bg-black sm:py-4 mb-4" href="login/github"><button>Github</button></a>
+                </div>
             </section>
         </div>
     </div>
