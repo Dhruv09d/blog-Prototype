@@ -17,23 +17,29 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 // athentication routes
+
+
 //google auth
 // redirecting to google login page
-Route::get('login/google', [LoginController::class, 'redirectToProviderGoogle'])->name('googlelogin');
+Route::get('login/google', [LoginController::class, 'redirectToProviderGoogle'])->name('login.google');
 // getting auth confirmation from google || getting auth data from google
 Route::get('login/google/callback', [LoginController::class, 'handleProviderCallbackGoogle']);
 
 //github auth
 // redirecting to github login page
-Route::get('login/github', [LoginController::class, 'redirectToProviderGithub'])->name('githublogin');
+Route::get('login/github', [LoginController::class, 'redirectToProviderGithub'])->name('login.github');
 // getting auth confirmation from github || getting auth data from github
 Route::get('login/github/callback', [LoginController::class, 'handleProviderCallbackGithub']);
+
+
+
+
 
 //post Routes
 Auth::routes();
 
 // index page
-Route::get('/', [PagesController::class, 'index'])->name('page');
+//Route::get('/', [PagesController::class, 'index'])->name('page');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //blog | posts

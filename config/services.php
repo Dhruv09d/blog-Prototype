@@ -30,16 +30,16 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    // google auth-login
+    // google auth-loginri
     'google' => [
-        'client_id' => '632197224184-jecuqi1j6hifm6br3rutbrto1omi17tq.apps.googleusercontent.com',
-        'client_secret' => 'jc_iorT43DTnnAMYlXg4qQxo',
-        'redirect' => 'http://127.0.0.1:8000/login/google/callback',
+        'client_id' => '708373571094-h6phlm2t5dm8so0rnrpvpj0kjoutvpi4.apps.googleusercontent.com',
+        'client_secret' => 'qc9eDGU3UgeWZ63UDelkM4xO',
+        'redirect' => 'http://localhost:8000/login/google/callback',
     ],
 
     'github' => [
         'client_id' => 'fb21c9d5f2d1f32d2792',
-        'client_secret' => 'f0f231f24f99951e23deced9d6e9493cf4741c37',
-        'redirect' => 'http://127.0.0.1:8000/login/github/callback',
+        'client_secret' => '6329e62bfc2062dd1ca572b5e6f777b9d90d10f4',
+        'redirect' => 'http://localhost:8000/login/github/callback',
     ],
 ];
