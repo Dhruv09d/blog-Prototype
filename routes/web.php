@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\Auth\LoginController;
 /*
@@ -40,7 +39,7 @@ Auth::routes();
 
 // index page
 //Route::get('/', [PagesController::class, 'index'])->name('page');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index']);
 
 //blog | posts
 
@@ -49,8 +48,8 @@ Route::get('/blog/create', [PostsController::class, 'create']);
 Route::post('/blog/create', [PostsController::class, 'store']);
 Route::get('/blog/{slug}', [PostsController::class, 'show']);
 Route::get('/blog/{slug}/edit', [PostsController::class, 'edit']);
-Route::patch('/blog/{slug}/update', [PostsController::class, 'update']);
-Route::get('/blog/{slug}', [PostsController::class, 'destroy']);
+Route::post('/blog/{slug}/update', [PostsController::class, 'update']);
+Route::get('/blog/{slug}/delete', [PostsController::class, 'destroy']);
 
 //Route::resource('/blog', [PostsController::class]);
 

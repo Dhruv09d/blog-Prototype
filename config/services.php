@@ -39,7 +39,7 @@ return [
 
     'github' => [
         'client_id' => 'fb21c9d5f2d1f32d2792',
-        'client_secret' => '6329e62bfc2062dd1ca572b5e6f777b9d90d10f4',
+        'client_secret' =>'6329e62bfc2062dd1ca572b5e6f777b9d90d10f4',
         'redirect' => 'http://localhost:8000/login/github/callback',
     ],
 ];

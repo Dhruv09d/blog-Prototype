@@ -29,8 +29,8 @@
 
 <div class="w-4/5 m-auto pt-20">
     <form action="/blog/<?php echo e($post->slug); ?>/update" method="POST" enctype="multipart/form-data">
-        <?php echo method_field('PUT'); ?>
         <?php echo csrf_field(); ?>
+        <?php echo method_field('PUT'); ?>
         <input type="text" name="title" value="<?php echo e($post->title); ?>" 
         class="pb-10 bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
 

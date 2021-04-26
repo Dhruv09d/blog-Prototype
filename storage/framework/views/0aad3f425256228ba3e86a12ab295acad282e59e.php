@@ -54,7 +54,7 @@
                     <a href="/blog/<?php echo e($post->slug); ?>/edit" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2"> Edit</a>
                 </span>
                 <span class="float-right">
-                    <form action="/blog/<?php echo e($post->slug); ?>" method="POST">
+                    <form action="/blog/<?php echo e($post->slug); ?>/delete" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
                         <button type="submit" class="uppercase text-red-500 pr-3 hover:text-red-700">delete</button>

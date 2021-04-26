@@ -76,7 +76,7 @@ class LoginController extends Controller
             //login
             Auth::login($newUser);
         } 
-        return redirect('home');
+        return redirect('/');
     }
 
     // Github
@@ -115,6 +115,6 @@ class LoginController extends Controller
             //login
             Auth::login($newUser);
         } 
-        return redirect('home'); 
+        return redirect('/'); 
     }
 }
