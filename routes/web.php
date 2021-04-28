@@ -30,6 +30,12 @@ Route::get('login/github', [LoginController::class, 'redirectToProviderGithub'])
 // getting auth confirmation from github || getting auth data from github
 Route::get('login/github/callback', [LoginController::class, 'handleProviderCallbackGithub']);
 
+//facebook auth
+// redirecting to facebook login page
+Route::get('login/facebook', [LoginController::class, 'redirectToProviderFacebook'])->name('login.facebook');
+// getting auth confirmation from  facebook || getting auth data from facebook
+Route::get('login/facebook/callback', [LoginController::class, 'handleProviderCallbackFacebook']);
+
 
 
 
