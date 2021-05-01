@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PostLikesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,8 +56,11 @@ Route::post('/blog/create', [PostsController::class, 'store']);
 Route::get('/blog/{slug}', [PostsController::class, 'show']);
 Route::get('/blog/{slug}/edit', [PostsController::class, 'edit']);
 Route::post('/blog/{slug}/update', [PostsController::class, 'update']);
-Route::get('/blog/{slug}/delete', [PostsController::class, 'destroy']);
+Route::delete('/blog/{slug}/delete', [PostsController::class, 'destroy']);
 
 //Route::resource('/blog', [PostsController::class]);
 
+// like unlike posts
 
+Route::post('posts/{post}/likes', [PostLikesController::class, 'store'])->name('posts.like');
+Route::delete('posts/{post}/unlike', [PostLikesController::class, 'destroy'])->name('posts.unlike');

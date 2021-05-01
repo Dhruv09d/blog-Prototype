@@ -24,6 +24,23 @@
     </p>
 </div>
 
+<div class="flex items-center w-4/5 m-auto pt-10">
+    <?php if(!$post->likedBy(auth()->user())): ?>
+        <form action="<?php echo e(route('posts.like', $post->id)); ?> " method="POST" class="mr-4">
+            <?php echo csrf_field(); ?>
+            <button type="submit" class="text-blue-500">Like</button>
+        </form>
+
+    <?php else: ?> 
+        <form action="<?php echo e(route('posts.unlike', $post->id)); ?>" method="POST" class="mr-1">
+            <?php echo csrf_field(); ?>
+            <?php echo method_field('DELETE'); ?>
+            <button type="submit" class="text-blue-500">Unlike</button>
+        </form>
+        <span><?php echo e($post->likes->count()); ?> <?php echo e(Str::plural('like', $post->likes->count())); ?></span>
+    <?php endif; ?>
+</div>
+   
 
 
 <?php $__env->stopSection(); ?>
