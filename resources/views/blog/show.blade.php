@@ -34,10 +34,37 @@
             @method('DELETE')
             <button type="submit" class="text-blue-500">Unlike</button>
         </form>
-        <span>{{ $post->likes->count()}} {{ Str::plural('like', $post->likes->count()) }}</span>
+       
     @endif
+    <span>{{ $post->likes->count()}} {{ Str::plural('like', $post->likes->count()) }}</span>
 </div>
-   
+
+<!-- Comment Section -->
+<!-- comment form -->
+<div class=" container w-4/5 mx-auto pt-10">
+    <section class="rounded-b-lg  mt-4 ">
+        <form action="{{ route('posts.comment', $post->id)}}"  method="POST">
+            @csrf
+            <textarea class="bg-gray-150 w-full shadow-inner p-4 border-0 mb-4 rounded-lg focus:shadow-outline text-2xl" placeholder="Ask questions here." name="comment" cols="10" rows="4" id="comment_content" spellcheck="false"></textarea>
+            <button type="submit" class="font-bold py-2 px-4 w-full bg-purple-400 text-lg text-white shadow-md rounded-lg ">Comment</button>
+        </form>
+        @foreach($comments as $comment)
+        <div id="task-comments" class="pt-4">
+            <!--     comment-->
+            <div class="bg-gray-100 rounded-lg p-3  flex flex-col justify-center items-center md:items-start shadow-lg mb-4">
+            <div class="flex flex-row justify-center mr-2">
+                <img alt="avatar" width="48" height="48" class="rounded-full w-10 h-10 mr-4 shadow-lg mb-4" src="{{ asset('/images/' . $comment->user->image_path)}}">
+                <h3 class="text-purple-600 font-semibold text-lg text-center md:text-left ">{{ $comment->user->name }} <span class="text-gray-400 text-sm ml-3">{{ $comment->updated_at->diffForHumans() }}</span></h3>
+            </div>
+                <p style="width: 90%" class="text-gray-600 text-lg text-center md:text-left ">{{ $comment->comment }} </p>
+
+            </div>
+        @endforeach
+        <!--  comment end-->
+            
+        </div>
+    </section>
+</div>
 
 
 @endsection

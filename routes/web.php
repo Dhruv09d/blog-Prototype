@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PostLikesController;
+use App\Http\Controllers\PostsCommentsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,7 +54,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/blog', [PostsController::class, 'index']);
 Route::get('/blog/create', [PostsController::class, 'create']);
 Route::post('/blog/create', [PostsController::class, 'store']);
-Route::get('/blog/{slug}', [PostsController::class, 'show']);
+Route::get('/blog/{slug}/{id}', [PostsController::class, 'show']);
 Route::get('/blog/{slug}/edit', [PostsController::class, 'edit']);
 Route::post('/blog/{slug}/update', [PostsController::class, 'update']);
 Route::delete('/blog/{slug}/delete', [PostsController::class, 'destroy']);
@@ -64,3 +65,7 @@ Route::delete('/blog/{slug}/delete', [PostsController::class, 'destroy']);
 
 Route::post('posts/{post}/likes', [PostLikesController::class, 'store'])->name('posts.like');
 Route::delete('posts/{post}/unlike', [PostLikesController::class, 'destroy'])->name('posts.unlike');
+
+Route::post('posts/{post}/comment', [PostsCommentsController::class, 'store'])->name('posts.comment');
+Route::delete('posts/{post}/comment', [PostsCommentsController::class, 'destroy'])->name('posts.removeComment');
+

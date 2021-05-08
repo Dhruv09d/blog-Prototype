@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Comment;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostsController extends Controller
 {
 
     public function __construct() {
-        $this->middleware('auth', ['except' => ['index', 'show', 'home']]);
+        $this->middleware('auth', ['except' => ['index', 'home']]);
     }    
     /**
      * Display a listing of the resource.
@@ -69,12 +70,16 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $slug
+     * @param  string  $slug, integer $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show($slug, $id)
     {
-        return view('blog.show')->with('post', Post::where('slug', $slug)->first());
+        //dd($id);
+        //$comment = Comment::where('post_id', $id)->get();
+        //dd($comment);
+        return view('blog.show')->with('post', Post::where('slug', $slug)->first())
+                               ->with('comments', Comment::where('post_id', $id)->get());
     }
 
     /**
