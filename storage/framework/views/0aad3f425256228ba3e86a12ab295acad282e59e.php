@@ -51,12 +51,16 @@
             </a>
             <?php if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id ): ?>
                 <span class="float-right">
-                    <a href="/blog/<?php echo e($post->slug); ?>/edit" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2"> Edit</a>
+                    <a href="/blog/<?php echo e($post->slug); ?>" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">Edit</a>
                 </span>
+                
                 <span class="float-right">
-                    <form action="/blog/<?php echo e($post->slug); ?>/delete" method="POST">
+                    <form action="/blog/<?php echo e($post->slug); ?>/confirm-delete" method="POST">
                     <?php echo csrf_field(); ?>
-                    <?php echo method_field('DELETE'); ?>
+                        <input type="text" class="hidden" name="owner_name" value="<?php echo e($post->user->name); ?>">
+                        <input type="text" class="hidden" name="title" value="<?php echo e($post->title); ?>">
+                        <input type="text" class="hidden" name="img_path" value="<?php echo e($post->image_path); ?>">
+                        <input type="text" class="hidden" name="updated_at" value="<?php echo e($post->updated_at); ?>">
                         <button type="submit" class="uppercase text-red-500 pr-3 hover:text-red-700">delete</button>
                     </form>
                 </span>

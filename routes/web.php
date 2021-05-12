@@ -51,12 +51,13 @@ Route::get('/', [HomeController::class, 'index']);
 
 //blog | posts
 
-Route::get('/blog', [PostsController::class, 'index']);
+Route::get('/blog', [PostsController::class, 'index'])->name('blog.index');
 Route::get('/blog/create', [PostsController::class, 'create']);
 Route::post('/blog/create', [PostsController::class, 'store']);
 Route::get('/blog/{slug}/{id}', [PostsController::class, 'show']);
-Route::get('/blog/{slug}/edit', [PostsController::class, 'edit']);
-Route::post('/blog/{slug}/update', [PostsController::class, 'update']);
+Route::get('/blog/{slug}', [PostsController::class, 'edit']);
+Route::put('/blog/{slug}/update', [PostsController::class, 'update']);
+Route::post('/blog/{slug}/confirm-delete', [PostsController::class, 'confirmDel']);
 Route::delete('/blog/{slug}/delete', [PostsController::class, 'destroy']);
 
 //Route::resource('/blog', [PostsController::class]);

@@ -119,6 +119,15 @@ class PostsController extends Controller
         return redirect('/blog')->with('message', 'Your post has been updated');
     }
 
+    public function confirmDel(Request $request,$slug) {
+        $post_owner_name = $request->input('owner_name');
+        $post_title = $request->input('title'); 
+        $post_updated_at = $request->input('updated_at'); 
+        $post_image = $request->input('img_path');
+
+        return view('blog.confirmDelete')->with('post_title', $post_title)->with('post_updated_at', $post_updated_at)->with('post_owner_name', $post_owner_name)->with('post_image', $post_image)->with('slug', $slug);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
