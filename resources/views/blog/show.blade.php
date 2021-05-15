@@ -55,9 +55,17 @@
             <div class="flex flex-row justify-center mr-2">
                 <img alt="avatar" width="48" height="48" class="rounded-full w-10 h-10 mr-4 shadow-lg mb-4" src="{{ asset('/images/' . $comment->user->image_path)}}">
                 <h3 class="text-purple-600 font-semibold text-lg text-center md:text-left ">{{ $comment->user->name }} <span class="text-gray-400 text-sm ml-3">{{ $comment->updated_at->diffForHumans() }}</span></h3>
+                
             </div>
                 <p style="width: 90%" class="text-gray-600 text-lg text-center md:text-left ">{{ $comment->comment }} </p>
-
+                @if(isset(Auth::user()->id) && Auth::user()->id == $comment->user_id)
+                <form action="{{route('posts.removeComment', $comment->id)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="border-t-2 pt-2 mt-2 text-gray-400 text-sm text-red-500 pr-3 hover:text-red-700">Delete</button>
+                </form>
+                
+                @endif
             </div>
         @endforeach
         <!--  comment end-->

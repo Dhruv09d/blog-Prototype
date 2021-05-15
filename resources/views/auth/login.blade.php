@@ -83,7 +83,7 @@
 
                     <a  class="w-2/5 select-none text-center mx-auto font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-gray-800 hover:bg-black sm:py-4 mb-2" href="{{route('login.github')}}"><button>Github</button></a>
 
-                    <a  class="w-2/5 select-none text-center mx-auto font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-800 hover:bg-blue-900 sm:py-4 mb-2" href="{{route('login.facebook')}}"><button>facebook</button></a>
+                    <a  class="w-2/5 select-none text-center mx-auto font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-900 duration-300 rounded-sm hover:bg-blue-700 sm:py-4 mb-2" href="{{route('login.facebook')}}"><button>facebook</button></a>
                 </div>
             </section>
         </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
-use App\Models\Comments;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class PostsCommentsController extends Controller
@@ -16,7 +16,9 @@ class PostsCommentsController extends Controller
     public function store(Post $post, Request $request) {
         //$post = Post::find($post);
         //dd($post);
-     
+        $request->validate([
+            'comment' => 'required',
+        ]);
         $post->comments()->create([
             'user_id' => $request->user()->id,
             'comment' => $request->input('comment'),
@@ -25,8 +27,9 @@ class PostsCommentsController extends Controller
        
         }
 
-    public function destroy(Post $post, Request $request) {
-        $request->user()->comments->where('post_id', $post->id)->first()->delete();
+    public function destroy(Comment $com, Request $request) {
+        //dd($request->id);
+        Comment::where('id' ,$request->id)->first()->delete();
         return back();
     }
 }

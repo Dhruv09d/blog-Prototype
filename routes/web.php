@@ -63,10 +63,12 @@ Route::delete('/blog/{slug}/delete', [PostsController::class, 'destroy']);
 //Route::resource('/blog', [PostsController::class]);
 
 // like unlike posts
-
 Route::post('posts/{post}/likes', [PostLikesController::class, 'store'])->name('posts.like');
 Route::delete('posts/{post}/unlike', [PostLikesController::class, 'destroy'])->name('posts.unlike');
 
+//post comment {post} -> entire post | {id} -> comment id
 Route::post('posts/{post}/comment', [PostsCommentsController::class, 'store'])->name('posts.comment');
-Route::delete('posts/{post}/comment', [PostsCommentsController::class, 'destroy'])->name('posts.removeComment');
+Route::delete('posts/{id}/comment', [PostsCommentsController::class, 'destroy'])->name('posts.removeComment');
+
+
 
