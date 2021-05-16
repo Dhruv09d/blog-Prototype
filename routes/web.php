@@ -6,6 +6,7 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PostLikesController;
 use App\Http\Controllers\PostsCommentsController;
+use App\Http\Controllers\ProfilesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,5 +71,15 @@ Route::delete('posts/{post}/unlike', [PostLikesController::class, 'destroy'])->n
 Route::post('posts/{post}/comment', [PostsCommentsController::class, 'store'])->name('posts.comment');
 Route::delete('posts/{id}/comment', [PostsCommentsController::class, 'destroy'])->name('posts.removeComment');
 
-
+//profile 
+// all profiles
+Route::get('profiles', [ProfilesController::class, 'index'])->name('profile.index'); 
+//create form page follwed by storing
+Route::get('profiles/create', [ProfilesController::class, 'create'])->name('profile.create'); 
+Route::post('profiles/create', [ProfilesController::class, 'store']);
+// profile update form page follwed by storing(updating)
+Route::put('profiles/{id}', [ProfilesController::class, 'show'])->name('profile.update');
+Route::put('profiles/{id}', [ProfilesController::class, 'update']);
+//profile delete
+Route::delete('profiles/{id}', [ProfilesController::class, 'destroy'])->name('profile.delete');
 
