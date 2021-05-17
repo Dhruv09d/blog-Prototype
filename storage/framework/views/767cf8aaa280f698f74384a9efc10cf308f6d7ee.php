@@ -34,7 +34,7 @@
                             <a class="no-underline hover:underline" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
                         <?php endif; ?>
                     <?php else: ?>
-                        <span><a href="<?php echo e(route('profile.create')); ?> "><?php echo e(Auth::user()->name); ?></a></span>
+                        <span><a href="<?php echo e(route('profile.index')); ?> "><?php echo e(Auth::user()->name); ?></a></span>
 
                         <a href="<?php echo e(route('logout')); ?>"
                            class="no-underline hover:underline"

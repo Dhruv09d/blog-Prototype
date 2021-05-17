@@ -17,6 +17,7 @@ class CreateProfilesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('username');
+            $table->string('avatar_path');
             $table->text('biography');
             $table->string('instagram');
             $table->string('facebook');

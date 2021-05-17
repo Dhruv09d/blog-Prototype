@@ -75,7 +75,7 @@ Route::delete('posts/{id}/comment', [PostsCommentsController::class, 'destroy'])
 // all profiles
 Route::get('profiles', [ProfilesController::class, 'index'])->name('profile.index'); 
 //create form page follwed by storing
-Route::get('profiles/create', [ProfilesController::class, 'create'])->name('profile.create'); 
+Route::post('profiles/create/{user_id}', [ProfilesController::class, 'create'])->name('profile.create'); 
 Route::post('profiles/create', [ProfilesController::class, 'store']);
 // profile update form page follwed by storing(updating)
 Route::put('profiles/{id}', [ProfilesController::class, 'show'])->name('profile.update');

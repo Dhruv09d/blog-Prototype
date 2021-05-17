@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class ProfilesController extends Controller
 {
@@ -13,7 +14,7 @@ class ProfilesController extends Controller
      */
     public function index()
     {
-        //
+        return view('profiles.profile_index');
     }
 
     /**
@@ -21,9 +22,10 @@ class ProfilesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('profiles.profile_create');
+    public function create($user_id)
+    {   
+        $user_login_info = User::where('id', $user_id)->first();
+        return view('profiles.profile_create')->with('loggedin_user', $user_login_info);
     }
 
     /**

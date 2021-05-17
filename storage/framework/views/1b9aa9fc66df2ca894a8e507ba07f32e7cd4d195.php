@@ -15,7 +15,7 @@
 
                     <div class="flex flex-wrap">
                         <label for="name" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
-                            <?php echo e(__('Name')); ?>:
+                            Full <?php echo e(__('Name')); ?>:
                         </label>
 
                         <input id="name" type="text" class="form-input w-full <?php $__errorArgs = ['name'];
