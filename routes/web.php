@@ -75,11 +75,11 @@ Route::delete('posts/{id}/comment', [PostsCommentsController::class, 'destroy'])
 // all profiles
 Route::get('profiles', [ProfilesController::class, 'index'])->name('profile.index'); 
 //create form page follwed by storing
-Route::post('profiles/create/{user_id}', [ProfilesController::class, 'create'])->name('profile.create'); 
-Route::post('profiles/create', [ProfilesController::class, 'store']);
+Route::post('profiles/{user_id}', [ProfilesController::class, 'create'])->name('profile.create'); 
+Route::post('profiles/create/{user_id}', [ProfilesController::class, 'store'])->name('profile.store');
 // profile update form page follwed by storing(updating)
-Route::put('profiles/{id}', [ProfilesController::class, 'show'])->name('profile.update');
-Route::put('profiles/{id}', [ProfilesController::class, 'update']);
+Route::get('profiles/{id}', [ProfilesController::class, 'show']);
+Route::put('profiles/{id}', [ProfilesController::class, 'update'])->name('profile.update');
 //profile delete
 Route::delete('profiles/{id}', [ProfilesController::class, 'destroy'])->name('profile.delete');
 

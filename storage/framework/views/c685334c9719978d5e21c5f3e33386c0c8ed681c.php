@@ -66,9 +66,10 @@
         <div class="px-4 pt-4">
           <!-- Name -->
           <div id="nameE" style="display:block;">
-            <form action="" class="flex flex-col space-y-8" method="POST">
+            <form action="<?php echo e(route('profile.update', Auth::user()->id)); ?>" class="flex flex-col space-y-8" method="POST">
               <?php echo csrf_field(); ?>
               <?php echo method_field('PUT'); ?>
+              <input type="hidden" name="form_name" value="user_table_update">
             <div>
               <h3 class="text-4xl font-semibold pb-2 mb-4">Profile</h3>
               <hr>
@@ -76,49 +77,59 @@
   
             <div class="form-item mt-3">
               <label class="text-xl ">Full Name</label>
-              <input type="text" value="<?php echo e($loggedin_user->name); ?>" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200" >
+              <input type="text" name="user_name" value="<?php echo e($loggedin_user->name); ?>" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200" >
             </div>
 
             <div class="form-item mt-3">
               <label class="text-xl w-full">Email</label>
-              <input type="text" value="<?php echo e($loggedin_user->email); ?>" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
+              <input type="text" name="email" value="<?php echo e($loggedin_user->email); ?>" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
             </div>
-            <button  type="submit" class="w-3/5 mx-auto uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">Save</button>
+            <button  type="submit" name="submit" class="w-3/5 mx-auto uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">Save</button>
           </div>
         </form>
           <!-- About -->
-          <form action="" class="flex flex-col space-y-8" method="POST">
-            <?php echo csrf_field(); ?>
-          <div id="aboutYou" style="display:none;">
-            <div>
-              <h3 class="text-2xl font-semibold pb-1 mb-1">More About Me</h3>
-              <hr>
+          <form action="<?php echo e(route('profile.store', Auth::user()->id)); ?>" class="flex flex-col space-y-8" method="POST" enctype="multipart/form-data">
+              <?php echo csrf_field(); ?>
+              <input type="hidden" name="form_name" value="createAboutSection">
+            <div id="aboutYou" style="display:none;">
+              <div>
+                <h3 class="text-2xl font-semibold pb-1 mb-1">More About Me</h3>
+                <hr>
+              </div>
+    
+              <div class="form-item w-full mt-3">
+                <label class="text-xl ">Biography</label>
+                <textarea name="bio" cols="30" rows="10" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mr-2 mt-2 mb-4 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " ></textarea>
+              </div>
+            
+              <div>
+                <h3 class="text-2xl font-semibold pb-1 mt-3">My Social Media</h3>
+                <hr>
+              </div>
+    
+              <div class="form-item mt-3">
+                <label class="text-xl">Instagram</label>
+                <input name="instagram" type="text" placeholder="https://instagram.com/" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
+              </div>
+              <div class="form-item mt-3">
+                <label class="text-xl  ">Facebook</label>
+                <input type="text" name="facebook" placeholder="https://facebook.com/" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
+              </div>
+              <div class="form-item mt-3">
+                <label class="text-xl ">Twitter</label>
+                <input type="text" name="twitter" placeholder="https://twitter.com/" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1  mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200  " >
+              </div>
+              <div class="form-item mt-2 bg-gray-lighter pt-10">
+                <label class="w-44 flex flex-col items-center px-1 py-2 bg-white-rounded-lg
+                shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
+                    <span class="mt-1 text-base leading-normal">
+                        Select a file
+                    </span>
+                    <input type="file" name="image" class="hidden">
+                </label>
             </div>
-  
-            <div class="form-item w-full mt-3">
-              <label class="text-xl ">Biography</label>
-              <textarea cols="30" rows="10" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mr-2 mt-2 mb-4 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " ></textarea>
+              <button type="submit" name="submit" class="w-3/5 mx-auto uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">Create</button>
             </div>
-          
-            <div>
-              <h3 class="text-2xl font-semibold pb-1 mt-3">My Social Media</h3>
-              <hr>
-            </div>
-  
-            <div class="form-item mt-3">
-              <label class="text-xl">Instagram</label>
-              <input type="text" placeholder="https://instagram.com/" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
-            </div>
-            <div class="form-item mt-3">
-              <label class="text-xl  ">Facebook</label>
-              <input type="text" placeholder="https://facebook.com/" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
-            </div>
-            <div class="form-item mt-3">
-              <label class="text-xl ">Twitter</label>
-              <input type="text" placeholder="https://twitter.com/" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1  mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200  " >
-            </div>
-            <button type="submit" class="w-3/5 mx-auto uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">Create</button>
-          </div>
           </form>
           <!-- password -->
           <form action="" class="flex flex-col space-y-8" method="POST">

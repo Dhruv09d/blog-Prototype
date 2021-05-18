@@ -12,7 +12,6 @@ class Profile extends Model
     protected $fillable = [
         'user_id',
         'avatar_path',
-        'username',
         'biography',
         'instagram',
         'facebook',
