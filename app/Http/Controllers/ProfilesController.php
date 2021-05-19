@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Profile;
+use Illuminate\Support\Facades\Hash;
 
 class ProfilesController extends Controller
 {
@@ -60,7 +61,7 @@ class ProfilesController extends Controller
             ]);
             $msg = "About has been updated successfully!";
         }
-        return view('profiles.profile_view')->with('message', $msg);
+        return redirect('profiles.profile_view')->with('message', $msg);
     }
 
     /**
@@ -80,9 +81,11 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($user_id)
+    {   
+        $about = Profile::where('user_id', $user_id)->first();
+        $user_login_info = User::where('id', $user_id)->first();
+        return view('profiles.profile_update')->with('loggedin_user', $user_login_info)->with('about_info', $about);
     }
 
     /**
@@ -92,7 +95,7 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
         $msg = "no action performed yet!";
         if($request->input('form_name') == 'user_table_update') {
@@ -100,11 +103,44 @@ class ProfilesController extends Controller
                 'name' => $request->input('user_name'),
                 'email' => $request->input('email'),
             ]);
-            $msg = "User's name and email has been updated successfully";
-            
-
+            $msg = "User's name and email has been updated";
         }
-        return view('profiles.profile_view')->with("message", $msg);
+        else if ($request->input('form_name') == 'createAboutSection') {
+            Profile::where('user_id', $user_id)->update([
+                'biography' => $request->input('bio'),
+                'instagram' => $request->input('instagram'),
+                'facebook' => $request->input('facebook'),
+                'twitter' => $request->input('twitter'),
+            ]);
+            $msg = "About info has been updated";
+        }
+        else if ($request->input('form_name') == 'changePassword') {
+            
+            $currentPass = $request->input('currentPass');
+            $newPass = $request->input('newPass');
+            $confNewPass = $request->input('confNewPass');
+            //dd($confNewPass, $newPass, strcmp("asd", "asd"));
+            //dd(Hash::check($currentPass, $currentPassInsideDB->password));
+            //dd(Hash::make("1234567890"));
+            $currentPassInsideDB = User::where('id', $user_id)->first();
+            if(Hash::check($currentPass, $currentPassInsideDB->password)) {
+                //strcmp() return 0 when string matches
+                if(strcmp($newPass, $confNewPass) == 0) {
+                    $newPass = Hash::make($newPass);
+                    User::where('id', $user_id)->update([
+                        'password' => $newPass,
+                    ]);
+                    $msg = "Password has been updated";
+                } else {
+                    $msg ="Both new password should be same";
+                    //return redirect('profiles')->with("message", $msg);
+                }
+            } else {
+                $msg ="Forgot password?";
+            }
+        }
+
+        return redirect('profiles')->with("message", $msg);
     }
 
     /**

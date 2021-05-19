@@ -11,7 +11,8 @@
 
     <!-- Scripts -->
     <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
-    
+    <script src="<?php echo e(asset('js/custom.js')); ?>"></script>
+
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 </head>
