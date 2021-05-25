@@ -53,7 +53,7 @@ Route::get('/', [HomeController::class, 'index']);
 //blog | posts
 
 Route::get('/blog', [PostsController::class, 'index'])->name('blog.index');
-Route::get('/blog/create', [PostsController::class, 'create']);
+Route::get('/blog/create', [PostsController::class, 'create'])->name('blog.create');
 Route::post('/blog/create', [PostsController::class, 'store']);
 Route::get('/blog/{slug}/{id}', [PostsController::class, 'show']);
 Route::get('/blog/{slug}', [PostsController::class, 'edit']);

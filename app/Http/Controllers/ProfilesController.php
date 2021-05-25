@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class ProfilesController extends Controller
 {
@@ -15,8 +18,15 @@ class ProfilesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('profiles.profile_index');
+    {   
+        $user_login_info = User::where('id', Auth::user()->id)->first();
+        $profile = Profile::where('user_id', Auth::user()->id)->first();
+        if($profile !== NULL) {
+            return view('profiles.profile_index')->with('profile', $profile)->with('loggedin_user', $user_login_info)->with('posts', Post::where('user_id', Auth::user()->id)->orderByDesc('created_at')->get());
+        } else {
+            return redirect()->route('profile.create', ['user_id' => Auth::user()->id]);
+        }
+        
     }
 
     /**
@@ -61,7 +71,7 @@ class ProfilesController extends Controller
             ]);
             $msg = "About has been updated successfully!";
         }
-        return redirect('profiles.profile_view')->with('message', $msg);
+        return redirect('profiles')->with('message', $msg);
     }
 
     /**
