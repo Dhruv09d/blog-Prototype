@@ -73,7 +73,7 @@ class ProfilesController extends Controller
             ]);
             $msg = "About has been updated successfully!";
         }
-        return redirect('profiles')->with('message', $msg);
+        return redirect()->route('profile.index', ['user_id' => Auth::user()->id])->with('message', $msg);
     }
 
     /**
