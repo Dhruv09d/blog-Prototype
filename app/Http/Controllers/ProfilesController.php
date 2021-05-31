@@ -7,22 +7,24 @@ use App\Models\User;
 use App\Models\Profile;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Follower;
+use App\Models\Following;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
 class ProfilesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display profile page.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {   
-        $user_login_info = User::where('id', Auth::user()->id)->first();
-        $profile = Profile::where('user_id', Auth::user()->id)->first();
+    public function index($user_id)
+    {   //dd($user_id);
+        $user_login_info = User::where('id', $user_id)->first();
+        $profile = Profile::where('user_id', $user_id)->first();
         if($profile !== NULL) {
-            return view('profiles.profile_index')->with('profile', $profile)->with('loggedin_user', $user_login_info)->with('posts', Post::where('user_id', Auth::user()->id)->orderByDesc('created_at')->get());
+            return view('profiles.profile_index')->with('profile', $profile)->with('loggedin_user', $user_login_info)->with('posts', Post::where('user_id', $user_id)->orderByDesc('created_at')->get())->with("followers", Follower::where('user_id', $user_id )->get())->with("followings", Following::where('user_id', $user_id )->get());
         } else {
             return redirect()->route('profile.create', ['user_id' => Auth::user()->id]);
         }
@@ -30,7 +32,7 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a profile.
      *
      * @return \Illuminate\Http\Response
      */
@@ -41,7 +43,7 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created profile in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -75,18 +77,18 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display all profiles.
      *
-     * @param  int  $id
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        return view('profiles.profile_view')->with('profiles', Profile::all());
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the profile.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -99,7 +101,7 @@ class ProfilesController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified profile in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -131,7 +133,6 @@ class ProfilesController extends Controller
             $confNewPass = $request->input('confNewPass');
             //dd($confNewPass, $newPass, strcmp("asd", "asd"));
             //dd(Hash::check($currentPass, $currentPassInsideDB->password));
-            //dd(Hash::make("1234567890"));
             $currentPassInsideDB = User::where('id', $user_id)->first();
             if(Hash::check($currentPass, $currentPassInsideDB->password)) {
                 //strcmp() return 0 when string matches

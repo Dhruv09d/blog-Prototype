@@ -1,67 +1,74 @@
-<footer class="bg-gray-800 py-20 mt-20 ">
-    <div class="sm:grid grid-cols-3 w-4/5 m-auto pb-10 border-b-2 border-gray-700  ">
-        <div >
-            <h3 class="text-l sm:font-bold text-gray-100">Pages</h3>
-            <ul class="py-4 sm:text-s pt-4 text-gray-400">
-                <li class="pb-1">
-                    <a href="/">Home</a>
-                </li>
+<nav id="footer" class="bg-gray-500 relative  bottom-0 inset-x-0 mt-4">
 
-                <li class="pb-1">
-                    <a href="/blog">Blog</a>
-                </li>
-                
-                <li class="pb-1">
-                    <a href="/login">Login</a>
-                </li>
-                
-                <li class="pb-1">
-                    <a href="/register">Register</a>
-                </li>
-            </ul>
-        </div>
-        <div >
-            <h3 class="text-l sm:font-bold text-gray-100">Find us</h3>
-            <ul class="py-4 sm:text-s pt-4 text-gray-400">
-                <li class="pb-1">
-                    <a href="#">What we do</a>
-                </li>
+    <!-- start container -->
+    <div class="container mx-auto pt-8 pb-4 ">
 
-                <li class="pb-1">
-                    <a href="/phone">Phone</a>
-                </li>
-                
-                <li class="pb-1">
-                    <a href="/address">Address</a>
-                </li>
-                
-                <li class="pb-1">
-                    <a href="/contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-        <div >
-            <h3 class="text-l sm:font-bold text-gray-100">Latest posts</h3>
-            <ul class="py-4 sm:text-s pt-4 text-gray-400">
-                <li class="pb-1">
-                    <a href="">why we love tech</a>
-                </li>
+        <div class="flex flex-wrap overflow-hidden sm:-mx-1 md:-mx-px lg:-mx-2 xl:-mx-2">
 
-                <li class="pb-1">
-                    <a href="">Why we design</a>
+            <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
+                <!-- Column 1 Content -->
+                <img style="max-width: 70%;height:auto;" class="" src="https://pngimage.net/wp-content/uploads/2019/05/fake-logo-png-.png" alt="Logo">
+            </div>
+
+            <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
+                <!-- Column 2 Content -->
+
+
+                <h4 class="text-white">Important</h4>
+                <ul class="nav navbar-nav">
+                    <li id="navi-2" class="leading-7 text-sm">
+                        <a class="text-white underline text-small" href="/page-1">
+                            Page 1 </a>
+                    </li>
+                    <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small" href="/page-2">Page 2</a></li>
+                </ul>
+
+
+            </div>
+
+            <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
+                <!-- Column 3 Content -->
+                <h4 class="text-white">Info</h4>
+                <ul class="">
+                <li id="navi-2" class="leading-7 text-sm">
+                    <a class="text-white underline text-small" href="/page-1">
+                        Page 1 </a>
                 </li>
-                
-                <li class="pb-1">
-                    <a href="">Why to use laravel</a>
+                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small" href="/page-2">Page 2</a></li>
+                </ul>
+            </div>
+
+            <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
+                <!-- Column 4 Content -->
+
+                <h4 class="text-white">Products</h4>
+                <ul class="">
+                <li id="navi-2" class="leading-7 text-sm">
+                    <a class="text-white underline text-small" href="/page-1">
+                        Page 1 </a>
                 </li>
-                
-                <li class="pb-1">
-                    <a href="">why PHP is the best!</a>
-                </li>
-            </ul>
+                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small" href="/page-2">Page 2</a></li>
+                </ul>
+            </div>
+
         </div>
-        <p class="w-25 w=4/5 pb-3 m-auto text-xs text-gray-100 pt-6">
-            copyright 2018-2022 Dhruv Singh. All Rights Reserved
-        </p>
-    </div>
-</footer>
+
+
+
+        <!-- Start footer bottom -->
+
+        <div class="pt-4 md:flex md:items-center md:justify-center " style="border-top:1px solid white">
+            <ul class="">
+                <li class="md:mx-2 md:inline leading-7 text-sm" id="footer-navi-2"><a class="text-white underline text-small" href="/disclaimer">Disclaimer</a></li>
+                <li class="md:mx-2 md:inline leading-7 text-sm" id="footer-navi-2"><a class="text-white underline text-small" href="/cookie">Cookie policy</a></li>
+                <li class="md:mx-2 md:inline leading-7 text-sm" id="footer-navi-2"><a class="text-white underline text-small" href="/privacy">Privacy</a></li>
+                </ul>
+            </div>
+
+
+        <!-- end container -->
+        </div>
+
+
+
+</nav>

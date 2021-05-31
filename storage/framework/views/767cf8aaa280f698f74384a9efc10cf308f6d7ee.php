@@ -28,14 +28,16 @@
                 </div>
                 <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
                     <a class="no-underline hover:underline" href="/">Home</a>
-                    <a class="no-underline hover:underline" href="/blog">Blog</a>
+                    <a class="no-underline hover:underline" href="/blog">Blogs</a>
+                    <a class="no-underline hover:underline" href="<?php echo e(route('profile.show')); ?>">Profiles</a>
+
                     <?php if(auth()->guard()->guest()): ?>
                         <a class="no-underline hover:underline" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                         <?php if(Route::has('register')): ?>
                             <a class="no-underline hover:underline" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
                         <?php endif; ?>
                     <?php else: ?>
-                        <span><a href="<?php echo e(route('profile.index')); ?> "><?php echo e(Auth::user()->name); ?></a></span>
+                        <span><a href="<?php echo e(route('profile.index', Auth::user()->id)); ?> "><?php echo e(Auth::user()->name); ?></a></span>
 
                         <a href="<?php echo e(route('logout')); ?>"
                            class="no-underline hover:underline"

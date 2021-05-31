@@ -18,11 +18,11 @@
 
         </span>
         <span class="text-gray-500 mr-7">
-          <span class="font-bold  text-gray-800 ">203k</span>
+          <span class="font-bold  text-gray-800 "><?php echo e($followers->count()); ?></span>
           &nbsp;Followers
         </span>
         <span class="text-gray-500">
-          <span class="font-bold  text-gray-800 ">20</span>
+          <span class="font-bold  text-gray-800 "><?php echo e($followings->count()); ?></span>
           &nbsp;following
         </span>
         <p class="font-bold text-gray-800 pt-8 leading-5 pb-2 font-light text-justify">
@@ -43,10 +43,25 @@
             Twitter
           </a>
         </p>
-        <?php if($loggedin_user->id !== Auth::user()->id): ?>
-        <p class="text-sm text-white  pb-10 leading-8 font-light text-justify">
-            <a href=""><span class=" text-sm font-thin"><button class="w-3/6 bg-blue-500 border-2 ">Follow</button></span></a>
-        </p>
+        <?php if($loggedin_user->id !== Auth::user()->id && !$loggedin_user->followBy(Auth::user())): ?>
+       
+          <form action="<?php echo e(route('follow.user', $profile->user_id)); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+            <p class="text-sm text-white  pb-10 leading-8 font-light text-justify">
+              <a href=""><span class=" text-sm font-thin"><button type="submit" class="w-3/6 bg-blue-500 border-2 ">Follow</button></span></a>
+          </p>
+          </form>
+
+          <?php elseif($loggedin_user->id !== Auth::user()->id): ?>
+          <form action="<?php echo e(route('unfollow.user', $profile->user_id)); ?>" method="POST">
+            <?php echo csrf_field(); ?>
+            <?php echo method_field('DELETE'); ?>
+            <p class="text-sm text-gray-500  pb-10 leading-8 font-light text-justify">
+              <a href=""><span class=" text-sm font-thin"><button type="submit" class="w-3/6 border-2 border-gray-400">Unfollow</button></span></a>
+          </p>
+          </form>
+          
+        
         <?php endif; ?>
     </div>
   </div>
@@ -57,7 +72,7 @@
   <div class="text-center mt-4">
     <h1 class="text-4xl font-thin text-gray-400">Posts</h1>
   </div>
-  <section class="w-4/5 flex flex-row flex-wrap mx-auto">
+  <section class="w-4/5 flex flex-row flex-wrap mx-auto ">
       <!-- Card Component -->
       
       
@@ -68,11 +83,11 @@
           <div
             class="flex flex-col items-stretch min-h-full pb-4 mb-6 transition-all duration-150 bg-white rounded-lg shadow-lg hover:shadow-2xl"
           >
-            <div class="md:flex-shrink-0">
+            <div class="md:flex-shrink-0 ">
               <img
                 src="<?php echo e(asset('/images/' . $post->image_path)); ?>"
                 alt="Blog Cover"
-                class="object-fill w-full rounded-lg rounded-b-none md:h-56"
+                class="object-fill w-full rounded-lg rounded-b-none md:h-56 "
               />
             </div>
             <div class="flex items-center justify-between px-4 py-2 overflow-hidden">

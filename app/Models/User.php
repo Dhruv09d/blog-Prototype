@@ -41,6 +41,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function followBy(User $user) {
+        return $this->followers->contains('follower_id', $user->id);
+    }
+
     public function post() {
         return $this->hasMany(Post::class);
     }
@@ -51,5 +55,12 @@ class User extends Authenticatable
 
     public function comments() {
         return $this->hasMany(Comment::class);
+    }
+
+    public function followers() {
+        return $this->hasMany(Follower::class);
+    }
+    public function following() {
+        return $this->hasMany(Following::class);
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PostLikesController;
 use App\Http\Controllers\PostsCommentsController;
 use App\Http\Controllers\ProfilesController;
+use App\Http\Controllers\FollowersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,8 +73,10 @@ Route::post('posts/{post}/comment', [PostsCommentsController::class, 'store'])->
 Route::delete('posts/{id}/comment', [PostsCommentsController::class, 'destroy'])->name('posts.removeComment');
 
 //profile 
+// specified profile
+Route::get('profiles/profile/{user_id}', [ProfilesController::class, 'index'])->name('profile.index'); 
 // all profiles
-Route::get('profiles', [ProfilesController::class, 'index'])->name('profile.index'); 
+Route::get('profiles/explore', [ProfilesController::class, 'show'])->name('profile.show'); 
 //create form page follwed by storing
 Route::get('profiles/{user_id}', [ProfilesController::class, 'create'])->name('profile.create'); 
 Route::post('profiles/create/{user_id}', [ProfilesController::class, 'store'])->name('profile.store');
@@ -82,4 +85,11 @@ Route::get('profiles/edit/{user_id}', [ProfilesController::class, 'edit'])->name
 Route::put('profiles/{user_id}', [ProfilesController::class, 'update'])->name('profile.update');
 //profile delete
 Route::delete('profiles/{id}', [ProfilesController::class, 'destroy'])->name('profile.delete');
+
+
+// follow 
+Route::post('following/{profile_user_id}', [FollowersController::class, 'follow'])->name('follow.user');
+// unfollow
+Route::delete('unfollowing/{profile_user_id}', [FollowersController::class, 'unfollow'])->name('unfollow.user');
+//Route::post('follower', [FollowersController::class, 'following'])->name('follow.user');
 
