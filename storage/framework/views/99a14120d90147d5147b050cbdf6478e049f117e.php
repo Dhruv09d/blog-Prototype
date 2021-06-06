@@ -14,7 +14,7 @@
     <div class="w-4/5 m-auto text-left">
         <div class="py-15 border-b border-gray-200">
             <h1 class="text-6xl font-400 pb-5">
-                Accounts
+                Profiles
             </h1>
             <hr>
         </div>

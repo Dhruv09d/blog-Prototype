@@ -53,12 +53,16 @@
             <!--     comment-->
             <div class="bg-gray-100 rounded-lg p-3  flex flex-col justify-center items-center md:items-start shadow-lg mb-4">
             <div class="flex flex-row justify-center mr-2">
-                <img alt="avatar" width="48" height="48" class="rounded-full w-10 h-10 mr-4 shadow-lg mb-4" src="{{ asset('/images/' . $comment->user->image_path)}}">
+                @if (!empty($comment->user->profile->avatar_path))
+                    <img alt="avatar" width="48" height="48" class="rounded-full w-10 h-10 mr-4 shadow-lg mb-4" src="{{ asset('avatar/'. $comment->user->profile->avatar_path) }}">
+                @else 
+                    <img alt="avatar" width="48" height="48" class="rounded-full w-10 h-10 mr-4 shadow-lg mb-4" src="{{ asset('defaultAvatar/avatar-1299805_640.png') }}">
+                @endif
                 <h3 class="text-purple-600 font-semibold text-lg text-center md:text-left ">{{ $comment->user->name }} <span class="text-gray-400 text-sm ml-3">{{ $comment->updated_at->diffForHumans() }}</span></h3>
                 
             </div>
                 <p style="width: 90%" class="text-gray-600 text-lg text-center md:text-left ">{{ $comment->comment }} </p>
-                @if(isset(Auth::user()->id) && Auth::user()->id == $comment->user_id)
+                @if( Auth::user()->id === $comment->user_id || Auth::user()->id === $post->user->id) 
                 <form action="{{route('posts.removeComment', $comment->id)}}" method="POST">
                     @csrf
                     @method('DELETE')

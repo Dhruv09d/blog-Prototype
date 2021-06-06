@@ -8,10 +8,13 @@
     </div>
     <div class="col-span-2">
         <h2 class="text-gray-700 font-bold text-3xl pb-4">
-           <?php echo e($loggedin_user->name); ?> <a href="<?php echo e(Route('profile.edit', Auth::user()->id)); ?>"><span class="text-sm font-thin"><button class="border-2 px-2 py-1 ml-2 ">Edit Profile</button></span></a>
-           <a href="<?php echo e(route('blog.create')); ?>"><span class="text-sm font-thin"><button class="border-2 px-2 py-1 ml-2 "> <span class="font-extrabold">+</span> Blog</button></span></a> 
+           <?php echo e($loggedin_user->name); ?> <a href="<?php echo e(Route('profile.edit', Auth::user()->id)); ?>">
+            <?php if($loggedin_user->id === Auth::user()->id): ?>
+              <span class="text-sm font-thin"><button class="border-2 px-2 py-1 ml-2 ">Edit Profile</button></span></a>
+            <a href="<?php echo e(route('blog.create')); ?>"><span class="text-sm font-thin"><button class="border-2 px-2 py-1 ml-2 "><span class="font-extrabold">+</span> Blog</button></span></a> 
+           <?php endif; ?> 
         </h2>
-        
+      
         <span class="text-gray-500 mr-7">
           <span class="font-bold  text-gray-800 "><?php echo e($posts->count()); ?></span>
           &nbsp;<?php echo e(Str::plural('Post', $posts->count())); ?>
@@ -19,7 +22,7 @@
         </span>
         <span class="text-gray-500 mr-7">
           <span class="font-bold  text-gray-800 "><?php echo e($followers->count()); ?></span>
-          &nbsp;Followers
+          &nbsp;Follower
         </span>
         <span class="text-gray-500">
           <span class="font-bold  text-gray-800 "><?php echo e($followings->count()); ?></span>
@@ -43,7 +46,8 @@
             Twitter
           </a>
         </p>
-        <?php if($loggedin_user->id !== Auth::user()->id && !$loggedin_user->followBy(Auth::user())): ?>
+        
+        <?php if(Auth::check() && $loggedin_user->id !== Auth::user()->id && is_null($ifUserIsFollowing)): ?> <!-- && $loggedin_user->followBy(Auth::user()) == null -->
        
           <form action="<?php echo e(route('follow.user', $profile->user_id)); ?>" method="POST">
             <?php echo csrf_field(); ?>
@@ -52,14 +56,14 @@
           </p>
           </form>
 
-          <?php elseif($loggedin_user->id !== Auth::user()->id): ?>
-          <form action="<?php echo e(route('unfollow.user', $profile->user_id)); ?>" method="POST">
-            <?php echo csrf_field(); ?>
-            <?php echo method_field('DELETE'); ?>
-            <p class="text-sm text-gray-500  pb-10 leading-8 font-light text-justify">
-              <a href=""><span class=" text-sm font-thin"><button type="submit" class="w-3/6 border-2 border-gray-400">Unfollow</button></span></a>
-          </p>
-          </form>
+          <?php elseif($loggedin_user->id != Auth::user()->id): ?>
+            <form action="<?php echo e(route('unfollow.user', $profile->user_id)); ?>" method="POST">
+              <?php echo csrf_field(); ?>
+              <?php echo method_field('DELETE'); ?>
+              <p class="text-sm text-gray-500  pb-10 leading-8 font-light text-justify">
+                <a href=""><span class=" text-sm font-thin"><button type="submit" class="w-3/6 border-2 border-gray-400">Unfollow</button></span></a>
+            </p>
+            </form>
           
         
         <?php endif; ?>

@@ -15,4 +15,7 @@ class Following extends Model
     // public function Following(User $user) {
     //     return $this->likes->contains('user_id', $user->id);
     // }
+    public function profile() {
+        return $this->belongsTo(Profile::class);
+    }
 }

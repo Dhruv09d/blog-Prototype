@@ -11,7 +11,8 @@ class FollowersController extends Controller
 {
     public function follow($profile_user_id) {
         // dd($profile_user_id);
-        // creating following data for logged_in_user use pressed follow button
+        // creating following data for logged_in_user who pressed "follow" button
+        // dd($profile_user_id);
         Following::create([
             'user_id' => Auth::user()->id,
             'following_id' => $profile_user_id
@@ -23,14 +24,14 @@ class FollowersController extends Controller
             'follower_id' => Auth::user()->id
         ]);
         
-        return back();
+        return redirect()->route('profile.index', ['user_id' =>$profile_user_id]);
     }
 
     public function unfollow($profile_user_id) {
         Following::where('user_id', Auth::user()->id)->where('following_id', $profile_user_id)->first()->delete();
         Follower::where('user_id', $profile_user_id)->where('follower_id', Auth::user()->id)->first()->delete();
 
-        return back();
+        return redirect()->route('profile.index', ['user_id' =>$profile_user_id]);
 
     }
 }

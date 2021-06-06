@@ -19,7 +19,10 @@ class Profile extends Model
         'twitter'
     ];
     
-    
+    // public function followBy(User $user) {
+    //     //dd($this->followers->contains('follower_id', $user->id));
+    //     return $this->followwer->contains('follower_id', $user->id);
+    // }
 
 
     public function followers() {
@@ -32,4 +35,5 @@ class Profile extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+    
 }
