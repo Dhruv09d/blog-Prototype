@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfilesController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['profile_index', 'profile_view']]);
+    }
+
     /**
      * Display profile page.
      *
@@ -22,20 +29,25 @@ class ProfilesController extends Controller
     public function index($user_id)
     {   //dd($user_id);
         // dd(Following::where('user_id', $user_id )->get());
+        
         $ifUserIsFollowing = null;
         $user_login_info = User::where('id', $user_id)->first();
         $profile = Profile::where('user_id', $user_id)->first();
         $followers = Follower::where('user_id', $user_id)->get();
         $followings = Following::where('user_id', $user_id )->get();
+        // dd($user_id, $user_login_info, $profile, $followers, $followings);
+        // dd($user_id, $user_login_info, $profile);
         // dd(Auth::user()->id, $loggedin_user->id);
-        if ($user_id != Auth::user()->id)
-            $ifUserIsFollowing = Follower::where([['follower_id', '=' , Auth::user()->id], ['user_id', '=' , $user_id]])->firstOrFail();
+        // dd($profile);
+        if ($user_id != Auth::user()->id ) // && !$followers->isEmpty() && !$followings->isEmpty()
+            $ifUserIsFollowing = Follower::where([['follower_id', '=' , Auth::user()->id], ['user_id', '=' , $user_id]])->first();
+        
         // dd(Auth::user()->id, $user_login_info->id, $ifUserIsFollowing);
         // dd($user_id, $ifUserIsFollowing);
         // dd($user_id,"Followers => ", $followers, " | Following => ", $followings->count());
         // $followers = Follower::where('follower_id', $user_id)->firstOrFail();
         // $followings = Following::where('user_id', $user_id )->firstOrFail();
-        if($profile !== NULL) {
+        if($profile) {
             // if ($followers !== null) {
                 return view('profiles.profile_index')->with('profile', $profile)->with('loggedin_user', $user_login_info)->with('posts', Post::where('user_id', $user_id)->orderByDesc('created_at')->get())->with("followers", $followers )->with("followings",$followings)->with("ifUserIsFollowing", $ifUserIsFollowing);
         } else {
