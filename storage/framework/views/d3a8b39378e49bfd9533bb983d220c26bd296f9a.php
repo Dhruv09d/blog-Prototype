@@ -21,14 +21,14 @@
         </div>
         <div class="m-auto sm:m-auto text-left w-4/5 block">
             <h2 class="text-3xl font-extrabold text-gray-600">
-                Struggling to be a better web developer?
+                Why you should start blogging?
             </h2>
 
-            <p class="py-8 text-gray-500 text-l">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <p class="py-8 text-gray-500 text-l leading-6">
+                Blogging enables you to reach the billions of people that use the Internet. Blogging can help you promote yourself or your business. Blogging works as a method for attracting an audience because it provides something of value to them before asking for anything in return.
             </p>
-            <p class="font-extrabold text-gray-600 text-xl pb-9">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio esse quas sunt molestias.
+            <p class=" text-gray-600 text-xl pb-9">
+                #Share_ideas #Learn #reach_people 
             </p>
             <a href="/blog" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
                 Find out more.
@@ -37,49 +37,56 @@
     </div>
     <div class="text-center p-15 bg-black text-white">
         <h2 class="text-2xl pb-5 text-l">
-            I'm an expert in...
+            Let's 
         </h2>
         <span class="font-extrabold block text-4xl py-1">
-            Ux Design
+            Read
         </span>
         <span class="font-extrabold block text-4xl py-1">
-            Project Management
+            Create
         </span>
         <span class="font-extrabold block text-4xl py-1">
-            Digital Strategy
+            Learn
         </span>
         <span class="font-extrabold block text-4xl py-1">
-            Backend Development
+            Share
         </span>
     </div>
     <div class="text-center py-15">
-        <span class="uppercase text-s text-gray-400">  
-            Blog
-        </span>
+        
         <h2 class="text-4xl font-bold py-10">
             Recent Posts
         </h2>
-        <p class="m-auto w-4/5 text-gray-500 text-s">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero accusantium fugiat ducimus incidunt! Accusantium, odio eum! Non minus voluptatibus blanditiis reprehenderit.
-        </p>
+        
     </div>
-    <div class="sm:grid grid-cols-2 w-4/5 m-auto">
+    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    <div class="sm:grid grid-cols-2 w-4/5 m-auto py-5 border-b">
         <div class="flex bg-yellow-700 text-gray-100 pt-10">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
                 <span class="uppercase text-xl">
-                    PHP
+                    <?php echo e($post->title); ?>
+
                 </span>
-                <h3 class="text-xl font-bold py-10">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum repudiandae nam, nihil voluptas ducimus natus, quidem exercitationem inventore quis dolor nostrum vel maiores minus hic dignissimos ullam architecto dicta rem!
-                </h3>
-                <a href="" class="uppercase bg-transparent border-2 border-gray-100 text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
+                <p class="pt-2 text-gray-100">
+                    By <a href=""><span class="font-bold italic text-gray-100 "><?php echo e($post->user->name); ?></span></a>
+                    , Created on <?php echo e(date('jS M Y', strtotime($post->updated_at))); ?>
+
+                </p>
+                <p class="text-limiting text-xl font-thin py-10">
+                    <?php echo e($post->description); ?>
+
+                </p>
+                <a href="<?php echo e(route('blog.show',[$post->slug, $post->id])); ?>" class="uppercase bg-transparent border-2 border-gray-100 text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
                     Find out more
                 </a>
             </div>  
         </div>
         <div>
-            <img src="https://cdn.pixabay.com/photo/2016/02/19/11/19/office-1209640_960_720.jpg" alt="">
+            <img src="<?php echo e(asset('/images/'. $post->image_path)); ?>" alt="<?php echo e($post->title); ?> image" width="500">
         </div>
     </div>
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 <?php $__env->stopSection(); ?>
+
+
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\blogprototype\resources\views/index.blade.php ENDPATH**/ ?>

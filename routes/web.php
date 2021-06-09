@@ -56,7 +56,7 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/blog', [PostsController::class, 'index'])->name('blog.index');
 Route::get('/blog/create', [PostsController::class, 'create'])->name('blog.create');
 Route::post('/blog/create', [PostsController::class, 'store']);
-Route::get('/blog/{slug}/{id}', [PostsController::class, 'show']);
+Route::get('/blog/{slug}/{id}', [PostsController::class, 'show'])->name('blog.show');
 Route::get('/blog/{slug}', [PostsController::class, 'edit']);
 Route::put('/blog/{slug}/update', [PostsController::class, 'update']);
 Route::post('/blog/{slug}/confirm-delete', [PostsController::class, 'confirmDel']);

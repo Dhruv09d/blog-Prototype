@@ -1,4 +1,4 @@
-<nav id="footer" class="bg-gray-500 relative  bottom-0 inset-x-0 mt-4">
+<nav id="footer" class="bg-gray-800 relative  bottom-0 inset-x-0 mt-4">
 
     <!-- start container -->
     <div class="container mx-auto pt-8 pb-4 ">

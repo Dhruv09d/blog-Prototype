@@ -174,7 +174,7 @@
             </div>
             <hr class="border-gray-300" />
             <p
-              class="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700"
+              class="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-limiting text-sm text-justify text-gray-700"
             >
               {{ $post->description }}
             </p>

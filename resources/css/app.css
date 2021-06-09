@@ -22,3 +22,12 @@
     background-size: cover;
     height: 600px;
 }
+
+.bg-create-post {
+    background-image: url('https://cdn.pixabay.com/photo/2018/01/11/21/27/desk-3076954_960_720.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 200px;
+}
