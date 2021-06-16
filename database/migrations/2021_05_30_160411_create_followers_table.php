@@ -17,7 +17,7 @@ class CreateFollowersTable extends Migration
             $table->id();
             // performed by
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('user_id')->on('profiles')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             //performed on
             $table->unsignedBigInteger('follower_id');
             // foreign attribute(name displayed on followers table ), refrence attribute(name displayed on users table ), on attribute  (table name whose refrence is given) 

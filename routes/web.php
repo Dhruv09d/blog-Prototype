@@ -27,6 +27,7 @@ use App\Http\Controllers\FollowersController;
 Route::get('login/google', [LoginController::class, 'redirectToProviderGoogle'])->name('login.google');
 // getting auth confirmation from google || getting auth data from google
 Route::get('login/google/callback', [LoginController::class, 'handleProviderCallbackGoogle']);
+Route::post('login/google/createpw', [LoginController::class, 'socialLoginPw'])->name('login.socialpw');
 
 //github auth
 // redirecting to github login page

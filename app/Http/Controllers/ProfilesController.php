@@ -74,16 +74,25 @@ class ProfilesController extends Controller
      */
     public function store(Request $request, $user_id)
     {
+        
         $msg = "Profile about is not updated yet!";
         if($request->input('form_name') == 'createAboutSection') {
             $request->validate([
                 'avatar_path' => 'mimes:jpg, png, jpeg | max:5048',
+                'biography' => 'required | max:250',
+                'instagram' => 'nullable | max: 200',
+                'facebook' => 'nullable | max: 200',
+                'twitter' => 'nullable | max: 200',
             ]);
-            $newImageName = uniqid() . '.' .$request->image->extension();
+            if($request->image !== NULL){
+                $newImageName = uniqid() . '.' .$request->image->extension();
+                $request->image->move(public_path('avatar'), $newImageName);
+            } else
+                $newImageName ="avatar-1299805_640.png";
 
             //dd($newImageName);
             // moving the image inside public/images  
-            $request->image->move(public_path('avatar'), $newImageName);
+            // $request->image->move(public_path('avatar'), $newImageName);
             // $slug = SlugService::createSlug(Model:class, Slug to store in field, To make slug using field);
             //dd($slug);
         
@@ -135,6 +144,10 @@ class ProfilesController extends Controller
     {
         $msg = "no action performed yet!";
         if($request->input('form_name') == 'user_table_update') {
+            $request->validate([
+                'name' => 'required | max:50',
+                'email' => 'required | max:50',
+            ]);
             User::where('id', $id)->update([
                 'name' => $request->input('user_name'),
                 'email' => $request->input('email'),
@@ -142,6 +155,12 @@ class ProfilesController extends Controller
             $msg = "User's name and email has been updated";
         }
         else if ($request->input('form_name') == 'createAboutSection') {
+            $request->validate([
+                'biography' => 'required | max:250',
+                'instagram' => 'nullable | max: 200',
+                'facebook' => 'nullable | max: 200',
+                'twitter' => 'nullable | max: 200',
+            ]);
             Profile::where('user_id', $user_id)->update([
                 'biography' => $request->input('bio'),
                 'instagram' => $request->input('instagram'),
@@ -151,7 +170,10 @@ class ProfilesController extends Controller
             $msg = "About info has been updated";
         }
         else if ($request->input('form_name') == 'changePassword') {
-            
+            $request->validate([
+                'password' => 'required | max:16',
+                
+            ]);
             $currentPass = $request->input('currentPass');
             $newPass = $request->input('newPass');
             $confNewPass = $request->input('confNewPass');
@@ -173,9 +195,27 @@ class ProfilesController extends Controller
             } else {
                 $msg ="Forgot password?";
             }
+        } else if ($request->input('form_name') == 'changeAvatar') {
+            $request->validate([
+                'avatar_path' => 'mimes:jpg, png, jpeg | max:5048',
+            ]);
+            $newImageName = uniqid() . '.' .$request->image->extension();
+            $request->image->move(public_path('avatar'), $newImageName);
+
+            Profile::where('user_id', $user_id)->update([
+                'avatar_path' => $newImageName,
+            ]);
+            $msg = "Profile avatar updated";
+        }  else if ($request->input('form_name') == 'removeAvatar') { 
+            $newImageName ="avatar-1299805_640.png";
+            Profile::where('user_id', $user_id)->update([
+                'avatar_path' => $newImageName,
+            ]);
+            $msg = "Profile avatar removed";
         }
 
-        return redirect('profiles')->with("message", $msg);
+
+        return redirect()->route('profile.edit',['user_id' => Auth::user()->id])->with("message", $msg);
     }
 
     /**

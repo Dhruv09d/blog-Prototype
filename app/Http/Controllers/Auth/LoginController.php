@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Socialite;
 
 class LoginController extends Controller
@@ -68,13 +70,14 @@ class LoginController extends Controller
             //login
             Auth::login($userAuth);
         } else {
-            $newUser = new User();
-            $newUser->email = $user->email;
-            $newUser->name = $user->name;
-            $newUser->password = uniqid();
-            $newUser->save();
-            //login
-            Auth::login($newUser);
+            // $newUser = new User();
+            // $newUser->email = $user->email;
+            // $newUser->name = $user->name;
+            // $newUser->password = uniqid();
+            // $newUser->save();
+            // //login
+            // Auth::login($newUser);
+            return view('auth.passwords.socialFirstRegister')->with('email', $user->email)->with('name', $user->name);
         } 
         return redirect('/');
     }
@@ -107,13 +110,14 @@ class LoginController extends Controller
             //login
             Auth::login($userAuth);
         } else {
-            $newUser = new User();
-            $newUser->email = $user->email;
-            $newUser->name = $user->name;
-            $newUser->password = uniqid();
-            $newUser->save();
-            //login
-            Auth::login($newUser);
+            // $newUser = new User();
+            // $newUser->email = $user->email;
+            // $newUser->name = $user->name;
+            // $newUser->password = uniqid();
+            // $newUser->save();
+            // //login
+            // Auth::login($newUser);
+            return view('auth.passwords.socialFirstRegister')->with('email', $user->email)->with('name', $user->name);
         } 
         return redirect('/'); 
     }
@@ -147,14 +151,30 @@ class LoginController extends Controller
             //login
             Auth::login($userAuth);
         } else {
-            $newUser = new User();
-            $newUser->email = $user->email;
-            $newUser->name = $user->name;
-            $newUser->password = uniqid();
-            $newUser->save();
-            //login
-            Auth::login($newUser);
+            // $newUser = new User();
+            // $newUser->email = $user->email;
+            // $newUser->name = $user->name;
+            // $newUser->password = uniqid();
+            // $newUser->save();
+            // //login
+            // Auth::login($newUser);
+            return view('auth.passwords.socialFirstRegister')->with('email', $user->email)->with('name', $user->name);
         } 
         return redirect('/'); 
+    }
+
+    public function socialLoginPw(Request $request) {
+        // dd($request->password, $request->cpassword);
+        if($request->password === $request->cpassword) {
+            $newUser = new User();
+            $newUser->email = $request->email;
+            $newUser->name = $request->name;
+            $newUser->password = Hash::make($request->password);
+            $newUser->save();
+            Auth::login($newUser);
+            return redirect('/');
+        } else {
+            return redirect()->route('login.google');
+        }
     }
 }

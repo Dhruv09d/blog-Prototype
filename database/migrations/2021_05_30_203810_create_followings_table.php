@@ -17,7 +17,7 @@ class CreateFollowingsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             // I can use either profile's user_id as refrence or users' id as both are same. 
-            $table->foreign('user_id')->references('user_id')->on('profiles')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             //performed on
             $table->unsignedBigInteger('following_id');
             // foreign attribute(name displayed on followers table ), refrence attribute(name displayed on users table ), on attribute  (table name whose refrence is given) 
