@@ -11,6 +11,7 @@ use App\Models\Follower;
 use App\Models\Following;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+// use Illuminate\Validation\Rules;
 
 class ProfilesController extends Controller
 {
@@ -75,15 +76,17 @@ class ProfilesController extends Controller
     public function store(Request $request, $user_id)
     {
         
-        $msg = "Profile about is not updated yet!";
+        
         if($request->input('form_name') == 'createAboutSection') {
+            // dd("inside the about create", $user_id);
             $request->validate([
-                'avatar_path' => 'mimes:jpg, png, jpeg | max:5048',
+                'image' => 'mimes: jpg, png, jpeg | max:5048',
                 'biography' => 'required | max:250',
                 'instagram' => 'nullable | max: 200',
                 'facebook' => 'nullable | max: 200',
                 'twitter' => 'nullable | max: 200',
             ]);
+            // dd("inside the about create", $user_id);
             if($request->image !== NULL){
                 $newImageName = uniqid() . '.' .$request->image->extension();
                 $request->image->move(public_path('avatar'), $newImageName);
@@ -99,12 +102,12 @@ class ProfilesController extends Controller
             Profile::where('id', $user_id)->create([
                 'user_id' => $user_id,
                 'avatar_path' => $newImageName,
-                'biography' => $request->input('bio'),
+                'biography' => $request->input('biography'),
                 'instagram' => $request->input('instagram'),
                 'facebook' => $request->input('facebook'),
                 'twitter' => $request->input('twitter'),
             ]);
-            $msg = "About has been updated successfully!";
+            $msg = array("msgType"=>"success","msg" => "About has been updated successfully!");
         }
         return redirect()->route('profile.index', ['user_id' => Auth::user()->id])->with('message', $msg);
     }
@@ -142,80 +145,102 @@ class ProfilesController extends Controller
      */
     public function update(Request $request, $user_id)
     {
-        $msg = "no action performed yet!";
-        if($request->input('form_name') == 'user_table_update') {
-            $request->validate([
-                'name' => 'required | max:50',
-                'email' => 'required | max:50',
-            ]);
-            User::where('id', $id)->update([
-                'name' => $request->input('user_name'),
-                'email' => $request->input('email'),
-            ]);
-            $msg = "User's name and email has been updated";
-        }
-        else if ($request->input('form_name') == 'createAboutSection') {
-            $request->validate([
-                'biography' => 'required | max:250',
-                'instagram' => 'nullable | max: 200',
-                'facebook' => 'nullable | max: 200',
-                'twitter' => 'nullable | max: 200',
-            ]);
-            Profile::where('user_id', $user_id)->update([
-                'biography' => $request->input('bio'),
-                'instagram' => $request->input('instagram'),
-                'facebook' => $request->input('facebook'),
-                'twitter' => $request->input('twitter'),
-            ]);
-            $msg = "About info has been updated";
-        }
-        else if ($request->input('form_name') == 'changePassword') {
-            $request->validate([
-                'password' => 'required | max:16',
-                
-            ]);
-            $currentPass = $request->input('currentPass');
-            $newPass = $request->input('newPass');
-            $confNewPass = $request->input('confNewPass');
-            //dd($confNewPass, $newPass, strcmp("asd", "asd"));
-            //dd(Hash::check($currentPass, $currentPassInsideDB->password));
-            $currentPassInsideDB = User::where('id', $user_id)->first();
-            if(Hash::check($currentPass, $currentPassInsideDB->password)) {
-                //strcmp() return 0 when string matches
-                if(strcmp($newPass, $confNewPass) == 0) {
-                    $newPass = Hash::make($newPass);
-                    User::where('id', $user_id)->update([
-                        'password' => $newPass,
-                    ]);
-                    $msg = "Password has been updated";
+        
+        switch($request->input('form_name')) {
+            case('user_table_update'):
+                // dd("inside switch case user", $user_id);
+                $request->validate([
+                    'user_name' => 'required | max:50 | min:3',
+                    'email' => 'required | max:50 | min:10',
+                ]);
+                // dd("inside switch case user", $user_id);
+                User::where('id', $user_id)->update([
+                    'name' => $request->input('user_name'),
+                    'email' => $request->input('email'),
+                ]);
+                $msg = array("msgType"=>"success","msg" => "User's name and email has been updated.");
+                break;
+            
+            case('createAboutSection'):
+                $request->validate([
+                    'biography' => 'required | max:250',
+                    'instagram' => 'nullable | max: 200',
+                    'facebook' => 'nullable | max: 200',
+                    'twitter' => 'nullable | max: 200',
+                ]);
+                // dd("inside switch case about", $user_id);
+                Profile::where('user_id', $user_id)->update([
+                    'biography' => $request->input('biography'),
+                    'instagram' => $request->input('instagram'),
+                    'facebook' => $request->input('facebook'),
+                    'twitter' => $request->input('twitter'),
+                ]);
+                $msg = array("msgType" => "success","msg" => "About section has been updated.");
+                break;
+
+            case('changePassword'):
+                $request->validate([
+                    'currentPass' => 'required',
+                    'confNewPass' => 'required',
+                     'newPass'  => 'required | min:6 | regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/',
+                ]);
+                dd("inside switch case password", $user_id, $newPass);
+                $currentPass = $request->input('currentPass');
+                $newPass = $request->input('newPass');
+                $confNewPass = $request->input('confNewPass');
+                //dd($confNewPass, $newPass, strcmp("asd", "asd"));
+                //dd(Hash::check($currentPass, $currentPassInsideDB->password));
+                $currentPassInsideDB = User::where('id', $user_id)->first();
+                if(Hash::check($currentPass, $currentPassInsideDB->password)) {
+                    if($newPass !== $currentPassInsideDB) {
+                        //strcmp() return 0 when string matches
+                        if(strcmp($newPass, $confNewPass) == 0) {
+                            $newPass = Hash::make($newPass);
+                            User::where('id', $user_id)->update([
+                                'password' => $newPass,
+                            ]);
+                            $msg = array("msgType"=>"success","msg" => "Password has been updated.");
+                        } else {
+                            $msg = array("msgType"=>"danger","msg" => "Both new password and confirm password field should have same value.");
+                        }
+                    } else {
+                        $msg = array("msgType"=>"danger","msg" => "New Password Should be different from the previous one.");
+                    }
+                    
                 } else {
-                    $msg ="Both new password should be same";
-                    //return redirect('profiles')->with("message", $msg);
+                    $msg = array("msgType"=>"danger","msg" => "Forgot password?");
                 }
-            } else {
-                $msg ="Forgot password?";
-            }
-        } else if ($request->input('form_name') == 'changeAvatar') {
-            $request->validate([
-                'avatar_path' => 'mimes:jpg, png, jpeg | max:5048',
-            ]);
-            $newImageName = uniqid() . '.' .$request->image->extension();
-            $request->image->move(public_path('avatar'), $newImageName);
+                break;
 
-            Profile::where('user_id', $user_id)->update([
-                'avatar_path' => $newImageName,
-            ]);
-            $msg = "Profile avatar updated";
-        }  else if ($request->input('form_name') == 'removeAvatar') { 
-            $newImageName ="avatar-1299805_640.png";
-            Profile::where('user_id', $user_id)->update([
-                'avatar_path' => $newImageName,
-            ]);
-            $msg = "Profile avatar removed";
+            case('changeAvatar'):
+                $request->validate([
+                    'image' => 'mimes:jpg, png, jpeg | max:5048',
+                ]);
+                if($request->image !== NULL){
+                    $newImageName = uniqid() . '.' .$request->image->extension();
+                    $request->image->move(public_path('avatar'), $newImageName);
+
+                    Profile::where('user_id', $user_id)->update([
+                        'avatar_path' => $newImageName,
+                    ]);
+                    $msg = array("msgType"=>"success","msg" => "Profile avatar updated.");
+                } else
+                    $msg = array("msgType"=>"warning","msg" => "Please choose an image before upload");
+
+                break;
+
+            case('removeAvatar'):
+                $newImageName ="avatar-1299805_640.png";
+                Profile::where('user_id', $user_id)->update([
+                    'avatar_path' => $newImageName,
+                ]);
+                $msg = array("msgType"=>"danger","msg" => "Profile's avatar has been removed.");
+                break;
+
+            default:
+                $msg = array("msgType"=>"danger","msg" => "Sorry for the inconvenience caused, please try again later.");
         }
-
-
-        return redirect()->route('profile.edit',['user_id' => Auth::user()->id])->with("message", $msg);
+        return redirect()->route('profile.edit',['user_id' => Auth::user()->id])->with('message', $msg);
     }
 
     /**

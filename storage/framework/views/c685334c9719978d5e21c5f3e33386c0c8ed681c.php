@@ -39,7 +39,7 @@
     
               <div class="form-item w-full mt-3">
                 <label class="text-xl ">Biography</label>
-                <textarea name="bio" cols="30" rows="10" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mr-2 mt-2 mb-4 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " ></textarea>
+                <textarea name="biography" cols="30" rows="10" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mr-2 mt-2 mb-4 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " ></textarea>
               </div>
             
               <div>

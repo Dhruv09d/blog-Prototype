@@ -11,6 +11,54 @@
         <h4 class="text-sm font-semibold mt-1">Joined Since '<?php echo e(date('y', strtotime($loggedin_user->updated_at))); ?></h4>
       </div>
     </div>
+
+    
+    <?php if(session()->has('message')): ?>
+    <?php switch(session()->get('message')['msgType']):
+        case ('success'): ?>
+            <div class="py-3 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200 flex items-center justify-between" role="alert">
+              <span><?php echo e(session()->get('message')['msg']); ?></span>
+              <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+              </button>
+            </div>
+            <?php break; ?>
+
+        <?php case ('warning'): ?>
+            <div class="py-3 px-5 mb-4 bg-yellow-100 text-yellow-900 text-sm rounded-md border border-yellow-200 flex items-center justify-between" role="alert">
+              <span><?php echo e(session()->get('message')['msg']); ?></span>
+              <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+              </button>
+            </div>
+            <?php break; ?>
+        
+        <?php case ('danger'): ?>
+        <div class="py-3 px-5 mb-4 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 flex items-center justify-between" role="alert">
+              <span><?php echo e(session()->get('message')['msg']); ?></span>
+              <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+              </button>
+            </div>
+            <?php break; ?>
+        <?php default: ?>
+          <div class="py-3 px-5 mb-4 bg-gray-300 text-gray-900 rounded-md text-sm border border-gray-400 flex items-center justify-between" role="alert">
+            <span><?php echo e(session()->get('message')['msg']); ?></span>
+            <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    <?php endswitch; ?>
+    <?php endif; ?>
+
     <div class="grid grid-cols-12 bg-white ">
   
       <div class="col-span-12 w-full px-3 py-6 justify-center flex space-x-4 border-b border-solid md:space-x-0 md:space-y-4 md:flex-col md:col-span-2 md:justify-start ">
@@ -65,7 +113,7 @@
     
               <div class="form-item w-full mt-3">
                 <label class="text-xl ">Biography</label>
-                <textarea name="bio" cols="30" rows="10" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mr-2 mt-2 mb-4 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " ><?php echo e($about_info->biography); ?></textarea>
+                <textarea name="biography" cols="30" rows="10" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mr-2 mt-2 mb-4 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " ><?php echo e($about_info->biography); ?></textarea>
               </div>
             
               <div>
@@ -140,15 +188,15 @@
 
             <div class="form-item  mt-4">
               <label class="text-xl">Current Password</label>
-              <input type="text" placeholder=""  name="currentPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
+              <input type="password" placeholder=""  name="currentPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
             </div>
             <div class="form-item mt-3">
               <label class="text-xl  ">New Password</label>
-              <input type="text" placeholder="" name="newPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
+              <input type="password" placeholder="" name="newPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
             </div>
             <div class="form-item mt-3">
               <label class="text-xl ">Re-type New Password</label>
-              <input type="text" placeholder="" name="confNewPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1  mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200  " >
+              <input type="password" placeholder="" name="confNewPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1  mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200  " >
             </div>
             <button type="submit" class="w-3/5 mx-auto uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl"> Save
             </button>
