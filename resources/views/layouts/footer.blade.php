@@ -47,7 +47,7 @@
                     <a class="text-white underline text-small no-underline" href="/page-1">
                        View</a>
                 </li>
-                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="/page-2">Page 2</a></li>
+                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="/page-2">Explore</a></li>
                 </ul>
             </div>
 
