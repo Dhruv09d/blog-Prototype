@@ -13,6 +13,17 @@
     </div>
 
     {{-- flash message --}}
+    @if ($errors->any())
+      <div class="py-3 px-5 mb-4 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 flex items-center justify-between" role="alert">
+        <span>No action performed. PLease got to the previous tab to check for error.</span>
+        <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+      </div>
+    @endif
+
     @if(session()->has('message'))
     @switch(session()->get('message')['msgType'])
         @case('success')
@@ -147,6 +158,16 @@
               <h3 class="text-2xl font-semibold pb-1 mb-3">Update Avatar</h3>
               <hr>
             </div>
+            @error('image')
+            <div class="py-3 px-5 mb-4 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 flex items-center justify-between" role="alert">
+              <span>{{ $errors->first('image') }}</span>
+              <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+              </button>
+            </div>
+            @enderror
             <div class="form-item mt-2 bg-gray-lighter pt-10">
               <label class="w-44 flex flex-col items-center px-1 py-2 bg-white-rounded-lg
               shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
@@ -164,7 +185,7 @@
 
             <!-- Remove avatar -->
           
-          
+            
             <form action="{{ route('profile.update', Auth::user()->id) }}" class="flex flex-col space-y-8" method="POST" >
                 @csrf
                 @method('PUT')
@@ -185,15 +206,44 @@
               <h3 class="text-2xl font-semibold pb-1 mb-3">Change Password</h3>
               <hr>
             </div>
-
+            @error('currentPass')
+            <div class="py-3 px-5 mb-4 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 flex items-center justify-between" role="alert">
+              <span>{{ $errors->first('currentPass') }}</span>
+              <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+              </button>
+            </div>
+            @enderror
             <div class="form-item  mt-4">
               <label class="text-xl">Current Password</label>
               <input type="password" placeholder=""  name="currentPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
             </div>
+            @error('newPass')
+            <div class="py-3 px-5 mb-4 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 flex items-center justify-between" role="alert">
+              <span>{{ $errors->first('newPass') }}</span>
+              <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+              </button>
+            </div>
+            @enderror
             <div class="form-item mt-3">
               <label class="text-xl  ">New Password</label>
               <input type="password" placeholder="" name="newPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1 mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200 text-opacity-25 " >
             </div>
+            @error('confNewPass')
+            <div class="py-3 px-5 mb-4 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 flex items-center justify-between" role="alert">
+              <span>{{ $errors->first('confNewPass') }}</span>
+              <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+              </button>
+            </div>
+            @enderror
             <div class="form-item mt-3">
               <label class="text-xl ">Re-type New Password</label>
               <input type="password" placeholder="" name="confNewPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1  mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200  " >

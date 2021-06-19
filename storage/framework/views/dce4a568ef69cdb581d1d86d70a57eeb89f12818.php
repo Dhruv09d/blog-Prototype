@@ -17,13 +17,35 @@
         By <span class="font-bold italic text-gray-800"><?php echo e($post->user->name); ?></span>, Created on <?php echo e(date('jS M Y', strtotime($post->updated_at))); ?>
 
     </span>
+    <?php if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id ): ?>
+                <span class="float-right">
+                    <a href="/blog/<?php echo e($post->slug); ?>" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">Edit</a>
+                </span>
+                
+                <span class="float-right">
+                    <form action="/blog/<?php echo e($post->slug); ?>/confirm-delete" method="POST">
+                    <?php echo csrf_field(); ?>
+                        <input type="text" class="hidden" name="owner_name" value="<?php echo e($post->user->name); ?>">
+                        <input type="text" class="hidden" name="title" value="<?php echo e($post->title); ?>">
+                        <input type="text" class="hidden" name="img_path" value="<?php echo e($post->image_path); ?>">
+                        <input type="text" class="hidden" name="updated_at" value="<?php echo e($post->updated_at); ?>">
+                        <input type="submit" class="uppercase bg-gray-100 text-red-700 italic hover:text-red-900 px-3 " value="Delete">
+                    </form>
+                </span>
+        <?php endif; ?>
     <div class="my-10">
         <img class="mx-auto" src="<?php echo e(asset('/images/'.$post->image_path)); ?>" alt="post image" width="700">
     </div>
-    <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
+    <p class="text-xl text-justify text-gray-700 font-light pt-8 pb-10 leading-8 ">
         <?php echo e($post->description); ?>
 
     </p>
+    <div class="">
+        <pre class="text-lg text-justify text-gray-700 font-light pt-8 pb-10 whitespace-pre-line break-all leading-tight font-serif " ><?php echo e($post->description); ?>
+
+        </pre>
+    </div>
+
 </div>
 
 <div class="flex items-center w-4/5 m-auto pt-10">

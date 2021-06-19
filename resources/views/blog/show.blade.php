@@ -15,12 +15,33 @@
     <span class="text-gray-500">
         By <span class="font-bold italic text-gray-800">{{ $post->user->name }}</span>, Created on {{ date('jS M Y', strtotime($post->updated_at)) }}
     </span>
+    @if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id )
+                <span class="float-right">
+                    <a href="/blog/{{ $post->slug}}" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">Edit</a>
+                </span>
+                
+                <span class="float-right">
+                    <form action="/blog/{{ $post->slug }}/confirm-delete" method="POST">
+                    @csrf
+                        <input type="text" class="hidden" name="owner_name" value="{{ $post->user->name }}">
+                        <input type="text" class="hidden" name="title" value="{{ $post->title }}">
+                        <input type="text" class="hidden" name="img_path" value="{{ $post->image_path }}">
+                        <input type="text" class="hidden" name="updated_at" value="{{ $post->updated_at }}">
+                        <input type="submit" class="uppercase bg-gray-100 text-red-700 italic hover:text-red-900 px-3 " value="Delete">
+                    </form>
+                </span>
+        @endif
     <div class="my-10">
         <img class="mx-auto" src="{{asset('/images/'.$post->image_path)}}" alt="post image" width="700">
     </div>
-    <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
+    <p class="text-xl text-justify text-gray-700 font-light pt-8 pb-10 leading-8 ">
         {{ $post->description }}
     </p>
+    <div class="">
+        <pre class="text-lg text-justify text-gray-700 font-light pt-8 pb-10 whitespace-pre-line break-all leading-tight font-serif " >{{ $post->description }}
+        </pre>
+    </div>
+
 </div>
 
 <div class="flex items-center w-4/5 m-auto pt-10">

@@ -5,14 +5,7 @@
 
 
 
-<?php if(session()->has('message')): ?>
-    <div class="w-4/5 m-auto mt-10 pl-2">
-        <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4 text-center">
-            <?php echo e(session()->get('message')); ?>
 
-        </p>
-    </div>
-<?php endif; ?>
 
 <?php if(Auth::check()): ?>
 <div class="bg-create-post grid grid-cols-l m-auto">
@@ -33,6 +26,16 @@
         </h1>
     </div>
 </div>
+<?php if(session()->has('message')): ?>
+    <div class="py-3 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200 flex items-center justify-between" role="alert">
+    <span><?php echo e(session()->get('message')); ?></span>
+    <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </button>
+  </div>
+<?php endif; ?>
 
 <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="sm:grid grid-cols-2 gap-10 w-4/5 mx-auto py-15 border-b border-gray-200 ">
@@ -68,7 +71,7 @@
                         <input type="text" class="hidden" name="title" value="<?php echo e($post->title); ?>">
                         <input type="text" class="hidden" name="img_path" value="<?php echo e($post->image_path); ?>">
                         <input type="text" class="hidden" name="updated_at" value="<?php echo e($post->updated_at); ?>">
-                        <button type="submit" class="uppercase text-red-500 pr-3 hover:text-red-700">delete</button>
+                        <input type="submit" class="uppercase bg-gray-100 text-red-700 italic hover:text-red-900 px-3 " value="Delete">
                     </form>
                 </span>
             <?php endif; ?>

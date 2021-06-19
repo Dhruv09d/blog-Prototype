@@ -22,7 +22,7 @@ class Posts extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('user_id');
             // PK -> id of users' table | FK -> user_id of posts' table
-            $table->foreign('user_id')->references('id')->on('users'); 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); 
         });
     }
 

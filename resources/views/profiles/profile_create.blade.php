@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="grid grid-cols-12 bg-white ">
-  
+      
       <div class="col-span-12 w-full px-3 py-6 justify-center flex space-x-4 border-b border-solid md:space-x-0 md:space-y-4 md:flex-col md:col-span-2 md:justify-start ">
   
         <a href="#" class="text-sm p-2 bg-indigo-900 text-white text-center rounded font-bold" >Profile</a>
@@ -23,7 +23,6 @@
         <a href="#" class="text-sm p-2 bg-indigo-200 text-center text-white rounded font-semibold hover:bg-indigo-700 hover:text-gray-200"  id="passwordbtn" onclick="showPage('#password')">Password</a>
       -->
       </div>
-  
       <div  class="col-span-12 md:border-solid md:border-l md:border-black md:border-opacity-25 h-full pb-12 md:col-span-10">
         <div class="px-4 pt-4">
           
@@ -59,6 +58,16 @@
                 <label class="text-xl ">Twitter</label>
                 <input type="text" name="twitter" placeholder="https://twitter.com/" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1  mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200  " >
               </div>
+              @error('image')
+                <div class="py-3 px-5 mb-4 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 flex items-center justify-between" role="alert">
+                <span>{{ $errors->first('image') }}</span>
+                <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            @enderror
               <div class="form-item mt-2 bg-gray-lighter pt-10">
                 <label class="w-44 flex flex-col items-center px-1 py-2 bg-white-rounded-lg
                 shadow-lg tracking-wide uppercase border border-blue cursor-pointer">

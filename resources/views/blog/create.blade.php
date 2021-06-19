@@ -11,20 +11,44 @@
     </div>
 </div>
 
-
+{{-- @error('image')
+<div class="py-3 px-5 mb-4 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 flex items-center justify-between" role="alert">
+  <span>
+      @foreach ($errors->all() as $error)
+    <li class="w-1/5 mb-4 text-gray-50 bg-red-700 rounded-2xl py-4">
+        {{ $error }}
+    </li>
+    @endforeach
+  </span>
+  <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+      </svg>
+  </button>
+</div>
+@enderror --}}
 
 
 @if($errors->all())
     <div class="w-4/5 m-auto">
         <ul>
             @foreach ($errors->all() as $error)
-                <li class="w-1/5 mb-4 text-gray-50 bg-red-700 rounded-2xl py-4">
-                    {{ $error }}
-                </li>
+                <div class="py-3 px-5 mb-4 bg-red-100 text-red-900 text-sm rounded-md border border-red-200 flex items-center justify-between" role="alert">
+                <span>
+                  <li >
+                      {{ $error }}
+                  </li>
+                 
+                </span>
+                <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+              </div>
             @endforeach
         </ul>
     </div>
-
 @endif
 
 <div class="w-4/5 m-auto pt-20">

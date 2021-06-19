@@ -11,7 +11,8 @@ use App\Models\Follower;
 use App\Models\Following;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Validation\Rules;
+use Illuminate\Validation\Rules\Password;
+// use Illuminate\Support\Facades\Validator;
 
 class ProfilesController extends Controller
 {
@@ -75,18 +76,15 @@ class ProfilesController extends Controller
      */
     public function store(Request $request, $user_id)
     {
-        
-        
-        if($request->input('form_name') == 'createAboutSection') {
-            // dd("inside the about create", $user_id);
+            //dd("inside the about create", $user_id);
             $request->validate([
-                'image' => 'mimes: jpg, png, jpeg | max:5048',
+                'image' => 'mimes:jpg, png, jpeg | max:5048',
                 'biography' => 'required | max:250',
                 'instagram' => 'nullable | max: 200',
                 'facebook' => 'nullable | max: 200',
                 'twitter' => 'nullable | max: 200',
             ]);
-            // dd("inside the about create", $user_id);
+            // dd("inside the about create 2", $user_id);
             if($request->image !== NULL){
                 $newImageName = uniqid() . '.' .$request->image->extension();
                 $request->image->move(public_path('avatar'), $newImageName);
@@ -108,7 +106,6 @@ class ProfilesController extends Controller
                 'twitter' => $request->input('twitter'),
             ]);
             $msg = array("msgType"=>"success","msg" => "About has been updated successfully!");
-        }
         return redirect()->route('profile.index', ['user_id' => Auth::user()->id])->with('message', $msg);
     }
 
@@ -179,12 +176,19 @@ class ProfilesController extends Controller
                 break;
 
             case('changePassword'):
+               
+                // $request->validate([
+                //     'currentPass' => 'required',
+                //     'confNewPass' => 'required',
+                //      'newPass'  => 'required  |  min:8 | max:16',
+                                    
+                //  ]);
                 $request->validate([
                     'currentPass' => 'required',
                     'confNewPass' => 'required',
-                     'newPass'  => 'required | min:6 | regex:/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/',
-                ]);
-                dd("inside switch case password", $user_id, $newPass);
+                    'newPass'  => 'required  |  min:8 | max:16',              
+                 ]);
+                // dd("inside switch case password", $user_id,$request->input('newPass'));
                 $currentPass = $request->input('currentPass');
                 $newPass = $request->input('newPass');
                 $confNewPass = $request->input('confNewPass');
@@ -192,7 +196,7 @@ class ProfilesController extends Controller
                 //dd(Hash::check($currentPass, $currentPassInsideDB->password));
                 $currentPassInsideDB = User::where('id', $user_id)->first();
                 if(Hash::check($currentPass, $currentPassInsideDB->password)) {
-                    if($newPass !== $currentPassInsideDB) {
+                    if(!Hash::check($newPass, $currentPassInsideDB->password)) {
                         //strcmp() return 0 when string matches
                         if(strcmp($newPass, $confNewPass) == 0) {
                             $newPass = Hash::make($newPass);
@@ -214,7 +218,7 @@ class ProfilesController extends Controller
 
             case('changeAvatar'):
                 $request->validate([
-                    'image' => 'mimes:jpg, png, jpeg | max:5048',
+                    'image' => 'required | mimes:jpg, png, jpeg | max:5048',
                 ]);
                 if($request->image !== NULL){
                     $newImageName = uniqid() . '.' .$request->image->extension();

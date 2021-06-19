@@ -50,7 +50,7 @@ class SluggableObserver
             return;
         }
 
-        return $this->generateSlug($model, 'saving');
+        $this->generateSlug($model, 'saving');
     }
 
     /**
@@ -70,17 +70,19 @@ class SluggableObserver
     /**
      * @param \Illuminate\Database\Eloquent\Model $model
      * @param string $event
-     * @return void
+     * @return bool
      */
-    protected function generateSlug(Model $model, string $event): void
+    protected function generateSlug(Model $model, string $event): bool
     {
         // If the "slugging" event returns false, abort
         if ($this->fireSluggingEvent($model, $event) === false) {
-            return;
+            return false;
         }
         $wasSlugged = $this->slugService->slug($model);
 
         $this->fireSluggedEvent($model, $wasSlugged);
+
+        return $wasSlugged;
     }
 
     /**
@@ -88,9 +90,9 @@ class SluggableObserver
      *
      * @param  \Illuminate\Database\Eloquent\Model $model
      * @param  string $event
-     * @return array|null
+     * @return bool|null
      */
-    protected function fireSluggingEvent(Model $model, string $event): ?array
+    protected function fireSluggingEvent(Model $model, string $event): ?bool
     {
         return $this->events->until('eloquent.slugging: ' . get_class($model), [$model, $event]);
     }

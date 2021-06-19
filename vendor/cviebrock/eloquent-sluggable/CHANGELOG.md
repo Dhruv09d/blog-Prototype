@@ -1,5 +1,16 @@
 # Change Log
 
+## 8.0.8 - 11-Jun-2021
+
+- fix event tests and `registerModelEvent()` hook (#556, #561, thanks @standaniels)
+
+
+## 8.0.7 - 19-May-2021
+
+- fix issue with `SluggableObserver::SAVED` not always saving 
+  the model (#558, #560, thanks @llewellyn-kevin)
+
+
 ## 8.0.5 - 28-Feb-2021
 
 - started unique suffixes with "-2" instead of "-1" (#549, thanks @Tamim26061)

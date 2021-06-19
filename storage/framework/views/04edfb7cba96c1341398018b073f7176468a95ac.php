@@ -14,13 +14,13 @@
                 <!-- Column 2 Content -->
 
 
-                <h4 class="text-white">Important</h4>
+                <h4 class="text-white">B4BLOG</h4>
                 <ul class="nav navbar-nav">
                     <li id="navi-2" class="leading-7 text-sm">
-                        <a class="text-white underline text-small" href="/page-1">
-                            Page 1 </a>
+                        <a class="text-white underline text-small no-underline" href="/page-1">
+                            Blogs</a>
                     </li>
-                    <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small" href="/page-2">Page 2</a></li>
+                    <li id="navi-1" class="leading-7 text-sm no-underline"><a class="text-white underline text-small no-underline" href="/page-2">Profiles</a></li>
                 </ul>
 
 
@@ -28,26 +28,26 @@
 
             <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
                 <!-- Column 3 Content -->
-                <h4 class="text-white">Info</h4>
+                <h4 class="text-white">BLOG</h4>
                 <ul class="">
                 <li id="navi-2" class="leading-7 text-sm">
-                    <a class="text-white underline text-small" href="/page-1">
-                        Page 1 </a>
+                    <a class="text-white underline text-small no-underline" href="/page-1">
+                        Read</a>
                 </li>
-                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small" href="/page-2">Page 2</a></li>
+                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="/page-2">Create</a></li>
                 </ul>
             </div>
 
             <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
                 <!-- Column 4 Content -->
 
-                <h4 class="text-white">Products</h4>
+                <h4 class="text-white">Profiles</h4>
                 <ul class="">
                 <li id="navi-2" class="leading-7 text-sm">
-                    <a class="text-white underline text-small" href="/page-1">
-                        Page 1 </a>
+                    <a class="text-white underline text-small no-underline" href="/page-1">
+                       View</a>
                 </li>
-                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small" href="/page-2">Page 2</a></li>
+                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="/page-2">Page 2</a></li>
                 </ul>
             </div>
 
