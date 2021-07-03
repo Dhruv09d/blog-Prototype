@@ -81,6 +81,8 @@
         <a href="#" class="text-sm p-2 bg-indigo-200 text-center text-white rounded font-semibold hover:bg-indigo-700 hover:text-gray-200"  id="passwordbtn" onclick="showPage('#password')">Password</a>
 
         <a href="#" class="text-sm p-2 bg-indigo-200 text-center text-white rounded font-semibold hover:bg-indigo-700 hover:text-gray-200"  id="avatarupdatedbtn" onclick="showPage('#avatarUpdate')">Avatar</a>
+        
+        <a href="#" class="text-sm p-2 bg-red-200 text-center text-white rounded font-semibold hover:bg-red-600 hover:text-gray-200"  id="deleteAccbtn" onclick="showPage('#delete_account')">Delete Account</a>
   
       </div>
   
@@ -280,7 +282,30 @@ unset($__errorArgs, $__bag); ?>
             </button>
             </form>
           </div>
-          
+
+          <!-- Delete Account -->
+          <div id="delete_account" style="display:none;">
+            <div>
+              <h3 class="text-4xl font-semibold pb-2 mb-4">Delete Account</h3>
+              <hr>
+              
+              <p>Your all date will be removed permanently.</p>
+              <p>Once data will not be recover once deleted.</p>
+            </div>
+            <h3 class="text-red-500 text-lg mt-10 ">Do you really want to delete your account?</h3>
+            <button  id="delbtn" class="w-1/5  uppercase mt-15 bg-gray-600 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl" onclick="show_delbtn()">Delete?</button>
+            <div id="Cdelbtn" style="display:none">
+              <button class="w-1/5  uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl" onclick="hide_delbtn()">Cancel?</button>
+              <form action="<?php echo e(route('deleteUser', Auth::user()->id)); ?>" class="flex flex-col space-y-8 inline" method="POST">
+                <?php echo csrf_field(); ?>
+                <?php echo method_field('DELETE'); ?>
+                <input type="hidden" name="form_name" value="delete_account">
+              <button  type="submit" name="submit" class="w-1/5  uppercase bg-red-700 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">Confirm</button>
+            </form>
+            </div>
+            
+            
+          </div>
           <!--</form>-->
         </div>
       </div>

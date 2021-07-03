@@ -8,6 +8,7 @@ use App\Http\Controllers\PostLikesController;
 use App\Http\Controllers\PostsCommentsController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\FollowersController;
+use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,7 @@ use App\Http\Controllers\FollowersController;
 |
 */
 
-// athentication routes
+/* *********************** athentication routes ************************************/
 
 
 //google auth
@@ -53,6 +54,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index']);
 
 //blog | posts
+/******************************* posts *******************************/
 
 Route::get('/blog', [PostsController::class, 'index'])->name('blog.index');
 Route::get('/blog/create', [PostsController::class, 'create'])->name('blog.create');
@@ -65,6 +67,7 @@ Route::delete('/blog/{slug}/delete', [PostsController::class, 'destroy']);
 
 //Route::resource('/blog', [PostsController::class]);
 
+/******************************* Like / Unlike and Comment *******************************/
 // like unlike posts
 Route::post('posts/{post}/likes', [PostLikesController::class, 'store'])->name('posts.like');
 Route::delete('posts/{post}/unlike', [PostLikesController::class, 'destroy'])->name('posts.unlike');
@@ -73,7 +76,9 @@ Route::delete('posts/{post}/unlike', [PostLikesController::class, 'destroy'])->n
 Route::post('posts/{post}/comment', [PostsCommentsController::class, 'store'])->name('posts.comment');
 Route::delete('posts/{id}/comment', [PostsCommentsController::class, 'destroy'])->name('posts.removeComment');
 
-//profile 
+
+
+/******************************* Profile *******************************/
 // specified profile
 Route::get('profiles/profile/{user_id}', [ProfilesController::class, 'index'])->name('profile.index'); 
 // all profiles
@@ -88,9 +93,12 @@ Route::put('profiles/{user_id}', [ProfilesController::class, 'update'])->name('p
 Route::delete('profiles/{id}', [ProfilesController::class, 'destroy'])->name('profile.delete');
 
 
+/******************************* Follow / Unfollow *******************************/
 // follow 
 Route::post('following/{profile_user_id}', [FollowersController::class, 'follow'])->name('follow.user');
 // unfollow
 Route::delete('unfollowing/{profile_user_id}', [FollowersController::class, 'unfollow'])->name('unfollow.user');
 //Route::post('follower', [FollowersController::class, 'following'])->name('follow.user');
 
+/******************************* Delete Account *******************************/
+Route::delete('users/accounts/{user_id}', [UsersController::Class, 'deleteUser'])->name('deleteUser');
