@@ -34,8 +34,8 @@
     <div class="my-10">
         <img class="mx-auto" src="{{asset('/images/'.$post->image_path)}}" alt="post image" width="700">
     </div>
-    <p class="text-xl text-justify text-gray-700 font-light pt-8 pb-10 leading-8 ">
-        {{ $post->description }}
+    {{-- <p class="text-xl text-justify text-gray-700 font-light pt-8 pb-10 leading-8 ">
+        {{ $post->description }} --}}
     </p>
     <div class="">
         <pre class="text-lg text-justify text-gray-700 font-light pt-8 pb-10 whitespace-pre-line break-all leading-tight font-serif " >{{ $post->description }}

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Image;
 
 class PostsController extends Controller
 {
@@ -50,10 +51,12 @@ class PostsController extends Controller
         ]);
 
         $newImageName = uniqid(). '-' . $request->title . '.' .$request->image->extension();
-
+        // 
         //dd($newImageName);
-        // moving the image inside public/images  
-        $request->image->move(public_path('images'), $newImageName);
+        // image resizing and moving the image inside public/images  
+        $img = Image::make($request->image->getRealPath());
+        $destination = public_path('images');
+        $img->resize(1200, 600)->save($destination . '/' . $newImageName);
         // $slug = SlugService::createSlug(Model:class, Slug to store in field, To make slug using field);
         //dd($slug);
         
@@ -105,13 +108,20 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'mimes: jpg, png, jpeg | max:5048',
+            'image' => 'mimes:jpg,png,jpeg|max:5048',
         ]);
 
         if($request->image !== NULL){
             //dd("got image");
+            // deleteing old image from dir
+            $oldImage = Post::select('image_path')->where('slug', $slug)->first();
+            // dd(print($oldImage->image_path));
+            unlink(public_path('images') .'/'.$oldImage->image_path);
             $newImageName = uniqid(). '-' . $request->title . '.' .$request->image->extension();
-            $request->image->move(public_path('images'), $newImageName);
+            $img = Image::make($request->image->getRealPath());
+            $destination = public_path('images');
+            $img->resize(1200, 600)->save($destination . '/' . $newImageName);
+            // $request->image->move(public_path('images'), $newImageName);
             Post::where('slug', $slug)->update([
                 'title' => $request->input('title'),
                 'description' => $request->input('description'),

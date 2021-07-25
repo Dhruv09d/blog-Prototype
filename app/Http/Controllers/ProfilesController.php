@@ -12,6 +12,7 @@ use App\Models\Following;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
+use Image;
 // use Illuminate\Support\Facades\Validator;
 
 class ProfilesController extends Controller
@@ -86,8 +87,11 @@ class ProfilesController extends Controller
             ]);
             // dd("inside the about create 2", $user_id);
             if($request->image !== NULL){
-                $newImageName = uniqid() . '.' .$request->image->extension();
-                $request->image->move(public_path('avatar'), $newImageName);
+                $newImageName = uniqid() .  '-' . $user_id .'.' .$request->image->extension();
+                // $request->image->move(public_path('avatar'), $newImageName);
+                $img = Image::make($request->image->getRealPath());
+                $destination = public_path('avatar');
+                $img->resize(220, 220)->save($destination . '/' . $newImageName);
             } else
                 $newImageName ="avatar-1299805_640.png";
 
@@ -221,9 +225,14 @@ class ProfilesController extends Controller
                     'image' => 'required | mimes:jpg, png, jpeg | max:5048',
                 ]);
                 if($request->image !== NULL){
-                    $newImageName = uniqid() . '.' .$request->image->extension();
-                    $request->image->move(public_path('avatar'), $newImageName);
-
+                    $oldImage = Profile::select('avatar_path')->where('user_id', $user_id)->first();
+                    //  dd(print($oldImage->avatar_path));
+                    unlink(public_path('avatar') .'/'.$oldImage->avatar_path);
+                    $newImageName = uniqid() . '-' . $user_id . '.' .$request->image->extension();
+                    // $request->image->move(public_path('avatar'), $newImageName);
+                    $img = Image::make($request->image->getRealPath());
+                    $destination = public_path('avatar');
+                    $img->resize(220, 220)->save($destination . '/' . $newImageName);
                     Profile::where('user_id', $user_id)->update([
                         'avatar_path' => $newImageName,
                     ]);
@@ -234,6 +243,9 @@ class ProfilesController extends Controller
                 break;
 
             case('removeAvatar'):
+                $oldImage = Profile::select('avatar_path')->where('user_id', $user_id)->first();
+                //  dd(print($oldImage->avatar_path));
+                unlink(public_path('avatar') .'/'.$oldImage->avatar_path);
                 $newImageName ="avatar-1299805_640.png";
                 Profile::where('user_id', $user_id)->update([
                     'avatar_path' => $newImageName,

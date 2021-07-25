@@ -36,9 +36,7 @@
     <div class="my-10">
         <img class="mx-auto" src="<?php echo e(asset('/images/'.$post->image_path)); ?>" alt="post image" width="700">
     </div>
-    <p class="text-xl text-justify text-gray-700 font-light pt-8 pb-10 leading-8 ">
-        <?php echo e($post->description); ?>
-
+    
     </p>
     <div class="">
         <pre class="text-lg text-justify text-gray-700 font-light pt-8 pb-10 whitespace-pre-line break-all leading-tight font-serif " ><?php echo e($post->description); ?>
