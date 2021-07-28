@@ -42,10 +42,11 @@
                 <span class="mt-2 text-base leading-normal">
                     Select a file
                 </span>
-                <input type="file" name="image" class="hidden">
+                <input type="file" name="image" class="hidden" 
+                onchange="document.getElementById('prevImg').src = window.URL.createObjectURL(this.files[0]); document.getElementById('prevImg').style.display = 'block';">
             </label>
         </div>
-
+        <img id="prevImg" src="{{asset('/images/'. $post->image_path)}}" alt="your image" width="300" style="display:;"/>
         <button type="submit" class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg
         font-extrabold py-4 px-8 rounded-3xl">
             Submit Post

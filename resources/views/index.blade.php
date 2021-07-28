@@ -6,10 +6,10 @@
         <div class="flex text-gray-100 pt-10">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
                 <h1 class="sm:text-white text-5xl uppercase font-bold text-shadow-md pb-14">
-                    Do you want to become a develope?
+                    <i class="fab fa-pied-piper-square"></i>B4BLOG
                 </h1>
                 <a href="/blog" class="text-center bg-gray-50 text-gray-700 py-2 px-4 font-bold text-xl uppercase">
-                    Read more
+                    <i class="fas fa-blog"></i>Read more
                 </a>
                 
             </div>
@@ -65,7 +65,7 @@
     </div>
     @foreach($posts as $post)
     <div class="sm:grid grid-cols-2 w-4/5 m-auto py-5 border-b">
-        <div class="flex bg-yellow-700 text-gray-100 pt-10">
+        <div class="flex bg-yellow-700 text-gray-100 pt-2">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
                 <span class="uppercase text-xl">
                     {{$post->title}}
@@ -82,7 +82,7 @@
                 </a>
             </div>  
         </div>
-        <div>
+        <div class="align-middle">
             <img src="{{asset('/images/'. $post->image_path)}}" alt="{{$post->title}} image" width="500">
         </div>
     </div>

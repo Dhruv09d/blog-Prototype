@@ -15,6 +15,10 @@
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    
+    
+    <link rel="stylesheet" href="<?php echo e(asset('css/all.min.css')); ?>">
+    <script src="<?php echo e(asset('css/all.js')); ?>"></script>
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">

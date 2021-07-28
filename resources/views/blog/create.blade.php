@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<script>
 
+</script>
 
 <div class="w-4/5 m-auto text-left">
     <div class="py-15 border-b border-gray-200">
@@ -59,16 +61,18 @@
 
         <textarea name="description" placeholder="Description..."
         class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none"></textarea>
-
+        {{-- <div></div> --}}
         <div class="bg-gray-lighter pt-15">
             <label class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg
             shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
                 <span class="mt-2 text-base leading-normal">
                     Select a file
                 </span>
-                <input type="file" name="image" class="hidden">
+                <input type="file" id="selectedImg" name="image" class="hidden" 
+                onchange="document.getElementById('prevImg').src = window.URL.createObjectURL(this.files[0]); document.getElementById('prevImg').style.display = 'block';">
             </label>
         </div>
+        <img id="prevImg" src="#" alt="your image" width="300" style="display:none;"/>
 
         <button type="submit" class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg
         font-extrabold py-4 px-8 rounded-3xl">

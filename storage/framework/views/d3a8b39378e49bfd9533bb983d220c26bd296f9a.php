@@ -6,10 +6,10 @@
         <div class="flex text-gray-100 pt-10">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
                 <h1 class="sm:text-white text-5xl uppercase font-bold text-shadow-md pb-14">
-                    Do you want to become a develope?
+                    <i class="fab fa-pied-piper-square"></i>B4BLOG
                 </h1>
                 <a href="/blog" class="text-center bg-gray-50 text-gray-700 py-2 px-4 font-bold text-xl uppercase">
-                    Read more
+                    <i class="fas fa-blog"></i>Read more
                 </a>
                 
             </div>
@@ -31,7 +31,7 @@
                 #Share_ideas #Learn #reach_people 
             </p>
             <a href="/blog" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-                Find out more.
+                Find out more
             </a>
         </div>
     </div>
@@ -61,7 +61,7 @@
     </div>
     <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="sm:grid grid-cols-2 w-4/5 m-auto py-5 border-b">
-        <div class="flex bg-yellow-700 text-gray-100 pt-10">
+        <div class="flex bg-yellow-700 text-gray-100 pt-2">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
                 <span class="uppercase text-xl">
                     <?php echo e($post->title); ?>
@@ -81,7 +81,7 @@
                 </a>
             </div>  
         </div>
-        <div>
+        <div class="align-middle">
             <img src="<?php echo e(asset('/images/'. $post->image_path)); ?>" alt="<?php echo e($post->title); ?> image" width="500">
         </div>
     </div>

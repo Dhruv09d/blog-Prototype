@@ -178,15 +178,17 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
             <div class="form-item mt-2 bg-gray-lighter pt-10">
+              <p class="mb-10 text-green-400">Recommended size 220x220</p>
               <label class="w-44 flex flex-col items-center px-1 py-2 bg-white-rounded-lg
               shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
                   <span class="mt-1 text-base leading-normal">
                       Select a file
                   </span>
-                  <input type="file" name="image" class="hidden">
+                  <input type="file" name="image" class="hidden"
+                  onchange="document.getElementById('prevImg').src = window.URL.createObjectURL(this.files[0]);">
               </label>
             </div>
-            
+            <img id="prevImg" src="<?php echo e(asset('/avatar/'. $about_info->avatar_path)); ?>" alt="your image" width="220" >
             <button type="submit" class="w-3/5 mx-auto uppercase mt-15 bg-blue-500 hover:bg-blue-700 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl"> Save
             </button>
             </form>
@@ -288,11 +290,18 @@ unset($__errorArgs, $__bag); ?>
             <div>
               <h3 class="text-4xl font-semibold pb-2 mb-4">Delete Account</h3>
               <hr>
+              <ul>
+                <li>
+                  <p class="text-xl">Your all date will be removed permanently.</p>
+                </li>
+                <li>
+                  <p class="text-xl ">You will not be able to recover data, once deleted.</p>
+                </li>
+              </ul>
               
-              <p>Your all date will be removed permanently.</p>
-              <p>Once data will not be recover once deleted.</p>
+              
             </div>
-            <h3 class="text-red-500 text-lg mt-10 ">Do you really want to delete your account?</h3>
+            <h3 class="text-red-500 text-2xl mt-10 ">Do you really want to delete your account?</h3>
             <button  id="delbtn" class="w-1/5  uppercase mt-15 bg-gray-600 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl" onclick="show_delbtn()">Delete?</button>
             <div id="Cdelbtn" style="display:none">
               <button class="w-1/5  uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl" onclick="hide_delbtn()">Cancel?</button>

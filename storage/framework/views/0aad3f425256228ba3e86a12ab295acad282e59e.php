@@ -11,7 +11,7 @@
 <div class="bg-create-post grid grid-cols-l m-auto">
     <div class="flex text-gray-100 pt-10">
         <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
-            <a  href="/blog/create" role="button" class="bg-yellow-700 hover:bg-yellow-800 text-white text-2xl font-bold py-4 px-6 border-yellow-500 border-4 border rounded-2xl">
+            <a  href="/blog/create" role="button" class=" hover:bg-yellow-800 text-white text-2xl font-extrabold py-4 px-6 border-yellow-500 border-8 border rounded-2xl">
                 CREATE POST
             </a>
         </div>
