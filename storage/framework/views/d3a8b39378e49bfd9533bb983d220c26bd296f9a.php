@@ -6,10 +6,10 @@
         <div class="flex text-gray-100 pt-10">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
                 <h1 class="sm:text-white text-5xl uppercase font-bold text-shadow-md pb-14">
-                    <i class="fab fa-pied-piper-square"></i>B4BLOG
+                    <i class="fas fa-feather-alt"></i>B4BLOG
                 </h1>
                 <a href="/blog" class="text-center bg-gray-50 text-gray-700 py-2 px-4 font-bold text-xl uppercase">
-                    <i class="fas fa-blog"></i>Read more
+                    Read more
                 </a>
                 
             </div>
@@ -31,7 +31,7 @@
                 #Share_ideas #Learn #reach_people 
             </p>
             <a href="/blog" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-                Find out more
+                <i class="fas fa-hand-point-right mr-2"></i>Find out more
             </a>
         </div>
     </div>
@@ -59,33 +59,7 @@
         </h2>
         
     </div>
-    <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-    <div class="sm:grid grid-cols-2 w-4/5 m-auto py-5 border-b">
-        <div class="flex bg-yellow-700 text-gray-100 pt-2">
-            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
-                <span class="uppercase text-xl">
-                    <?php echo e($post->title); ?>
-
-                </span>
-                <p class="pt-2 text-gray-100">
-                    By <a href=""><span class="font-bold italic text-gray-100 "><?php echo e($post->user->name); ?></span></a>
-                    , Created on <?php echo e(date('jS M Y', strtotime($post->updated_at))); ?>
-
-                </p>
-                <p class="text-limiting text-xl font-thin py-10">
-                    <?php echo e($post->description); ?>
-
-                </p>
-                <a href="<?php echo e(route('blog.show',[$post->slug, $post->id])); ?>" class="uppercase bg-transparent border-2 border-gray-100 text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
-                    Find out more
-                </a>
-            </div>  
-        </div>
-        <div class="align-middle">
-            <img src="<?php echo e(asset('/images/'. $post->image_path)); ?>" alt="<?php echo e($post->title); ?> image" width="500">
-        </div>
-    </div>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    
 <?php $__env->stopSection(); ?>
 
 

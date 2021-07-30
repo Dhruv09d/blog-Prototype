@@ -9,6 +9,7 @@ use App\Http\Controllers\PostsCommentsController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,7 +52,7 @@ Auth::routes();
 
 // index page
 //Route::get('/', [PagesController::class, 'index'])->name('page');
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('indexpage');
 
 //blog | posts
 /******************************* posts *******************************/
@@ -102,3 +103,6 @@ Route::delete('unfollowing/{profile_user_id}', [FollowersController::class, 'unf
 
 /******************************* Delete Account *******************************/
 Route::delete('users/accounts/{user_id}', [UsersController::Class, 'deleteUser'])->name('deleteUser');
+
+/******************************* Reseet password *******************************/
+Route::get('resetpassword', [ForgotPasswordController::class, 'index'])->name('forgotpass.index');

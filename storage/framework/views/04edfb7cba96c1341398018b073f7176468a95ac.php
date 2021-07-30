@@ -1,4 +1,4 @@
-<nav id="footer" class="bg-gray-800 relative  bottom-0 inset-x-0 mt-4">
+<nav id="footer" class="bg-black relative  bottom-0 inset-x-0 mt-4">
 
     <!-- start container -->
     <div class="container mx-auto pt-8 pb-4 ">
@@ -7,7 +7,7 @@
 
             <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
                 <!-- Column 1 Content -->
-                <img style="max-width: 70%;height:auto;" class="" src="https://pngimage.net/wp-content/uploads/2019/05/fake-logo-png-.png" alt="Logo">
+                <img style="max-width: 70%;height:auto;" class="" src="<?php echo e(asset('/logo/b4blogf.png')); ?>" alt="Logo">
             </div>
 
             <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">

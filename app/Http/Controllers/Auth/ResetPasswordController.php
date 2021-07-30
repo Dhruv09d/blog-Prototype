@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Models\Post;
 
 class ResetPasswordController extends Controller
 {
@@ -27,4 +28,9 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo() {
+        return route('indexpage');
+        // return redirect()->route('indexpage', ['posts' => Post::limit(6)->orderBy('id', 'DESC')->get()]);
+        // return view('index')->with("posts", Post::limit(6)->orderBy('id', 'DESC')->get());
+    }
 }

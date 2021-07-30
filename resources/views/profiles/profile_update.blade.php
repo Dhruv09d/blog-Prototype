@@ -4,7 +4,7 @@
 
 <div class="w-full relative my-0 shadow-2xl rounded overflow-hidden">
     <div class="top h-64 w-full bg-blue-600 overflow-hidden relative" >
-      <img src="https://images.unsplash.com/photo-1503264116251-35a269479413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="" class="bg w-full h-full object-cover object-center absolute z-0">
+      <img src="https://cdn.pixabay.com/photo/2016/11/06/05/36/lake-1802337_960_720.jpg" alt="" class="bg w-full h-full object-cover object-center absolute z-0">
       <div class="flex flex-col justify-center items-center relative h-full bg-black bg-opacity-50 text-white">
         <img src="{{ asset('/avatar/' . $about_info->avatar_path)}}" class="h-28 w-28 object-cover rounded-full">
         <h1 class="text-2xl font-semibold mb-1">{{ $loggedin_user->name}}</h1>
@@ -252,6 +252,10 @@
               <label class="text-xl ">Re-type New Password</label>
               <input type="password" placeholder="" name="confNewPass" class="w-full appearance-none text-black text-opacity-50 rounded shadow py-1 px-2 mt-1  mr-2 focus:outline-none focus:shadow-outline focus:border-blue-200  " >
             </div>
+            <div class="text-blue-400 font-bold">
+              <a href="{{ route('password.request') }}">Forgot Your Password?</a>
+            </div>
+            
             <button type="submit" class="w-3/5 mx-auto uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl"> Save
             </button>
             </form>

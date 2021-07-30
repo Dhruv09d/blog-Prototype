@@ -10,8 +10,8 @@
         <h2 class="text-gray-700 font-bold text-3xl pb-4">
            {{ $loggedin_user->name}} <a href="{{ Route('profile.edit', Auth::user()->id) }}">
             @if($loggedin_user->id === Auth::user()->id)
-              <span class="text-sm font-thin"><button class="border-2 px-2 py-1 ml-2 ">Edit Profile</button></span></a>
-            <a href="{{ route('blog.create') }}"><span class="text-sm font-thin"><button class="border-2 px-2 py-1 ml-2 "><span class="font-extrabold">+</span> Blog</button></span></a> 
+              <span class="text-sm font-thin"><button class="border-2 px-2 py-1 ml-2 "><i class="fas fa-cog mr-1"></i>Edit</button></span></a>
+            <a href="{{ route('blog.create') }}"><span class="text-sm font-thin"><button class="border-2 px-2 py-1 ml-2 "><i class="fas fa-plus mr-1"></i> Blog</button></span></a> 
            @endif 
         </h2>
       
@@ -34,14 +34,14 @@
           </pre>
         
         <p class="text-sm text-gray-700 pt-4 pb-10 leading-8 font-light text-justify">
-          <a href="{{ $profile->instagram }}" target="_blank" class="bg-gray-100 mr-2 text-gray-700 text-sm font-normal py-2 pr-4 ">
-            Instagram
+          <a href="{{ $profile->instagram }}" target="_blank" class="bg-gray-100 mr-2 text-gray-700 text-sm font-normal py-2 pr-4 " title="Instagram">
+            <i class="fab fa-instagram text-3xl"></i>
           </a>
-          <a href="{{ $profile->facebook }}" target="_blank" class="bg-gray-100 mr-2 text-gray-700 text-sm font-normal py-2 px-4 ">
-            Facebook
+          <a href="{{ $profile->facebook }}" target="_blank" class="bg-gray-100 mr-2 text-gray-700 text-sm font-normal py-2 px-4 " title="Facebook">
+            <i class="fab fa-facebook-square text-3xl"></i>
           </a>
-          <a href="{{ $profile->twitter }}" target="_blank" class="bg-gray-100 text-gray-700 text-sm font-normal py-2 px-4 ">
-            Twitter
+          <a href="{{ $profile->twitter }}" target="_blank" class="bg-gray-100 text-gray-700 text-sm font-normal py-2 px-4 " title="Twitter">
+            <i class="fab fa-twitter-square text-3xl"></i>
           </a>
         </p>
         {{-- <>testing -> {{ $followers->user_id }}</> --}}
@@ -196,7 +196,7 @@
     </section>
     @else
     <div class="my-10 text-center self-center">
-      <h1 class="text-6xl font-thin text-gray-400">No post yet</h1>
+      <h1 class="text-6xl font-thin text-gray-400"><i class="far fa-comment-alt"></i>No post yet</h1>
     </div>
         
     @endif

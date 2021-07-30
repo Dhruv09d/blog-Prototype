@@ -24,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index')->with("posts", Post::limit(6)->orderBy('id', 'DESC')->get());
+        return view('index');
+        // return view('index')->with("posts", Post::limit(6)->orderBy('id', 'DESC')->get());
     }
 }

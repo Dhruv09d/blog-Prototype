@@ -19,7 +19,7 @@
     </span>
     <?php if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id ): ?>
                 <span class="float-right">
-                    <a href="/blog/<?php echo e($post->slug); ?>" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2">Edit</a>
+                    <a href="/blog/<?php echo e($post->slug); ?>" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2"><i class="fas fa-pencil-alt mr-2"></i>Edit</a>
                 </span>
                 
                 <span class="float-right">
@@ -29,12 +29,13 @@
                         <input type="text" class="hidden" name="title" value="<?php echo e($post->title); ?>">
                         <input type="text" class="hidden" name="img_path" value="<?php echo e($post->image_path); ?>">
                         <input type="text" class="hidden" name="updated_at" value="<?php echo e($post->updated_at); ?>">
+                        <i class="far fa-trash-alt text-red-400"></i>
                         <input type="submit" class="uppercase bg-gray-100 text-red-700 italic hover:text-red-900 px-3 " value="Delete">
                     </form>
                 </span>
         <?php endif; ?>
     <div class="my-10">
-        <img class="mx-auto" src="<?php echo e(asset('/images/'.$post->image_path)); ?>" alt="post image" width="700">
+        <img class="mx-auto" src="<?php echo e(asset('/images/'.$post->image_path)); ?>" alt="post image" width="1200">
     </div>
     
     </p>
@@ -47,21 +48,25 @@
 </div>
 
 <div class="flex items-center w-4/5 m-auto pt-10">
+    
     <?php if(!$post->likedBy(auth()->user())): ?>
-        <form action="<?php echo e(route('posts.like', $post->id)); ?> " method="POST" class="mr-4">
+        <form action="<?php echo e(route('posts.like', $post->id)); ?> " method="POST" class="mr-1">
             <?php echo csrf_field(); ?>
-            <button type="submit" class="text-blue-500">Like</button>
+            <button type="submit" class="text-blue-500 text-2xl"><i class="far fa-heart"></i></button>
         </form>
 
     <?php else: ?> 
+    
         <form action="<?php echo e(route('posts.unlike', $post->id)); ?>" method="POST" class="mr-1">
             <?php echo csrf_field(); ?>
             <?php echo method_field('DELETE'); ?>
-            <button type="submit" class="text-blue-500">Unlike</button>
+            <button type="submit" class="text-blue-500 text-2xl b-none"><i class="fas fa-heart text-red-500 text-2xl "></i></button>
         </form>
        
     <?php endif; ?>
-    <span><?php echo e($post->likes->count()); ?> <?php echo e(Str::plural('like', $post->likes->count())); ?></span>
+    <span class="ml-2"><?php echo e($post->likes->count()); ?> <?php echo e(Str::plural('like', $post->likes->count())); ?></span>
+    <span class="ml-4 text-2xl"><i class="far fa-comment"></i></span>
+    <span class="ml-1"><?php echo e($post->comments->count()); ?> <?php echo e(Str::plural('comment', $post->comments->count())); ?></span>
 </div>
 
 <!-- Comment Section -->
@@ -71,7 +76,7 @@
         <form action="<?php echo e(route('posts.comment', $post->id)); ?>"  method="POST">
             <?php echo csrf_field(); ?>
             <textarea class="bg-gray-150 w-full shadow-inner p-4 border-0 mb-4 rounded-lg focus:shadow-outline text-2xl" placeholder="Comment here." name="comment" cols="10" rows="4" id="comment_content" spellcheck="false"></textarea>
-            <button type="submit" class="font-bold py-2 px-4 w-full bg-purple-400 text-lg text-white shadow-md rounded-lg ">Comment</button>
+            <button type="submit" class="font-bold py-2 px-4 w-full bg-gray-700 text-lg text-white shadow-md rounded-lg ">Comment</button>
         </form>
         <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div id="task-comments" class="pt-4">
@@ -91,7 +96,7 @@
                 <form action="<?php echo e(route('posts.removeComment', $comment->id)); ?>" method="POST">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('DELETE'); ?>
-                    <button type="submit" class="border-t-2 pt-2 mt-2 text-gray-400 text-sm text-red-500 pr-3 hover:text-red-700">Delete</button>
+                    <button type="submit" class="border-t-2 pt-2 mt-2 text-gray-400 text-sm text-red-500 pr-3 hover:text-red-700"><i class="far fa-trash-alt text-red-400 mr-2"></i>Delete</button>
                 </form>
                 
                 <?php endif; ?>

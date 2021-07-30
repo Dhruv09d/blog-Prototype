@@ -6,10 +6,10 @@
         <div class="flex text-gray-100 pt-10">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
                 <h1 class="sm:text-white text-5xl uppercase font-bold text-shadow-md pb-14">
-                    <i class="fab fa-pied-piper-square"></i>B4BLOG
+                    <i class="fas fa-feather-alt"></i>B4BLOG
                 </h1>
                 <a href="/blog" class="text-center bg-gray-50 text-gray-700 py-2 px-4 font-bold text-xl uppercase">
-                    <i class="fas fa-blog"></i>Read more
+                    Read more
                 </a>
                 
             </div>
@@ -31,7 +31,7 @@
                 #Share_ideas #Learn #reach_people 
             </p>
             <a href="/blog" class="uppercase bg-blue-500 text-gray-100 text-s font-extrabold py-3 px-8 rounded-3xl">
-                Find out more
+                <i class="fas fa-hand-point-right mr-2"></i>Find out more
             </a>
         </div>
     </div>
@@ -63,7 +63,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero accusantium fugiat ducimus incidunt! Accusantium, odio eum! Non minus voluptatibus blanditiis reprehenderit.
         </p> --}}
     </div>
-    @foreach($posts as $post)
+    {{-- @foreach($posts as $post)
     <div class="sm:grid grid-cols-2 w-4/5 m-auto py-5 border-b">
         <div class="flex bg-yellow-700 text-gray-100 pt-2">
             <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block">
@@ -86,6 +86,6 @@
             <img src="{{asset('/images/'. $post->image_path)}}" alt="{{$post->title}} image" width="500">
         </div>
     </div>
-    @endforeach
+    @endforeach --}}
 @endsection
 

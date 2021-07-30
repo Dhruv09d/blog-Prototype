@@ -16,18 +16,16 @@
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
     
-    
-    <link rel="stylesheet" href="<?php echo e(asset('css/all.min.css')); ?>">
-    <script src="<?php echo e(asset('css/all.js')); ?>"></script>
+    <script src="https://kit.fontawesome.com/89bf85d196.js" crossorigin="anonymous"></script>    
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">
-        <header class="bg-gray-800 py-6">
+        <header class="bg-black py-6">
             <div class="container mx-auto flex justify-between items-center px-6">
                 <div>
                     <a href="<?php echo e(url('/')); ?>" class="text-lg font-semibold text-gray-100 no-underline">
-                        <?php echo e(config('app.name', 'Laravel')); ?>
-
+                        
+                        <img style="max-width: 70%;height:auto;" class="" src="<?php echo e(asset('/logo/b4blogf.png')); ?>" width="250" alt="Logo">
                     </a>
                 </div>
                 <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
