@@ -11,7 +11,7 @@
 <div class="bg-create-post grid grid-cols-l m-auto">
     <div class="flex text-gray-100 pt-10">
         <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block text-center">
-            <a  href="/blog/create" role="button" class=" hover:bg-yellow-800 text-white text-2xl font-extrabold py-4 px-6 border-yellow-400 border-8 border rounded-2xl">
+            <a  href="/blog/create" role="button" class="shadow-2xl hover:bg-blue-800 text-white text-2xl font-extrabold py-4 px-6 border-blue-400 border-8 border rounded-2xl">
                 <i class="far fa-edit mr-2"></i>CREATE POST
             </a>
         </div>
@@ -21,7 +21,7 @@
 
 <div class="w-4/5 m-auto text-left">
     <div class="py-15 border-b-2 border-gray-200">
-        <h1 class="text-6xl">
+        <h1 class="text-6xl ">
             Blog Post
         </h1>
     </div>
@@ -39,8 +39,8 @@
 
 @foreach( $posts as $post)
     <div class="sm:grid grid-cols-2 gap-10 w-4/5 mx-auto py-15 border-b border-gray-200 ">
-        <div>
-            <img src="{{ asset('/images/' . $post->image_path)}}" width="500" alt="">
+        <div >
+            <img class="shadow-2xl" src="{{ asset('/images/' . $post->image_path)}}" width="500" alt="">
         </div>
         <div>
             <h2 class="text-gray-700 font-bold text-5xl pb-4">
@@ -53,12 +53,12 @@
             <p id="text-limit" class="text-limiting text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
                 {{ $post->description }}
             </p>
-            <a href="/blog/{{ $post->slug }}/{{ $post->id }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
+            <a href="/blog/{{ $post->slug }}/{{ $post->id }}" class="uppercase bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl shadow-lg">
                 <i class="fas fa-book-open mr-2"></i>Keep Reading
             </a>
             @if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id )
                 <span class="float-right">
-                    <a href="/blog/{{ $post->slug}}" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2"><i class="fas fa-pencil-alt mr-2"></i>Edit</a>
+                    <a href="/blog/{{ $post->slug}}" class="shadow-2xl uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2"><i class="fas fa-pencil-alt mr-2"></i>Edit</a>
                 </span>
                 
                 <span class="float-right">
@@ -69,12 +69,15 @@
                         <input type="text" class="hidden" name="img_path" value="{{ $post->image_path }}">
                         <input type="text" class="hidden" name="updated_at" value="{{ $post->updated_at }}">
                         <i class="far fa-trash-alt text-red-400"></i>
-                        <input type="submit" class="uppercase bg-gray-100 text-red-700 italic hover:text-red-900 px-3 " value="Delete">
+                        <input type="submit" class="shadow-2xl uppercase bg-gray-100 text-red-700 italic hover:text-red-900 px-3 " value="Delete">
                     </form>
                 </span>
             @endif
         </div>
     </div>
 @endforeach
-
+{{-- pagination --}}
+<div class="container mx-auto">
+    {{ $posts->links() }}
+</div>
 @endsection

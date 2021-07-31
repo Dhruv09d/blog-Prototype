@@ -35,7 +35,7 @@
                 </span>
         <?php endif; ?>
     <div class="my-10">
-        <img class="mx-auto" src="<?php echo e(asset('/images/'.$post->image_path)); ?>" alt="post image" width="1200">
+        <img class="mx-auto shadow-2xl" src="<?php echo e(asset('/images/'.$post->image_path)); ?>" alt="post image" width="1200">
     </div>
     
     </p>

@@ -33,7 +33,7 @@
                 </span>
         @endif
     <div class="my-10">
-        <img class="mx-auto" src="{{asset('/images/'.$post->image_path)}}" alt="post image" width="1200">
+        <img class="mx-auto shadow-2xl" src="{{asset('/images/'.$post->image_path)}}" alt="post image" width="1200">
     </div>
     {{-- <p class="text-xl text-justify text-gray-700 font-light pt-8 pb-10 leading-8 ">
         {{ $post->description }} --}}

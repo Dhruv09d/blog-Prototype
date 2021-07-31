@@ -100,3 +100,13 @@ function hide_delbtn() {
   document.getElementById("Cdelbtn").style.display = 'none';
   document.getElementById("delbtn").style.display = 'block';
 }
+// navbar toggle
+function showmenu()
+        {
+            var x = document.getElementById('navigation');
+            if (x.style.display == 'none') {
+                x.style.display = 'block';
+            } else {
+                x.style.display = 'none';
+            }
+        }

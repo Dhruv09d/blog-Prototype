@@ -1,20 +1,20 @@
-<nav id="footer" class="bg-black relative  bottom-0 inset-x-0 mt-4">
+<nav id="footer" class="bg-black relative text-center  bottom-0 inset-x-0 mt-4">
 
     <!-- start container -->
     <div class="container mx-auto pt-8 pb-4 ">
 
-        <div class="flex flex-wrap overflow-hidden sm:-mx-1 md:-mx-px lg:-mx-2 xl:-mx-2">
+        <div class="flex flex-wrap overflow-hidden sm:text-center sm:-mx-1 md:-mx-px lg:-mx-2 xl:-mx-2">
 
-            <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
+            <div class="w-full overflow-hidden sm:my-1 sm:text-center sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
                 <!-- Column 1 Content -->
-                <img style="max-width: 70%;height:auto;" class="" src="<?php echo e(asset('/logo/b4blogf.png')); ?>" alt="Logo">
+                <img style="mx-0;height:auto;" class="" src="<?php echo e(asset('/logo/b4blogf.png')); ?>" alt="Logo">
             </div>
 
             <div class="w-full overflow-hidden sm:my-1 sm:px-1 sm:w-1/2 md:my-px md:px-px md:w-1/2 lg:my-2 lg:px-2 lg:w-1/4 xl:my-2 xl:px-2 xl:w-1/4 pb-6">
                 <!-- Column 2 Content -->
 
 
-                <h4 class="text-white">B4BLOG</h4>
+                <h4 class="text-white ">B4BLOG</h4>
                 <ul class="nav navbar-nav">
                     <li id="navi-2" class="leading-7 text-sm">
                         <a class="text-white underline text-small no-underline" href="/page-1">

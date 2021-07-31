@@ -13,7 +13,8 @@
 
 
 
-<div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
+<div class="relative mt-0 flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center sm:pt-0">
+    
     <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-5 overflow-hidden">
             <div class="grid grid-cols-1 md:grid-cols-2">
@@ -45,10 +46,10 @@
                     </div>
 
                     <button type="submit" class="md:w-32 bg-red-700 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-red-600 transition ease-in-out duration-300">
-                        Submit
+                        <i class="fas fa-trash mr-2"></i>Delete
                     </button>
-                    <a href="{{ route('blog.index') }}" class="md:w-32 text-center justify-center bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300">
-                        Cancel
+                    <a href="{{ route('blog.index') }}" class=" w-3/12 text-center justify-center bg-indigo-600 hover:bg-blue-dark text-white font-bold py-3 px-2 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300">
+                        <i class="fas fa-umbrella mr-2"></i>I'll keep it
                     </a>
                 </form>
             </div>
