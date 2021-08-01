@@ -14,11 +14,18 @@
                     <?php echo csrf_field(); ?>
                     <input type="hidden" value=<?php echo e($name); ?> name="name">
                     <input type="hidden" value=<?php echo e($email); ?> name="email">
+                    <label for="" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                        <?php echo e($email); ?>
+
+                    </label>
                     <div class="flex flex-wrap">
                         <label for="password" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
                             Password
+                        </label><br>
+                        <label id="errpass" class="ml-4 block text-red-500 text-sm font-bold mb-2 sm:mb-4">
+                            
                         </label>
-
+                        
                         <input id="password" type="password"
                             class="form-input w-full <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -49,8 +56,11 @@ unset($__errorArgs, $__bag); ?>
                         <label for="cpassword" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
                             Confirm Password
                         </label>
-
-                        <input id="cpassword" type="password"
+                        <label id="errcpass" class=" ml-4 block text-red-500 text-sm font-bold mb-2 sm:mb-4">
+                            
+                        </label>
+                        
+                        <input id="cpassword" type="password" onmouseout="checkPass()"
                             class="form-input w-full <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -79,7 +89,7 @@ unset($__errorArgs, $__bag); ?>
                     
 
                     <div class="flex flex-wrap">
-                        <button type="submit"
+                        <button type="submit" 
                         class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline mb-5 text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
                             Save
                         </button>

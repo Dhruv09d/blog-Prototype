@@ -74,7 +74,7 @@
                     > --}}
                     </a>
                     <button 
-                    class="text-white inline-flex p-3 hover:bg-gray-900 rounded lg:hidden ml-auto mr-5 hover:text-white outline-none nav-toggler sm:text-5xl"
+                    class="text-white inline-flex p-3 hover:bg-gray-900 rounded lg:hidden ml-auto mr-5 hover:text-white outline-none nav-toggler sm:text-3xl md:text-3xl"
                     data-target="#navigation"
                     
                     onclick = 'showmenu();'
@@ -94,6 +94,12 @@
                         class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
                         >
                         <span>Home</span>
+                        </a>
+                        <a
+                        href="{{ route('aboutandprivacypage') }}"
+                        class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
+                        >
+                        <span>About</span>
                         </a>
                         <a
                         href="{{ url('/blog') }}"

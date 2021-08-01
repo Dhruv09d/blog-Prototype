@@ -14,12 +14,18 @@
                     @csrf
                     <input type="hidden" value={{$name}} name="name">
                     <input type="hidden" value={{$email}} name="email">
+                    <label for="" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                        {{$email}}
+                    </label>
                     <div class="flex flex-wrap">
                         <label for="password" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
                             Password
+                        </label><br>
+                        <label id="errpass" class="ml-4 block text-red-500 text-sm font-bold mb-2 sm:mb-4">
+                            
                         </label>
-
-                        <input id="password" type="password"
+                        {{-- <p id="errpass" class="text-red-500"></p> --}}
+                        <input id="password" type="password" onmouseout="checkPass()"
                             class="form-input w-full @error('password') border-red-500 @enderror" name="password"
                             >
 
@@ -34,8 +40,11 @@
                         <label for="cpassword" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
                             Confirm Password
                         </label>
-
-                        <input id="cpassword" type="password"
+                        <label id="errcpass" class=" ml-4 block text-red-500 text-sm font-bold mb-2 sm:mb-4">
+                            
+                        </label>
+                        {{-- <p id="errcpass" class="text-red-500"></p> --}}
+                        <input id="cpassword" type="password" onmouseout="checkPass()"
                             class="form-input w-full @error('password') border-red-500 @enderror" name="cpassword"
                             >
 
@@ -49,7 +58,7 @@
                     
 
                     <div class="flex flex-wrap">
-                        <button type="submit"
+                        <button type="submit" 
                         class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline mb-5 text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
                             Save
                         </button>

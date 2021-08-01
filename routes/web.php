@@ -53,6 +53,7 @@ Auth::routes();
 // index page
 //Route::get('/', [PagesController::class, 'index'])->name('page');
 Route::get('/', [HomeController::class, 'index'])->name('indexpage');
+Route::get('/about', [HomeController::class, 'about'])->name('aboutandprivacypage');
 
 //blog | posts
 /******************************* posts *******************************/

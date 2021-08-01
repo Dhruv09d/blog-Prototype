@@ -55,9 +55,51 @@
     <div class="text-center py-15">
         
         <h2 class="text-4xl font-bold py-10">
-            Recent Posts
+            Posts
         </h2>
         
+    </div>
+    <div class="sm:grid grid-cols-2 w-4/5 m-auto py-5 border-b bg-pink-200 ">
+        <div class="flex bg-pink-600 text-gray-100 pt-2 mx-10 mb-10">
+            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block ">
+                <span class="uppercase text-xl">
+                    Reality!
+                </span>
+                <p class="pt-2 text-gray-100">
+                    Sept 4, 2014 By <a href=""><span class="font-bold italic text-gray-100 ">Madara Uchiha</span></a>
+                </p>
+                
+                <p class=" text-xl font-thin py-10">
+                    Wake up to reality! Nothing ever goes as planned in this world. The longer you live, the more you realize that in this reality, only pain, suffering, and futility exist
+                </p>
+                <a href="/blog" class="uppercase bg-transparent border-2 border-gray-100 text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
+                    Find out more
+                </a>
+            </div>  
+        </div>
+        <div class="align-middle mx-auto bg-pink-200 mb-10">
+            <img src="<?php echo e(asset('/staticImg/madara.png')); ?>" alt="image" width="600" title="Madara Uchiha">
+        </div>
+        
+        <div class="align-middle mx-auto bg-pink-200 mt-10">
+            <img src="<?php echo e(asset('/staticImg/kakashi.png')); ?>" alt="image" width="500" title="kakashi hatake">
+        </div>
+        <div class="flex bg-pink-600 text-gray-100 pt-2 mx-10 mt-10">
+            <div class="m-auto pt-4 pb-16 sm:m-auto w-4/5 block ">
+                <span class="uppercase text-xl">
+                    A True Friend
+                </span>
+                <p class="pt-2 text-gray-100">
+                    Jan 9, 2014 By <a href=""><span class="font-bold italic text-gray-100 ">Kakashi Hatake</span></a>
+                </p>
+                <p class=" text-xl font-thin py-10">
+                    The hole in one's heart gets filled by others around you. Friends won't flock to someone who abandons the memory of his friends and gives up on the world just because things don't go the way he wants them to....That won't help fill the hole in your heart. And people won't help those who run away and do nothing....As long as you don't give up, there will always be salvation.
+                </p>
+                <a href="/blog" class="uppercase bg-transparent border-2 border-gray-100 text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
+                    Find out more
+                </a>
+            </div>  
+        </div>
     </div>
     
 <?php $__env->stopSection(); ?>

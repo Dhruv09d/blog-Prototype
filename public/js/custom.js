@@ -110,3 +110,27 @@ function showmenu()
                 x.style.display = 'none';
             }
         }
+
+//  password validation for first social login 
+function checkPass() {
+  var pass = document.getElementById('password').value;
+  var cpass = document.getElementById('cpassword').value;
+  if (pass === '' || pass === null) {
+    document.getElementById('errpass').innerHTML = "";
+    document.getElementById('errcpass').innerHTML = "";
+    document.getElementById('errpass').innerHTML = "Password field is required";
+  }
+  if (cpass === '' || cpass === null) { 
+    document.getElementById('errcpass').innerHTML = "";
+    document.getElementById('errcpass').innerHTML = "Confirm Password field is required";
+  }
+
+  if ((pass !== '' || pass !== null) && (cpass !== '' || cpass !== null)) {
+    if(pass !== cpass) {
+      document.getElementById('errcpass').innerHTML = "";
+      document.getElementById('errpass').innerHTML = "";
+      document.getElementById('errpass').innerHTML = "Confirm Password field doesn't match";
+    }
+  }
+
+}

@@ -165,7 +165,7 @@ class LoginController extends Controller
 
     public function socialLoginPw(Request $request) {
         // dd($request->password, $request->cpassword);
-        if($request->password === $request->cpassword) {
+        if($request->password === $request->cpassword && (($request->cpassword!== null || $request->cpassword === '') && ($request->password !== '' || $request->password !== null)) ) {
             $newUser = new User();
             $newUser->email = $request->email;
             $newUser->name = $request->name;

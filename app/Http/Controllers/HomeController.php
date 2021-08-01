@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['index', 'about']]);
     }
 
     /**
@@ -26,5 +26,9 @@ class HomeController extends Controller
     {
         return view('index');
         // return view('index')->with("posts", Post::limit(6)->orderBy('id', 'DESC')->get());
+    }
+    public function about() 
+    {   
+        return view('aboutandprivacy');
     }
 }
