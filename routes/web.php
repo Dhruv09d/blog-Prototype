@@ -10,6 +10,8 @@ use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminPagesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -107,3 +109,14 @@ Route::delete('users/accounts/{user_id}', [UsersController::Class, 'deleteUser']
 
 /******************************* Reseet password *******************************/
 Route::get('resetpassword', [ForgotPasswordController::class, 'index'])->name('forgotpass.index');
+
+
+//  Admin 
+
+// Admin Auth
+Route::get('admin/register', [AdminAuthController::class, 'register'])->name('admin.register');
+Route::post('admin/create', [AdminAuthController::class, 'create'])->name('admin.create');
+Route::get('admin/login', [AdminAuthController::class, 'loginPage'])->name('admin.loginpage');
+Route::post('admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
+Route::get('admin/dashboard', [AdminPagesController::class, 'index'])->name('admin.dashboard');
+Route::get('admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
