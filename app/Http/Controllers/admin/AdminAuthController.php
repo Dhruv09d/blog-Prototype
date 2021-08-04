@@ -18,7 +18,7 @@ class AdminAuthController extends Controller
         {
             return view('admin.adminauth.register');
         } else {
-            return view('admin.adminauth.dashboard');
+            return view('admin.dashboard');
         }
     }
 
