@@ -24,6 +24,7 @@
                     @csrf
                     @method('PATCH')
                         <input type="hidden" name="form_name" value="approve_post">
+                        <input type="hidden"  name="title" value="{{ $post->title }}">
                         {{-- <input type="text" class="hidden" name="owner_name" value="{{ $post->user->name }}">
                         <input type="text" class="hidden" name="title" value="{{ $post->title }}">
                         <input type="text" class="hidden" name="img_path" value="{{ $post->image_path }}">
@@ -37,6 +38,7 @@
                     @csrf
                     @method('PATCH')
                         <input type="hidden" name="form_name" value="reject_post">
+                        <input type="hidden"  name="title" value="{{ $post->title }}">
                         {{-- <input type="text" class="hidden" name="owner_name" value="{{ $post->user->name }}">
                         <input type="text" class="hidden" name="title" value="{{ $post->title }}">
                         <input type="text" class="hidden" name="img_path" value="{{ $post->image_path }}">

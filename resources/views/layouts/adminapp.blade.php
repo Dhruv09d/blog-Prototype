@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} | Dashboard</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -17,7 +17,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- Font Awesome --}}
     <script src="https://kit.fontawesome.com/89bf85d196.js" crossorigin="anonymous"></script>    
- 
+    {{-- chart js --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">

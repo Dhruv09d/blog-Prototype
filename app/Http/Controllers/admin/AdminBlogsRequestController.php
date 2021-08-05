@@ -29,12 +29,32 @@ class AdminBlogsRequestController extends Controller
         }
     }
 
-    public function review_result($blog_id) {
+    public function review_result(Request $request,$blog_id) {
         if(session()->has('adminId')) {
             // dd($blog_id);
-            // if($request->form_name == "")
+            // update post status to Approve
+            switch($request->form_name) {
+                case "approve_post":
+                    Post::where('id', $blog_id)->update([
+                        'status' => 'Approved',
+                    ]);
+                    // $msg = $post->title." is approved." ;
+                    $msg = array("msgType"=>"success","msg" => "'" . $request->title . "'" ." is approved.");
+                    break;
+                case "reject_post":
+                    Post::where('id', $blog_id)->update([
+                        'status' => 'Rejected',
+                    ]);
+                    $msg = array("msgType"=>"success","msg" => $request->title." is rejected.");
+                    break;
+                default:
+                    $msg = array("msgType"=>"warning","msg" => $request->title." is rejected.");
+                    return back()->with('message', $msg);
+            }
+            $all_pending_post =  Post::where('status', "Pending")->orderBy('updated_at', 'DESC')->get();
+            return redirect()->route('admin.blog_request', ['posts' => $all_pending_post])->with('message', $msg); 
         }  else {
-        return view('admin.adminauth.login');
+            return view('admin.adminauth.login');
         }
     }
 }

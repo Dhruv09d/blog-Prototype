@@ -86,9 +86,11 @@ return array(
     'Database\\Factories\\' => array($baseDir . '/database/factories'),
     'Cviebrock\\EloquentSluggable\\' => array($vendorDir . '/cviebrock/eloquent-sluggable/src'),
     'Cron\\' => array($vendorDir . '/dragonmantank/cron-expression/src/Cron'),
+    'ConsoleTVs\\Charts\\' => array($vendorDir . '/consoletvs/charts/src'),
     'Cocur\\Slugify\\' => array($vendorDir . '/cocur/slugify/src'),
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
+    'Balping\\JsonRaw\\' => array($vendorDir . '/balping/json-raw-encoder/src'),
     'Asm89\\Stack\\' => array($vendorDir . '/asm89/stack-cors/src'),
     'App\\' => array($baseDir . '/app'),
 );

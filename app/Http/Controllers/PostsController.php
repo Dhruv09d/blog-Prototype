@@ -23,7 +23,7 @@ class PostsController extends Controller
     {
         //$post = Post::all();
         //dd($post);
-        return view('blog.index')->with('posts', Post::where('status', "Accepted")->orderBy('updated_at', 'DESC')->paginate(10));
+        return view('blog.index')->with('posts', Post::where('status', "Approved")->orderBy('updated_at', 'DESC')->paginate(10));
     }
 
     /**
