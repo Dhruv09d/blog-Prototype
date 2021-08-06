@@ -9,10 +9,12 @@ use App\Http\Controllers\PostsCommentsController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PostReportController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminPagesController;
 use App\Http\Controllers\Admin\AdminBlogsRequestController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,9 +26,10 @@ use App\Http\Controllers\Admin\AdminBlogsRequestController;
 |
 */
 
-/* *********************** athentication routes ************************************/
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                  Social athentication routes                                     //
+//                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 //google auth
 // redirecting to google login page
 Route::get('login/google', [LoginController::class, 'redirectToProviderGoogle'])->name('login.google');
@@ -58,6 +61,11 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('indexpage');
 Route::get('/about', [HomeController::class, 'about'])->name('aboutandprivacypage');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                       Posts                                                      //
+//                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //blog | posts
 /******************************* posts *******************************/
 
@@ -82,6 +90,10 @@ Route::post('posts/{post}/comment', [PostsCommentsController::class, 'store'])->
 Route::delete('posts/{id}/comment', [PostsCommentsController::class, 'destroy'])->name('posts.removeComment');
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                       Profile                                                    //
+//                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /******************************* Profile *******************************/
 // specified profile
@@ -97,6 +109,10 @@ Route::put('profiles/{user_id}', [ProfilesController::class, 'update'])->name('p
 //profile delete
 Route::delete('profiles/{id}', [ProfilesController::class, 'destroy'])->name('profile.delete');
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                  Follow / Unfollow                                               //
+//                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /******************************* Follow / Unfollow *******************************/
 // follow 
@@ -111,9 +127,10 @@ Route::delete('users/accounts/{user_id}', [UsersController::Class, 'deleteUser']
 /******************************* Reseet password *******************************/
 Route::get('resetpassword', [ForgotPasswordController::class, 'index'])->name('forgotpass.index');
 
-
-//  Admin 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                             Admin                                                //
+//                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 // Admin Auth
 Route::get('admin/register', [AdminAuthController::class, 'register'])->name('admin.register');
 Route::post('admin/create', [AdminAuthController::class, 'create'])->name('admin.create');
@@ -124,6 +141,17 @@ Route::get('admin/logout', [AdminAuthController::class, 'logout'])->name('admin.
 
 // Blog
 Route::get('admin/blog-request', [AdminBlogsRequestController::class, 'index'])->name('admin.blog_request');
+Route::get('admin/blog-approved', [AdminBlogsRequestController::class, 'approved'])->name('admin.blog_approved');
+Route::get('admin/blog-rejected', [AdminBlogsRequestController::class, 'rejected'])->name('admin.blog_rejected');
 Route::get('admin/{blog_slug}', [AdminBlogsRequestController::class, 'show'])->name('admin.blog_show');
 // Blog->approve/reject
 Route::patch('admin/{blog_id}', [AdminBlogsRequestController::class, 'review_result'])->name('admin.blog_result');
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                             Reporting                                            //
+//                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('blog/report/{complainent_id}/{complainee_id}', [PostReportController::class, 'index'])->name('report.reportForm');

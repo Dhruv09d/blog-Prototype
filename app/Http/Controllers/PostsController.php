@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Profile;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Image;
 
@@ -33,7 +34,13 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('blog.create');
+        $user_has_profile = Profile::where('user_id', Auth::user()->id)->first();
+        if($user_has_profile) 
+            return view('blog.create');
+        else {
+            $user_login_info = User::where('id', Auth::user()->id)->first();
+            return view('profiles.profile_create')->with('loggedin_user', $user_login_info);    
+        }
     }
 
     /**
@@ -127,7 +134,8 @@ class PostsController extends Controller
                 'description' => $request->input('description'),
                 'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
                 'image_path' => $newImageName,
-                'user_id' => auth()->user()->id
+                'user_id' => auth()->user()->id,
+                'status' => "Pending",
             ]);
 
         } else {
@@ -137,11 +145,12 @@ class PostsController extends Controller
             'description' => $request->input('description'),
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
             //'image_path' => $newImageName,
-            'user_id' => auth()->user()->id
+            'user_id' => auth()->user()->id,
+            'status' => "Pending",
         ]);}
         
 
-        return redirect('/blog')->with('message', 'Your post has been updated');
+        return redirect('/blog')->with('message', 'Your post has been updated and is under review');
     }
 
     public function confirmDel(Request $request,$slug) {

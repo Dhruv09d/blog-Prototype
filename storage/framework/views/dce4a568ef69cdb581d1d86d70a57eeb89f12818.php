@@ -17,6 +17,14 @@
         By <span class="font-bold italic text-gray-800"><?php echo e($post->user->name); ?></span>, Created on <?php echo e(date('jS M Y', strtotime($post->updated_at))); ?>
 
     </span>
+    <?php if(Auth::user()->id !== $post->user_id): ?>
+    <span class="float-right">
+        <form action="<?php echo e(route('report.reportForm', [Auth::user()->id, $post->id])); ?>">
+            <i class="far fa-flag text-red-400"></i>
+            <input type="submit" class="uppercase bg-gray-100 text-red-700 italic hover:text-red-900 px-3 " value="Report">
+        </form>
+    </span>
+    <?php endif; ?>
     <?php if(isset(Auth::user()->id) && Auth::user()->id == $post->user_id ): ?>
                 <span class="float-right">
                     <a href="/blog/<?php echo e($post->slug); ?>" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2"><i class="fas fa-pencil-alt mr-2"></i>Edit</a>

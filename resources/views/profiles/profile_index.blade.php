@@ -79,6 +79,7 @@
       
       
         @foreach ($posts as $post)
+        @if(Auth::user()->id === $post->user_id || $post->status === "Approved")
         <div
           class="transition-all duration-150 flex w-full px-4 py-6 md:w-1/2 lg:w-1/3"
         >
@@ -187,11 +188,14 @@
                     <span class="mx-1 text-xs text-gray-600">{{ $post->updated_at->diffForHumans() }}</span>
                   </div>
                 </div>
-                {{-- <p class="mt-1 text-xs text-gray-600">9 minutes read</p> --}}
+                @if($post->status === "Pending")
+                  <p class="mt-1 text-xs text-gray-600">Publish Status: <span class="text-red-400">{{ $post->status }}</span></p>
+                @endif
               </div>
             </section>
           </div>
         </div>
+        @endif
         @endforeach
     </section>
     @else

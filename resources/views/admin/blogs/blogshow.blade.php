@@ -19,6 +19,7 @@
                 {{-- <span class="float-right">
                     <a href="{{ route('admin.blog_result', $post->id) }}" class="uppercase text-gray-700 italic hover:text-gray-900 pb-1 border-b-2"><i class="fas fa-pencil-alt mr-2"></i>Approve</a>
                 </span> --}}
+                @if( $post->status == "Rejected" || $post->status == "Pending" )
                 <span class="float-right">
                     <form action="{{ route('admin.blog_result', $post->id) }}" method="POST">
                     @csrf
@@ -33,6 +34,9 @@
                         <input type="submit" class="uppercase bg-gray-100 text-green-400 italic hover:text-green-700 px-3 " value="Approve">
                     </form>
                 </span>
+                @endif
+
+                @if( $post->status == "Approved" || $post->status == "Pending" )
                 <span class="float-right">
                     <form action="{{ route('admin.blog_result', $post->id) }}" method="POST">
                     @csrf
@@ -47,6 +51,7 @@
                         <input type="submit" class="uppercase bg-gray-100 text-red-700 italic hover:text-red-700 px-3 " value="Reject">
                     </form>
                 </span>
+                @endif
         @endif
     <div class="my-10">
         <img class="mx-auto shadow-2xl" src="{{asset('/images/'.$post->image_path)}}" alt="post image" width="1200">

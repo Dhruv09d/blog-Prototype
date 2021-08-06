@@ -134,3 +134,13 @@ function checkPass() {
   }
 
 }
+
+// toggle blog menu button
+function blogDropdown() {
+  let id_blog = document.getElementById('blogDropdowns');
+  if (id_blog.classList.contains("hidden")) {
+    id_blog.classList.remove('hidden');
+  } else {
+    id_blog.classList.add('hidden');
+  }
+}

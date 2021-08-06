@@ -68,7 +68,7 @@
                         </label>
 
                         <input id="phno" type="text" class="form-input w-full @error('phno')  border-red-500 @enderror"
-                            name="phno"  value="+919315516879"  autocomplete="phno" autofocus>
+                            name="phno"  value="+91"  autocomplete="phno" autofocus>
 
                         @error('phno')
                         <p class="text-red-500 text-xs italic mt-4">
@@ -126,7 +126,7 @@
 
                         <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8 border-b-2 pb-4">
                             {{ __('Already have an account?') }}
-                            <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('login') }}">
+                            <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('admin.loginpage') }}">
                                 {{ __('Login') }}
                             </a>
                         </p>

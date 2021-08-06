@@ -4,9 +4,10 @@
 <div class="w-4/5 m-auto text-left">
     <div class="py-15 border-b-2 border-gray-200">
         <h1 class="text-6xl ">
-            Blog Post
+            New Blog Post  
         </h1>
     </div>
+    <span class="text-lg text-gray-400">Total posts to be approved: <strong>{{$posts->count()}}</strong></span>
 </div>
 @if(session()->has('message'))
 @switch(session()->get('message')['msgType'])

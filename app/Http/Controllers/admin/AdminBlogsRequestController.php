@@ -57,4 +57,27 @@ class AdminBlogsRequestController extends Controller
             return view('admin.adminauth.login');
         }
     }
+
+
+    public function approved() {
+        if(session()->has('adminId')) {
+            $all_approved_post =  Post::where('status', "Approved")->orderBy('updated_at', 'DESC')->get();
+            // dd($all_pending_post);
+            return view('admin.blogs.blogApproved')->with('posts', $all_approved_post );
+
+        } else {
+            return view('admin.adminauth.login');
+        }
+    }
+
+    public function rejected() {
+        if(session()->has('adminId')) {
+            $all_rejected_post =  Post::where('status', "Rejected")->orderBy('updated_at', 'DESC')->get();
+            // dd($all_pending_post);
+            return view('admin.blogs.blogReject')->with('posts', $all_rejected_post );
+
+        } else {
+            return view('admin.adminauth.login');
+        }
+    }
 }
