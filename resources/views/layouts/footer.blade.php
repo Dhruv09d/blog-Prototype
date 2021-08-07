@@ -17,10 +17,10 @@
                 <h4 class="text-white ">B4BLOG</h4>
                 <ul class="nav navbar-nav">
                     <li id="navi-2" class="leading-7 text-sm">
-                        <a class="text-white underline text-small no-underline" href="/page-1">
+                        <a class="text-white underline text-small no-underline" href="{{ route('blog.index')}}">
                             Blogs</a>
                     </li>
-                    <li id="navi-1" class="leading-7 text-sm no-underline"><a class="text-white underline text-small no-underline" href="/page-2">Profiles</a></li>
+                    <li id="navi-1" class="leading-7 text-sm no-underline"><a class="text-white underline text-small no-underline" href="#">Profiles</a></li>
                 </ul>
 
 
@@ -31,10 +31,10 @@
                 <h4 class="text-white">BLOG</h4>
                 <ul class="">
                 <li id="navi-2" class="leading-7 text-sm">
-                    <a class="text-white underline text-small no-underline" href="/page-1">
+                    <a class="text-white underline text-small no-underline" href="{{ route('blog.index')}}">
                         Read</a>
                 </li>
-                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="/page-2">Create</a></li>
+                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="blog.create">Create</a></li>
                 </ul>
             </div>
 
@@ -47,7 +47,7 @@
                     <a class="text-white underline text-small no-underline" href="/page-1">
                        View</a>
                 </li>
-                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="/page-2">Explore</a></li>
+                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="{{ route('feedbackform')}}">Feedback</a></li>
                 </ul>
             </div>
 

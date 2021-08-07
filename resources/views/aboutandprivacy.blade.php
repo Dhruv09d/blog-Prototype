@@ -12,16 +12,16 @@
       <div class="flex flex-wrap">
         <div class="w-5/6 sm:w-1/2 p-6">
           <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-            Password
+            What is B4BLOG
           </h3>
           <p class="text-gray-600 mb-8">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+            B4BLOG is a place where you can share your thoughts, connect with people, blogs and may more...
             <br />
             <br />
 
-            Images from:
+            {{-- Images from:
 
-            <a class="text-pink-500 underline" href="https://undraw.co/">undraw.co</a>
+            <a class="text-pink-500 underline" href="https://undraw.co/">undraw.co</a> --}}
           </p>
         </div>
         <div class="w-full sm:w-1/2 p-6">
@@ -305,15 +305,17 @@
         <div class="w-full sm:w-1/2 p-6 mt-6">
           <div class="align-middle">
             <h3 class="text-3xl text-gray-800 font-bold leading-none mb-3">
-              Lorem ipsum dolor sit amet
+              Security And Privacy
             </h3>
-            <p class="text-gray-600 mb-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at ipsum eu nunc commodo posuere et sit amet ligula.
+            <p class="text-gray-600 mb-8"> Your security and privacy is our first concern.
+              <br>
+            <strong>Password:</strong> To make this more secure your password is <a class="text-orange-400" href="https://docs.oracle.com/cd/E26180_01/Platform.94/ATGPersProgGuide/html/s0506passwordhashing01.html" target="_blank">hashed</a> before it is stored in database not even the DB admin cant see your password. 
               <br />
+            <strong>Privacy:</strong> While reporting any blog your identity will be remain hidden and only admin/reviewer have access to know who had reported which blog. 
               <br />
-              Images from:
+              {{-- Images from:
 
-              <a class="text-pink-500 underline" href="https://undraw.co/">undraw.co</a>
+              <a class="text-pink-500 underline" href="https://undraw.co/">undraw.co</a> --}}
             </p>
           </div>
         </div>

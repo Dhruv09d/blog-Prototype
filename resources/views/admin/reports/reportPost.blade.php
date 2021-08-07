@@ -117,7 +117,7 @@
 
                         <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8 border-b-2 pb-4">
                             {{-- {{ __('Already have an account?') }} --}}
-                            <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('blog.index') }}">
+                            <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('indexpage') }}">
                                 {{ __('Cancel') }}
                             </a>
                         </p>

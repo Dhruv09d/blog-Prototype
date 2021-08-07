@@ -9,6 +9,7 @@ use App\Http\Controllers\PostsCommentsController;
 use App\Http\Controllers\ProfilesController;
 use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\feedbackFormsController;
 use App\Http\Controllers\PostReportController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\AdminAuthController;
@@ -156,3 +157,11 @@ Route::patch('admin/{blog_id}', [AdminBlogsRequestController::class, 'review_res
 
 Route::get('blog/report/{complainent_id}/{complainee_id}', [PostReportController::class, 'index'])->name('report.reportForm');
 Route::post('blog/report', [PostReportController::class, 'SaveReport'])->name('report.report');
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                             feedback                                            //
+//                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+Route::get('feedback', [feedbackFormsController::class, 'index'])->name('feedbackform');
+Route::post('feedback/store', [feedbackFormsController::class, 'storefeedback'])->name('storeFeeeback');
