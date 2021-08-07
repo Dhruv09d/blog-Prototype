@@ -135,7 +135,7 @@ function checkPass() {
 
 }
 
-// toggle blog menu button
+// toggle blog menu button Adminapp.blade.php
 function blogDropdown() {
   let id_blog = document.getElementById('blogDropdowns');
   if (id_blog.classList.contains("hidden")) {
@@ -143,4 +143,12 @@ function blogDropdown() {
   } else {
     id_blog.classList.add('hidden');
   }
+}
+
+// enable text area for repoting if other option is selected
+function enableTextArea(reason) {
+  let enTArea = document.getElementById('reason');
+  let selectedValue = reason.options[reason.selectedIndex].value;
+  console.log(selectedValue);
+  enTArea.disabled = selectedValue == "Other" ? false : true;
 }

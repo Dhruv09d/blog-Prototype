@@ -155,3 +155,4 @@ Route::patch('admin/{blog_id}', [AdminBlogsRequestController::class, 'review_res
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('blog/report/{complainent_id}/{complainee_id}', [PostReportController::class, 'index'])->name('report.reportForm');
+Route::post('blog/report', [PostReportController::class, 'SaveReport'])->name('report.report');

@@ -550,6 +550,7 @@ class ComposerStaticInit1e90e33353617b5d2d40c5a24870e4e9
     );
 
     public static $classMap = array (
+        'App\\Charts\\dashboardCharts' => __DIR__ . '/../..' . '/app/Charts/dashboardCharts.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -563,6 +564,7 @@ class ComposerStaticInit1e90e33353617b5d2d40c5a24870e4e9
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PagesController.php',
         'App\\Http\\Controllers\\PostLikesController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostLikesController.php',
+        'App\\Http\\Controllers\\PostReportController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostReportController.php',
         'App\\Http\\Controllers\\PostsCommentsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostsCommentsController.php',
         'App\\Http\\Controllers\\PostsController' => __DIR__ . '/../..' . '/app/Http/Controllers/PostsController.php',
         'App\\Http\\Controllers\\ProfilesController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfilesController.php',
