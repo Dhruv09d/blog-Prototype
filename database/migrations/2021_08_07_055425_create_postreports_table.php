@@ -17,6 +17,7 @@ class CreatePostreportsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('complainent_id');
+            $table->foreign('complainent_id')->references('id')->on('users');
             $table->string("selectedType");
             $table->string('reason')->nullable();
             $table->timestamps();

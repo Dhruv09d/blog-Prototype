@@ -110,13 +110,15 @@
                             {{-- href="{{ route('admin.blog_request') }}" --}}
                             class="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-gray-400 items-center justify-center hover:bg-gray-900 hover:text-white"
                             >
-                            <span >Blogs</span>
+                            <span ><i class="fas fa-angle-down mr-1"></i>Blogs</span>
                             </button>
                                 <div class="hidden mt-2 absolute  mt-2 w-48 bg-white rounded-md overflow-hidden shadow-xl z-20" id="blogDropdowns">
                                     
                                 <a href="{{ route('admin.blog_request') }}" class="block px-4 py-3 text-sm text-gray-800 border-b hover:bg-gray-200">New Blogs<span class="text-gray-600"></span></a>
                                 <a href="{{ route('admin.blog_approved') }}" class="block px-4 py-3 text-sm text-green-400 border-b hover:bg-gray-200">Approved Blogs <span class="text-gray-600"></span></a>
                                 <a href="{{ route('admin.blog_rejected') }}" class="block px-4 py-3 text-sm text-red-400 border-b hover:bg-gray-200">Rejected Blogs <span class="text-gray-600"></span></a>
+                                <a href="{{ route('admin.allfeddbacks') }}" class="block px-4 py-3 text-sm text-gray-800 border-b hover:bg-gray-200">Feedbacks <span class="text-gray-600"></span></a>
+                                <a href="{{ route('admin.allreports') }}" class="block px-4 py-3 text-sm text-gray-800 border-b hover:bg-gray-200">Blog Reports<span class="text-gray-600"></span></a>
                                 </div>  
                         </div>
                         <a

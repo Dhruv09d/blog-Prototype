@@ -68,4 +68,10 @@ class User extends Authenticatable
     public function profile() {
         return $this->hasOne(Profile::class);
     }
+    public function feedbacks() {
+        return $this->hasMany(feedback::class);
+    }
+    public function postreports() {
+        return $this->hasMany(Postreport::class);
+    }
 }

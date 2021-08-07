@@ -16,16 +16,19 @@ class PostReportController extends Controller
         $user_has_reported_already = Postreport::where([["post_id", '=' ,$post_id], ["complainent_id", '=' ,$complainent_id]])->first();
         // dd($user_has_reported_already, gettype(!$user_has_reported_already));
         if(!$user_has_reported_already) {
-            return view('admin.reports.reportPost')->with("complainent_id", $complainent_id)->with("post_id", $post_id);
+            // dd("if");
+            // return view('reportPost');
+            return view('reportPostForm')->with("complainent_id", $complainent_id)->with("post_id", $post_id);
         }  else {
-            return view('admin.reports.reportPost')->with('isreported', "Report exists")->with("complainent_id", $complainent_id)->with("post_id", $post_id);
+            //  dd("else");
+            return view('reportPostForm')->with("complainent_id", $complainent_id)->with("post_id", $post_id)->with("isreported", "Report exists");
         }
     }
 
     public function saveReport(Request $request) {
         // dd($request->all());
         $user_has_reported_already = Postreport::where(["post_id" => $request->post_id, "complainent_id" => $request->complainent_id])->first();
-        if($user_has_reported_already) {
+        if(!$user_has_reported_already) {
         $request->validate([
             'complainent_id' => 'required ',
             'post_id' => 'required',
@@ -42,7 +45,7 @@ class PostReportController extends Controller
 
         return back()->with('msg', "Your report has been recorded");
         }  else {
-
+            return back()->with('msg', "You have already reported this post");
         }
     }
 }

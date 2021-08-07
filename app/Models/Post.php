@@ -37,6 +37,9 @@ class Post extends Model
     public function comments() {
         return $this->hasMany(Comment::class);
     }
+    public function postreports() {
+        return $this->hasMany(Postreport::class);
+    }
 
     public function sluggable():array {
         return [

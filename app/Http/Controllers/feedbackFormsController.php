@@ -19,7 +19,7 @@ class feedbackFormsController extends Controller
     public function storefeedback(Request $request) {
         // dd($request->all());
         $request->validate([
-            'feedback' => 'required | max:300'
+            'feedback' => 'required | max:1000'
         ]);
 
         Feedback::create([

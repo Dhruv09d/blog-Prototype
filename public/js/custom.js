@@ -152,3 +152,13 @@ function enableTextArea(reason) {
   console.log(selectedValue);
   enTArea.disabled = selectedValue == "Other" ? false : true;
 }
+
+// triggerAdminFeedbackModel 
+// function openModel() {
+//   let model = document.getElementById('myModal').style.display = "block";
+
+// }
+
+// document.getElementsByClassName('close').onCLick() = function() {
+//   document.getElementById('myModal').model.style.display = "none";
+// }

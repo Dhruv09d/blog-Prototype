@@ -15,6 +15,8 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminPagesController;
 use App\Http\Controllers\Admin\AdminBlogsRequestController;
+use App\Http\Controllers\Admin\AdminFeedbacksController;
+use App\Http\Controllers\Admin\AdminPostsReportsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -148,6 +150,10 @@ Route::get('admin/{blog_slug}', [AdminBlogsRequestController::class, 'show'])->n
 // Blog->approve/reject
 Route::patch('admin/{blog_id}', [AdminBlogsRequestController::class, 'review_result'])->name('admin.blog_result');
 
+// feedback 
+Route::get('admin/feedbacks/view', [AdminFeedbacksController::class, 'index'])->name('admin.allfeddbacks');
+Route::get('admin/blog/report', [AdminPostsReportsController::class, 'index'])->name('admin.allreports');
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -156,7 +162,7 @@ Route::patch('admin/{blog_id}', [AdminBlogsRequestController::class, 'review_res
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('blog/report/{complainent_id}/{complainee_id}', [PostReportController::class, 'index'])->name('report.reportForm');
-Route::post('blog/report', [PostReportController::class, 'SaveReport'])->name('report.report');
+Route::post('blog/report', [PostReportController::class, 'saveReport'])->name('report.reportsave');
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
