@@ -322,10 +322,46 @@
       </div>
     </div>
   </section>
-  <section class="bg-white border-b py-8">
+  <!-- This is an example component -->
+  <h1 class="w-full my-4 text-5xl font-bold leading-tight text-center text-gray-800">
+    Developer
+  </h1>
+<div class="container mx-auto mt-10 mb-5 ">
+  
+  <div class="relative rounded-lg flex flex-col md:flex-row items-center md:shadow-xl md:h-72 mx-2">
+      
+      <div class="z-0 order-1 md:order-2 relative w-full md:w-2/5 h-80 md:h-full overflow-hidden rounded-lg md:rounded-none md:rounded-r-lg">
+          <div class="absolute inset-0 w-full h-full object-fill object-center bg-cover bg-bottom" style="background-image: url( {{asset('/devAvatar/dev1.jpg')}} ); background-blend-mode: multiply;"></div>
+          <div class="md:hidden absolute inset-0 h-full p-6 pb-6 flex flex-col-reverse justify-start items-start bg-gradient-to-b from-transparent via-transparent to-gray-900">
+              <h3 class="w-full font-bold text-2xl text-white leading-tight mb-2">Developer</h3>
+              <h4 class="w-full text-xl text-gray-100 leading-tight">Dhruv Singh</h4>
+          </div>
+          <svg class="hidden md:block absolute inset-y-0 h-full w-24 fill-current text-white -ml-12" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <polygon points="50,0 100,0 50,100 0,100" />
+          </svg>
+      </div>
+
+      <div class="z-10 order-2 md:order-1 w-full h-full md:w-3/5 flex items-center -mt-6 md:mt-0">
+          <div class="p-8 md:pr-18 md:pl-14 md:py-12 mx-2 md:mx-0 h-full bg-white rounded-lg md:rounded-none md:rounded-l-lg shadow-xl md:shadow-none">
+              <h4 class="hidden md:block text-xl text-gray-400">Developer</h4>
+              <h3 class="hidden md:block font-bold text-2xl text-gray-700">Dhruv Singh</h3>
+              <p class="text-gray-600 text-justify">An enthusiastic and diligent computer science student pursuing B.Tech (Computer
+                Science and Engineering).Quest to work and learn in a real professional and vying ambiance that enables me to
+                cope with the emerging and as well as latest technology and scope for widening the
+                spectrum of my knowledge.</p>
+              <a class="flex items-baseline mt-3 text-blue-600 hover:text-blue-900 focus:text-blue-900" href="">
+                  <span>Know More</span>
+                  <span class="text-xs ml-1">&#x279c;</span>
+              </a>
+          </div>
+      </div>
+
+  </div>
+</div>
+  {{-- <section class="bg-white border-b py-8">
     <div class="container mx-auto flex flex-wrap pt-4 pb-12">
       <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-        Title
+        Developer
       </h1>
       <div class="w-full mb-4">
         <div class="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -334,7 +370,7 @@
         <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
           <a href="#" class="flex flex-wrap no-underline hover:no-underline">
             <p class="w-full text-gray-600 text-xs md:text-sm px-6">
-              xGETTING STARTED
+              Dhruv Singh
             </p>
             <div class="w-full font-bold text-xl text-gray-800 px-6">
               Lorem ipsum dolor sit amet.
@@ -397,8 +433,8 @@
         </div>
       </div>
     </div>
-  </section>
-  <section class="bg-gray-100 py-8">
+  </section> --}}
+  {{-- <section class="bg-gray-100 py-8">
     <div class="container mx-auto px-2 pt-4 pb-12 text-gray-800">
       <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
         Pricing
@@ -478,7 +514,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> --}}
   <!-- Change the colour #f8fafc to match the previous section colour -->
   <svg class="wave-top" viewBox="0 0 1439 147" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -502,18 +538,72 @@
     </g>
   </svg>
   <section class="container mx-auto text-center py-6 mb-12">
-    <h1 class="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-      Call to Action
+    <h1 class="w-full my-2 text-5xl text-gray-800 font-bold leading-tight text-center text-white">
+      Feedback
     </h1>
     <div class="w-full mb-4">
       <div class="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
     </div>
-    <h3 class="my-4 text-3xl leading-tight">
-      Main Hero Message to sell yourself!
-    </h3>
-    <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+    {{-- <h3 class="my-4 text-3xl leading-tight">
+      Feedback
+    </h3> --}}
+    <div class="flex">
+      <div class="w-full">
+          <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
+
+              {{-- <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
+                  {{ __('Feedback') }}
+              </header> --}}
+              @if (session()->has('msg'))
+                  <div class="py-3 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200 flex items-center justify-between" role="alert">
+                      <span>{{ session()->get('msg')}}</span>
+                      <button class="w-4" type="button" data-dismiss="alert" aria-label="Close" onclick="this.parentElement.remove();">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                      </button>
+                  </div>
+              @endif
+              <form class="w-full px-6 space-y-6 sm:px-10 sm:space-y-8" method="POST" enctype="multipart/form-data"
+                  action="{{ route('storeFeeeback') }}">
+                  @csrf
+                  {{-- feedback --}}
+                  <div class="flex flex-wrap">
+                      <label for="feedback" class="block text-gray-700 text-sm font-bold mb-2 sm:mb-4">
+                          {{ __('Feedback Or Suggestion') }}:
+                      </label>
+
+                      <textarea id="feedback" rows="6" class="form-input w-full @error('feedback')  border-red-500 @enderror"
+                          name="feedback" value="{{ old('feedback') }}"  autocomplete="feedback" autofocus></textarea>
+
+                      @error('feedback')
+                      <p class="text-red-500 text-xs italic mt-4">
+                          {{ $message }}
+                      </p>
+                      @enderror
+                  </div>
+
+                  
+                  <div class="flex flex-wrap">
+                      <button type="submit"
+                          class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-3 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                          {{ __('Send') }}
+                      </button>
+
+                      {{-- <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8 border-b-2 pb-4">
+                          
+                          <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('blog.index') }}">
+                              {{ __('Cancel') }}
+                          </a>
+                      </p> --}}
+                  </div>
+              </form>
+          </section>
+      </div>
+  </div>
+    {{-- <button class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
       Action!
-    </button>
+    </button> --}}
   </section>
 
 

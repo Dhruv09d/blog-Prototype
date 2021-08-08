@@ -56,11 +56,11 @@
 <div class="w-4/5 m-auto pt-20">
     <form action="/blog/create" method="POST" enctype="multipart/form-data">
         @csrf
-        <input type="text" name="title" placeholder="Title..." 
-        class="pb-10 bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
+        <input type="text" name="title" placeholder="Title..."
+        class="pb-10 bg-transparent block border-b-2 w-full h-20 text-6xl outline-none"  value={{ old('title')}}>
 
         <textarea name="description" placeholder="Description..."
-        class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none"></textarea>
+        class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none">{{ old('description')}}</textarea>
         {{-- <div></div> --}}
         <div class="bg-gray-lighter pt-15">
             <label class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg
@@ -69,7 +69,7 @@
                     Select a file
                 </span>
                 <input type="file" id="selectedImg" name="image" class="hidden" 
-                onchange="document.getElementById('prevImg').src = window.URL.createObjectURL(this.files[0]); document.getElementById('prevImg').style.display = 'block';">
+                onchange="document.getElementById('prevImg').src = window.URL.createObjectURL(this.files[0]); document.getElementById('prevImg').style.display = 'block';" >
             </label>
         </div>
         <img id="prevImg" src="#" alt="your image" width="300" style="display:none;"/>

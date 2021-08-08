@@ -14,7 +14,8 @@
     <div class="containter mx-auto px-2">
       <div class="bg-white p-8 rounded-lg shadow-lg relative hover:shadow-2xl transition duration-500">
         <h1 class="text-2xl text-gray-800 font-semibold mb-3">{{$report->post->title}} <span class=" ml-2 text-sm text-gray-300 font-bold italic">reported on {{ date('jS M Y', strtotime($report->created_at))  }} </span></h1>
-        <p class="text-gray-600 leading-6 tracking-normal">{{$report->selectedType}}{{ $report->reason}}</p>
+        <p class="text-gray-600 leading-6 tracking-normal">{{$report->selectedType}}</p>
+        <p class="text-gray-600 leading-6 tracking-normal">{{ $report->reason}}</p>
     <a href="{{route('admin.blog_show', $report->post->slug )}}"  class="inline-block py-2 px-4 mt-8 bg-black text-white rounded-md shadow-xl">Read</a>
     
         {{-- <div>
