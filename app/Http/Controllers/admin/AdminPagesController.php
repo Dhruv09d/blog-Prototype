@@ -17,8 +17,9 @@ class AdminPagesController extends Controller
             $post_dates = DB::select('SELECT   DATE_FORMAT(created_at,"%y-%m-%d") as created_at from posts;');
             $post_count = Post::all()->count();
             $post_new = Post::where('status' , "Pending")->count();
-            $user_count = User::all()->count();
             
+            $user_count = User::all()->count();
+            // dd($user_count);
             // $post_count = Post::all()->count();
             // return $post_dates;
             // $json = json_encode($post_dates);
@@ -27,6 +28,7 @@ class AdminPagesController extends Controller
             $counts = array_count_values(
                 array_column($post_dates, 'created_at')
             );
+            // dd("fine");
             // $string_counts_arr = json_encode($counts);
             // $counts_array = json_decode($string_counts_arr, true);
             // return $counts;

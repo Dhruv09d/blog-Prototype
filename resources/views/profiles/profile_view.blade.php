@@ -19,7 +19,10 @@
             <hr>
         </div>
     </div>
-@foreach($profiles as $profile) 
+    <div class="container mx-auto">
+        {{ $profiles->links() }}
+    </div>
+{{-- @foreach($profiles as $profile) 
     <div class="  flex flex-row flex-wrap p-3">
         <div class="mx-auto w-2/3">
             <!-- Profile Card -->
@@ -40,7 +43,40 @@
             <!-- End Profile Card -->
         </div>
     </div>
+@endforeach --}}
+<div class=" grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 m-5 mb-10">
+@foreach ($profiles as $profile)
+    
+
+
+    <div class="bg-gray-100 inline">
+        <div class=" bg-white  shadow-lg rounded-lg hover:shadow-xl transition duration-200 max-w-sm">
+        <img class="rounded-t-lg mx-auto w-full" src="{{ asset('/avatar/'. $profile->avatar_path) }}" alt="" />
+        <div class="py-4 px-8">
+            <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight">{{$profile->user->name}}</h1>
+            <p class="hover:cursor-pointer py-3 text-gray-600 leading-6">{{$profile->biography}}</p>
+            
+            <p class="hover:cursor-pointer py-3 text-gray-600 leading-6 inline-block">Joined Since <strong>{{date('Y', strtotime($profile->user->updated_at))}}</strong></p>
+            <a class="inline-block float-right bg-gray-800 text-white" href="{{route('profile.index', $profile->user_id)}}"><button class="border-2 p-2 border-white rounded-2xl inline-block">View Profile</button></a>
+            
+        </div>
+        </div>
+    </div>
+    {{-- <div class="bg-gray-100 inline">
+        <div class=" bg-white shadow-lg rounded-lg hover:shadow-xl transition duration-200 max-w-sm">
+        <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1622495894307-93143fc57155" alt="" />
+        <div class="py-4 px-8">
+            <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+            <p class="hover:cursor-pointer py-3 text-gray-600 leading-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora neque eum autem repellat iure perferendis, possimus blanditiis temporibus doloribus corrupti.</p>
+        </div>
+        </div>
+    </div>
+    
+</div> --}}
 @endforeach
+</div>
+<div class="container mx-auto">
+    {{ $profiles->links() }}
 </div>
 
 @endsection

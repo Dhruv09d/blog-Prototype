@@ -7,7 +7,7 @@
             Approved Blog Post 
         </h1>
     </div>
-    <span class="text-lg text-gray-400">Total posts approved: <strong>{{$posts->count()}}</strong></span>
+    {{-- <span class="text-lg text-gray-400">Total posts approved: <strong>{{$posts->count()}}</strong></span> --}}
 </div>
 @if(session()->has('message'))
 @switch(session()->get('message')['msgType'])
@@ -54,6 +54,10 @@
     </div>
 @endswitch
 @endif
+{{-- pagination --}}
+<div class="container mx-auto">
+    {{ $posts->links() }}
+</div>
 @foreach( $posts as $post)
     <div class="sm:grid grid-cols-2 gap-10 w-4/5 mx-auto py-15 border-b border-gray-200 ">
         <div >
@@ -93,6 +97,9 @@
         </div>
     </div>
 @endforeach
-
+{{-- pagination --}}
+<div class="container mx-auto">
+    {{ $posts->links() }}
+</div>
 
 @endsection

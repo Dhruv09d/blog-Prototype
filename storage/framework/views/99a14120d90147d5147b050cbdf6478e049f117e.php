@@ -19,28 +19,35 @@
             <hr>
         </div>
     </div>
-<?php $__currentLoopData = $profiles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $profile): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
-    <div class="  flex flex-row flex-wrap p-3">
-        <div class="mx-auto w-2/3">
-            <!-- Profile Card -->
-            <div class="rounded-lg shadow-lg bg-gray-600 w-full flex flex-row flex-wrap p-3 antialiased pImg">
-                <div class="md:w-1/3">
-                <img class="rounded-lg shadow-lg h-36 w-36 antialiased" src="<?php echo e(asset('avatar/'. $profile->avatar_path)); ?>">  
-                </div>
-                <div class="md:w-2/3 w-full px-3 flex flex-row flex-wrap">
-                <div class="w-full text-right text-gray-700 font-semibold relative pt-3 md:pt-0">
-                    <div class="text-2xl text-white leading-tight mb-2"><?php echo e($profile->user->name); ?></div>
-                    <div class="text-normal text-gray-300 mb-1 "><span class="border-b border-dashed border-gray-500 pb-2"><strong>XX</strong> Followers</span></div>
-                    <div class="text-normal text-gray-300 mb-1"><span class="border-b border-dashed border-gray-500 pb-1">Joined Since <strong><?php echo e(date('Y', strtotime($profile->user->updated_at))); ?></strong></span></div>
-                    
-                    <div class="text-sm text-gray-300 hover:text-gray-400 cursor-pointer md:absolute pt-3 md:pt-0 bottom-0 right-0"><a href="<?php echo e(route('profile.index', $profile->user_id)); ?>"><button class="border-2 p-2 border-white rounded-2xl">View Profile</button></a> </div>
-                </div>
-                </div>
-            </div>
-            <!-- End Profile Card -->
+    <div class="container mx-auto">
+        <?php echo e($profiles->links()); ?>
+
+    </div>
+
+<div class=" grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 m-5 mb-10">
+<?php $__currentLoopData = $profiles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $profile): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+    
+
+
+    <div class="bg-gray-100 inline">
+        <div class=" bg-white  shadow-lg rounded-lg hover:shadow-xl transition duration-200 max-w-sm">
+        <img class="rounded-t-lg mx-auto w-full" src="<?php echo e(asset('/avatar/'. $profile->avatar_path)); ?>" alt="" />
+        <div class="py-4 px-8">
+            <h1 class="hover:cursor-pointer mt-2 text-gray-900 font-bold text-2xl tracking-tight"><?php echo e($profile->user->name); ?></h1>
+            <p class="hover:cursor-pointer py-3 text-gray-600 leading-6"><?php echo e($profile->biography); ?></p>
+            
+            <p class="hover:cursor-pointer py-3 text-gray-600 leading-6 inline-block">Joined Since <strong><?php echo e(date('Y', strtotime($profile->user->updated_at))); ?></strong></p>
+            <a class="inline-block float-right bg-gray-800 text-white" href="<?php echo e(route('profile.index', $profile->user_id)); ?>"><button class="border-2 p-2 border-white rounded-2xl inline-block">View Profile</button></a>
+            
+        </div>
         </div>
     </div>
+    
 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+</div>
+<div class="container mx-auto">
+    <?php echo e($profiles->links()); ?>
+
 </div>
 
 <?php $__env->stopSection(); ?>

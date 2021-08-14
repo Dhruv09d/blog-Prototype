@@ -349,7 +349,7 @@
                 Science and Engineering).Quest to work and learn in a real professional and vying ambiance that enables me to
                 cope with the emerging and as well as latest technology and scope for widening the
                 spectrum of my knowledge.</p>
-              <a class="flex items-baseline mt-3 text-blue-600 hover:text-blue-900 focus:text-blue-900" href="">
+              <a class="flex items-baseline mt-3 text-blue-600 hover:text-blue-900 focus:text-blue-900" href="https://www.linkedin.com/in/dhruv-singh-25ba02172/" target="_blank">
                   <span>Know More</span>
                   <span class="text-xs ml-1">&#x279c;</span>
               </a>
@@ -574,7 +574,7 @@
                       </label>
 
                       <textarea id="feedback" rows="6" class="form-input w-full @error('feedback')  border-red-500 @enderror"
-                          name="feedback" value="{{ old('feedback') }}"  autocomplete="feedback" autofocus></textarea>
+                          name="feedback" value="{{ old('feedback') }}"  autocomplete="feedback"></textarea>
 
                       @error('feedback')
                       <p class="text-red-500 text-xs italic mt-4">

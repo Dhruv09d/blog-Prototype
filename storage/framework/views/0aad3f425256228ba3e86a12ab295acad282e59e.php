@@ -37,6 +37,10 @@
   </div>
 <?php endif; ?>
 
+<div class="container mx-auto">
+    <?php echo e($posts->links()); ?>
+
+</div>
 <?php $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <div class="sm:grid grid-cols-2 gap-10 w-4/5 mx-auto py-15 border-b border-gray-200 ">
         <div >

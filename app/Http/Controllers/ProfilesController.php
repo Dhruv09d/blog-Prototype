@@ -121,7 +121,8 @@ class ProfilesController extends Controller
      */
     public function show()
     {
-        return view('profiles.profile_view')->with('profiles', Profile::all());
+        $all_profiles = Profile::paginate(15); 
+        return view('profiles.profile_view')->with('profiles', $all_profiles);
     }
 
     /**

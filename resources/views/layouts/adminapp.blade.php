@@ -3,7 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="shortcut icon" type="image/png" href="{{asset('/logo/B.png')}}"/>
+    <meta name="description" content="A Free Bloging website where you can create awesome blogs as well as manage it."/>
+    <meta name="keywords" content="Blog, Blogging, Meet, Learn , share, Friends" />
+    <meta name="author" content="Dhruv Singh, dhruvdagar1999@gmail.com" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 

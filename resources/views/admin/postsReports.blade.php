@@ -7,7 +7,10 @@
             Reports
         </h1>
     </div>
-    <span class="text-lg text-gray-400">Total Feedbacks: <strong>{{$reports->count()}}</strong></span>
+    {{-- <span class="text-lg text-gray-400">Total Reports: <strong>{{$reports->count()}}</strong></span> --}}
+</div>
+<div class="container mx-auto">
+  {{ $reports->links() }}
 </div>
 @foreach($reports as $report)
 <div class="w-4/5 my-5 mx-auto bg-gray-100 text-justify ">

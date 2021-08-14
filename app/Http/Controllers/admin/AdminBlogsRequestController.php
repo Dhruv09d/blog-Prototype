@@ -10,7 +10,7 @@ class AdminBlogsRequestController extends Controller
 {
     public function index() {
         if(session()->has('adminId')) {
-            $all_pending_post =  Post::where('status', "Pending")->orderBy('updated_at', 'DESC')->get();
+            $all_pending_post =  Post::where('status', "Pending")->orderBy('updated_at', 'DESC')->paginate(10);
             // dd($all_pending_post);
             return view('admin.blogs.blogRequest')->with('posts', $all_pending_post );
 
@@ -61,7 +61,7 @@ class AdminBlogsRequestController extends Controller
 
     public function approved() {
         if(session()->has('adminId')) {
-            $all_approved_post =  Post::where('status', "Approved")->orderBy('updated_at', 'DESC')->get();
+            $all_approved_post =  Post::where('status', "Approved")->orderBy('updated_at', 'DESC')->paginate(10);
             // dd($all_pending_post);
             return view('admin.blogs.blogApproved')->with('posts', $all_approved_post );
 
@@ -72,7 +72,7 @@ class AdminBlogsRequestController extends Controller
 
     public function rejected() {
         if(session()->has('adminId')) {
-            $all_rejected_post =  Post::where('status', "Rejected")->orderBy('updated_at', 'DESC')->get();
+            $all_rejected_post =  Post::where('status', "Rejected")->orderBy('updated_at', 'DESC')->paginate(10);
             // dd($all_pending_post);
             return view('admin.blogs.blogReject')->with('posts', $all_rejected_post );
 

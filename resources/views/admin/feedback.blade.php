@@ -9,6 +9,9 @@
     </div>
     <span class="text-lg text-gray-400">Total Feedbacks: <strong>{{$feedbacks->count()}}</strong></span>
 </div>
+<div class="container mx-auto">
+  {{ $feedbacks->links() }}
+</div>
 @foreach($feedbacks as $feedback)
 <div class="w-4/5 my-5 mx-auto bg-gray-100 text-justify ">
     <div class="containter mx-auto px-2">
