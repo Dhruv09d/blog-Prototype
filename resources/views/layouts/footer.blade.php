@@ -34,7 +34,7 @@
                     <a class="text-white underline text-small no-underline" href="{{ route('blog.index')}}">
                         Read</a>
                 </li>
-                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="blog.create">Create</a></li>
+                <li id="navi-1" class="leading-7 text-sm"><a class="text-white underline text-small no-underline" href="{{ route('blog.create')}}">Create</a></li>
                 </ul>
             </div>
 

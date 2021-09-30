@@ -16,9 +16,17 @@ class AdminAuthController extends Controller
     public function register() {
         if (!session()->has('adminId'))
         {
-            return view('admin.adminauth.register');
+            $hasAdmin = Admin::all()->first();
+            //dd($hasAdmin);
+            if (!$hasAdmin) {
+                return view('admin.adminauth.register');
+            } else {
+                return view('admin.adminauth.login');
+            }
+            
         } else {
-            return view('admin.dashboard');
+            // return view('admin.dashboard');
+            return redirect()->route("admin.dashboard");
         }
     }
 

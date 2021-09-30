@@ -18,7 +18,7 @@ class PostReportController extends Controller
         if(!$user_has_reported_already) {
             // dd("if");
             // return view('reportPost');
-            return view('reportPostForm')->with("complainent_id", $complainent_id)->with("post_id", $post_id);
+            return view('reportPostForm')->with("complainent_id", $complainent_id)->with("post_id", $post_id)->with("isreported", "");
         }  else {
             //  dd("else");
             return view('reportPostForm')->with("complainent_id", $complainent_id)->with("post_id", $post_id)->with("isreported", "Report exists");

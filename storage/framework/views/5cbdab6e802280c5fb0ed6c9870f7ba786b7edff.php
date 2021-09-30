@@ -26,7 +26,7 @@
                             
                         </label>
                         
-                        <input id="password" type="password"
+                        <input id="password" type="password" onmouseout="checkPass()"
                             class="form-input w-full <?php $__errorArgs = ['password'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

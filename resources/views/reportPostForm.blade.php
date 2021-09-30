@@ -11,7 +11,7 @@
         </p>
     </div>
    
-    @if($isreported)
+    @if($isreported != "")
         <p class="py-10 my-20 text-2xl font-bold mx-auto">
             Your record has already been recorded. Thanks for helping in keeping this community safe.
         </p>
