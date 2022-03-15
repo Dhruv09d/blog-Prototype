@@ -52,7 +52,7 @@ class ProfilesController extends Controller
         // $followings = Following::where('user_id', $user_id )->firstOrFail();
         if($profile) {
             // if ($followers !== null) {
-                return view('profiles.profile_index')->with('profile', $profile)->with('loggedin_user', $user_login_info)->with('posts', Post::where('user_id', $user_id)->orderByDesc('created_at')->get())->with("followers", $followers )->with("followings",$followings)->with("ifUserIsFollowing", $ifUserIsFollowing);
+                return view('profiles.profile_index')->with('profile', $profile)->with('loggedin_user', $user_login_info)->with('posts', Post::where([['user_id', $user_id], ['status', 'Pending']])->orderByDesc('created_at')->get())->with("followers", $followers )->with("followings",$followings)->with("ifUserIsFollowing", $ifUserIsFollowing);
         } else {
             return redirect()->route('profile.create', ['user_id' => Auth::user()->id]);
         }
